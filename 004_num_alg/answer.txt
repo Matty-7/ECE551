@@ -1,0 +1,9 @@
+Input: a non-negative integer N
+Output: a sequences list which contains the generated numbers from this algorithm
+
+1: We initialize an empty list to save the sequences later
+2: Calculate the starting value, which is 3N in this problem
+3: Add the starting value in the sequences list
+4: Continue adding numbers by incrementing the last number in the sequences list by 2 each time
+5: Repeat the step 4 until the sequences list has (2*N+2) numbers
+6: Output the final sequences list
