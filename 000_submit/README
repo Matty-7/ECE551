@@ -8,7 +8,7 @@ submission system.
     keep seeing the instructions.  Hit C-x 2 (control+x at the same
     time, then release them and press 2).  You should now
     be looking at two copies of this document, with your window split.
-    To move between the two parts, press C-x o  (control+x at the same
+   To move between the two parts, press C-x o  (control+x at the same
     time, then release them and press the letter o).  Notice
     how your cursor moves from one split to the other.  Doing it again
     will take you back.  Use C-x o to get into the bottom portion of the window.
@@ -32,7 +32,7 @@ submission system.
    the view, the second will move it to the top, and the third will move
    it to the bottom.
 
-   Now lets try out the eshell.  Make sure you are in the eshell window
+Now lets try out the eshell.  Make sure you are in the eshell window
    (use C-x o to move there if you aren't) and type
    ls
    at the prompt.
@@ -81,7 +81,9 @@ submission system.
    to see the assignments coming up in the next
    14 days (2 weeks).  Lets take a moment
    to rearrange our windows.  First,
-   let us suppose that we don't want the
+
+
+let us suppose that we don't want the
    top portion with the man page anymore.
    If we wanted that, but just wanted to display
    another buffer, we could use C-x b.  However,
@@ -101,7 +103,12 @@ submission system.
     To do this and see the instructions, lets split our window (C-x 2).
     Then open the file with C-x C-f (that means control+x, then release x,
     while still holding control and hit f).You will be prompted
-    for the name of the file to open.  Type myNetID.txt and hit enter.
+
+
+
+
+
+for the name of the file to open.  Type myNetID.txt and hit enter.
     This is a new file, so it is empty.
     
 (2) Write one line, containing your netID in that file.  Then save
@@ -126,7 +133,6 @@ submission system.
       git push
 
 (6) Grade the assignment
-
       grade
 
    You will get information about how many grading tokens you have (these refresh periodically---if
