@@ -1,0 +1,41 @@
+Grading at 09/09/2024:18:30:43.656269
+For commit ID 8fd74bb4978a435f9e8d9d4fe58716872b8a6635
+Grading at Mon Sep  9 02:30:43 PM EDT 2024
+Attempting to compile rectangle.c
+Tring to run rectangle
+Line_5_did_not_match
+Line_6_did_not_match
+Line_7_did_not_match
+Line_9_did_not_match
+Line_10_did_not_match
+Line_11_did_not_match
+Line_13_did_not_match
+Line_14_did_not_match
+Line_15_did_not_match
+Line_16_did_not_match
+Line_19_did_not_match
+Line_20_did_not_match
+Your file did not match the expected output
+Your output did not match what we expected. Here is what you printed
+r1 is (2,3) to (7,9)
+r2 is (-1,-2) to (4,5)
+r3 is (-2,-3) to (5,7)
+r4 is (-4,7) to (0,9)
+intersection(r1,r1): (2,3) to (7,6)
+intersection(r1,r2): (2,3) to (4,6)
+intersection(r1,r3): (2,3) to (5,6)
+intersection(r1,r4): <empty>
+intersection(r2,r1): (2,3) to (4,6)
+intersection(r2,r2): (-1,-2) to (4,7)
+intersection(r2,r3): (-1,-2) to (4,7)
+intersection(r2,r4): <empty>
+intersection(r3,r1): (2,3) to (5,6)
+intersection(r3,r2): (-1,-2) to (4,7)
+intersection(r3,r3): (-2,-3) to (5,10)
+intersection(r3,r4): <empty>
+intersection(r4,r1): <empty>
+intersection(r4,r2): <empty>
+intersection(r4,r3): <empty>
+intersection(r4,r4): <empty>
+
+Overall Grade: F
