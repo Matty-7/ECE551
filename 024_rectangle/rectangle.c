@@ -53,7 +53,7 @@ rectangle intersection(rectangle r1, rectangle r2) {
   r2.top = r2.y + r2.height;
 
   result.width = min(r1.right, r2.right) - result.x;
-  result.height = min(r1.height, r2.height) - result.y;
+  result.height = min(r1.top, r2.top) - result.y;
 
   if (result.width < 0 || result.height < 0) {
     result.width = 0;
