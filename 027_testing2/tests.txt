@@ -1,0 +1,44 @@
+a???? b????
+abcd 12345
+aaabc bbbac
+aaaaa aaaaa
+aaaaa bbbbb
+aaaaa bcdef
+abcde fghij
+aaabb bbbaa
+12345 abcde
+122ab aa123
+aaaaa
+123 456
+abcde edcba
+aabbc aaabb
+12223 13322
+abb?? ????
+aaabb bbbbc
+aabbc aaabb
+a???? bbbbb
+aabb bbbcc
+aaaa bbccc
+aaaaa abcde
+aabb aaaaa
+aa bbccc
+aaaaa aaaab
+a a a
+aaaaa bbbbb ccccc
+a
+aaaaab baaaaa
+a b
+aa bb
+AAAAA aaaaa
+aaaa
+@@@@@ &&&&&
+123bc 2j2j2
+aaaaa aaaaab
+000000 000000
+00001 11110
+00abc ab0c0
+aaade bbbde
+00001 00010
+aaaab aaaa
+aaabb abcddd
+AaAaA BbBbB
