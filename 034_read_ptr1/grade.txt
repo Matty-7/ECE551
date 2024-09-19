@@ -1,9 +1,10 @@
-Grading at 09/19/2024:02:39:17.036960
-For commit ID b36a0ec2bb64a3dd9d8905b58a56925e6a0ec90c
-Grading at Wed Sep 18 10:39:16 PM EDT 2024
+Grading at 09/19/2024:02:41:57.561043
+For commit ID b91620885490631d595d350919a8da3ce456d2c0
+Grading at Wed Sep 18 10:41:57 PM EDT 2024
 Attempting to compile test.c
-The code did not compile
+gcc -o test test.c
+compiled
 Your file matched the expected output
 Your output matched what we expected
 
-Overall Grade: FAILED
+Overall Grade: PASSED
