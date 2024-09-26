@@ -4,6 +4,10 @@
 
 void reverse(char * str) {
   //WRITE ME!
+  if (str == NULL || strlen(str) == 0) {
+    return;
+  }
+
   int left = 0;
   int right = strlen(str) - 1;
 
