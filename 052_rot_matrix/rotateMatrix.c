@@ -34,13 +34,13 @@ int main(int argc, char * argv[]) {
       return EXIT_FAILURE;
     }
 
-    if (line[SIZE] != '\n' || line[SIZE + 1] != '\0') {
-      fprintf(stderr, "Invalid line length on line %d\n", i + 1);
-      fclose(file);
-      return EXIT_FAILURE;
-    }
-
     for (int j = 0; j < SIZE; j++) {
+      if (line[j] == '\n' || line[j] != '\0') {
+        fprintf(stderr, "Invalid line length on line %d\n", i + 1);
+        fclose(file);
+        return EXIT_FAILURE;
+      }
+
       matrix[i][j] = line[j];
     }
   }
