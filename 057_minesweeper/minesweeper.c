@@ -41,7 +41,44 @@ void addRandomMine(board_t * b) {
 
 board_t * makeBoard(int w, int h, int numMines) {
   // WRITE ME!
-  return NULL;
+  board_t * b = malloc(sizeof(board_t));
+  if (b == NULL) {
+    return NULL;
+  }
+
+  b->width = w;
+  b->height = h;
+  b->totalMines = numMines;
+
+  b->board = malloc(h * sizeof(int *));
+  if (b->board == NULL) {
+    free(b);
+    return NULL;
+  }
+
+  for (int i = 0; i < h; i++) {
+    b->board[i] = malloc(w * sizeof(int));
+    if (b->board[i] == NULL) {
+      for (int j = 0; j < i; j++) {
+        free(b->board[j]);
+      }
+      free(b->board);
+      free(b);
+      return NULL;
+    }
+  }
+
+  for (int y = 0; y < h; y++) {
+    for (int x = 0; x < w; x++) {
+      b->board[y][x] = UNKNOWN;
+    }
+  }
+
+  for (int i = 0; i < numMines; i++) {
+    addRandomMine(b);
+  }
+
+  return b;
 }
 
 /* Print the board with 
@@ -102,7 +139,24 @@ void printBoard(board_t * b) {
 
 int countMines(board_t * b, int x, int y) {
   // WRITE ME!
-  return 0;
+  int mineCount = 0;
+
+  for (int dy = -1; dy <= 1; dy++) {
+    for (int dx = -1; dx <= 1; dx++) {
+      int nx = x + dx;
+      int ny = y + dy;
+
+      if (nx < 0 || nx >= b->width || ny < 0 || ny >= b->height || (dx == 0 && dy == 0)) {
+        continue;
+      }
+
+      if (IS_MINE(b->board[ny][nx])) {
+        mineCount++;
+      }
+    }
+  }
+
+  return mineCount;
 }
 
 /* Determine action of selected square
@@ -141,6 +195,13 @@ int checkWin(board_t * b) {
 
 void freeBoard(board_t * b) {
   // WRITE ME!
+  for (int i = 0; i < b->height; i++) {
+    free(b->board[i]);
+  }
+
+  free(b->board);
+
+  free(b);
 }
 
 /* Read and validate positive integer from player */
