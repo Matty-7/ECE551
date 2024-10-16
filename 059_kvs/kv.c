@@ -44,6 +44,7 @@ kvarray_t * readKVs(const char * fname) {
   fclose(file);
   return kvarray;
 }
+
 void freeKVs(kvarray_t * pairs) {
   //WRITE ME
   for (size_t i = 0; i < pairs->length; i++) {
