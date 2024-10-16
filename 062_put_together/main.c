@@ -36,7 +36,7 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
     }
 
     if (i == kvPairs->length) {
-      addCount(counts, "<unknown>");
+      addCount(counts, NULL);
     }
   }
 
