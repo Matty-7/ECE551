@@ -1,0 +1,11 @@
+Grading at 10/16/2024:14:20:59.521234
+For commit ID d037caaa007436bef76add5b5b0de6f0dd5dfa09
+Grading at Wed Oct 16 10:20:59 AM EDT 2024
+Reading your quiz answers from answers.txt
+You got 2 questions incorrect.
+You might want to review these concepts:
+------------
+Encapsulation: Methods Act on Objects
+------------
+
+Overall Grade: FAILED
