@@ -33,5 +33,5 @@ double Vector2D::dot(const Vector2D & rhs) const {
 }
 
 void Vector2D::print() const {
-  std::printf("<%.2f, %.2f>\n", x, y);
+  std::printf("<%.2f, %.2f>", x, y);
 }
