@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -g
-TARGET = program
+TARGET = code
 SRCS = code.cpp
 OBJS = $(SRCS:.cpp = .o)
 

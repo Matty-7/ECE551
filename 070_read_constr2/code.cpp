@@ -1,10 +1,9 @@
 #include "code.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-
 Pet::Pet(const char * n, const char * s) : name(n), species(s), hungerLevel(0) {
-
 }
 
 void Pet::feed(unsigned food) {
@@ -39,15 +38,15 @@ void Pet::describe(void) {
   }
 }
 
-Person::Person(const char * n): name(n), myPet(NULL) {
+Person::Person(const char * n) : name(n), myPet(NULL) {
 }
 
 void Person::describe(void) {
   if (!havePet()) {
-    printf("%s has no pet\n",name);
+    printf("%s has no pet\n", name);
   }
   else {
-    printf("%s has the pet: ",name);
+    printf("%s has the pet: ", name);
     myPet->describe();
   }
 }
@@ -66,29 +65,29 @@ void Person::setPet(Pet * p) {
 }
 
 int main(void) {
-  Person ** people = new Person*[4];
-  Pet ** pets = new Pet*[3];
+  Person ** people = new Person *[4];
+  Pet ** pets = new Pet *[3];
   people[0] = new Person("Hades");
   people[1] = new Person("Perseus");
   people[2] = new Person("Zeus");
   people[3] = new Person("Cyclops");
-  pets[0]   = new Pet("Cerberus", "3-headed dog");
-  pets[1]   = new Pet("Pegasus", "flying horse");
-  pets[2]   = new Pet("Fluffy", "sheep");
+  pets[0] = new Pet("Cerberus", "3-headed dog");
+  pets[1] = new Pet("Pegasus", "flying horse");
+  pets[2] = new Pet("Fluffy", "sheep");
   people[0]->setPet(pets[0]);
   people[1]->setPet(pets[1]);
   people[3]->setPet(pets[2]);
-  for (int i =0; i < 3; i++) {
+  for (int i = 0; i < 3; i++) {
     pets[i]->getHungrier(20 * i + 60);
   }
   for (int i = 0; i < 4; i++) {
     people[i]->feedPet(50 - 10 * i);
     people[i]->describe();
   }
-  for (int i =0; i < 4; i++) {
+  for (int i = 0; i < 4; i++) {
     delete people[i];
   }
-  for (int i =0; i < 3; i++) {
+  for (int i = 0; i < 3; i++) {
     delete pets[i];
   }
   delete[] people;
