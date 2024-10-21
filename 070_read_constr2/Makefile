@@ -10,5 +10,8 @@ $(TARGET): $(OBJS)
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -c $<
 
+run: $(TARGET)
+	./$(TARGET) > answer.txt
+
 clean:
 	rm -f $(TARGET) $(OBJS)
