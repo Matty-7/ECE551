@@ -1,15 +1,8 @@
-Grading at 10/21/2024:19:17:28.564681
-For commit ID bdeb874f87cb21a64239439844a1e5dc6a6f24f5
-Grading at Mon Oct 21 03:17:28 PM EDT 2024
+Grading at 10/21/2024:19:22:19.380020
+For commit ID 1c20597d20426cc4ca05efd65bb1f67df159a78c
+Grading at Mon Oct 21 03:22:19 PM EDT 2024
 Attempting to compile:
-g++ -Wall -g -o program code.cpp
-I expected to find a file called 'code' but it did not exist
-(or was not a regular file)
-Here are the files that I can find:
-code.cpp
-code.h
-Makefile
-program
-README
+g++ -Wall -g -o code code.cpp
+You do not have answer.txt
 
 Overall Grade: FAILED
