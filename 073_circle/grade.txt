@@ -1,7 +1,13 @@
-Grading at 10/22/2024:04:19:38.559785
-For commit ID da39464a8207279c4e4a87e328f8346a7ce96c11
-Grading at Tue Oct 22 12:19:38 AM EDT 2024
+Grading at 10/22/2024:04:25:39.830842
+For commit ID ba9b1c56dc62ec4c090559df6865c60a81ce10ba
+Grading at Tue Oct 22 12:25:38 AM EDT 2024
 Attempting to compile:
-You do not have a Makefile
+rm -f *.o circles
+g++ -Wall -Werror -pedantic -std=c++98 -c main.cpp
+g++ -Wall -Werror -pedantic -std=c++98 -c circle.cpp
+g++ -Wall -Werror -pedantic -std=c++98 -c point.cpp
+g++ -Wall -Werror -pedantic -std=c++98 -o circles main.o circle.o point.o
+Found binary 'circles'
+Your output matched what we expected
 
-Overall Grade: FAILED
+Overall Grade: PASSED
