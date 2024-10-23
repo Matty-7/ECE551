@@ -1,12 +1,6 @@
-Grading at 10/23/2024:16:29:35.274741
-For commit ID 3cdce1b016ace3ed5e442b2567532765022cd466
-Grading at Wed Oct 23 12:29:35 PM EDT 2024
+Grading at 10/23/2024:16:37:35.615534
+For commit ID 040f8d9c9c0beb0297ab48e1b7ac3a82d88e6a0c
+Grading at Wed Oct 23 12:37:35 PM EDT 2024
 Reading your quiz answers from answers.txt
-You got 2 questions incorrect.
-You might want to review these concepts:
-------------
-Iterators
-Template Rules
-------------
 
-Overall Grade: FAILED
+Overall Grade: PASSED
