@@ -56,6 +56,15 @@ int IntArray::size() const {
   return numElements;
 }
 
+IntArray IntArray::operator+(const IntArray & rhs) const {
+  assert(numElements == rhs.numElements);
+  IntArray result(numElements);
+  for (int i = 0; i < numElements; i++) {
+    result[i] = (*this)[i] + rhs[i];
+  }
+  return result;
+}
+
 bool IntArray::operator==(const IntArray & rhs) const {
   if (numElements != rhs.numElements) {
     return false;
