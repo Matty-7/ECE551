@@ -23,6 +23,34 @@ void readStoryTemplate(const char * filename) {
   fclose(file);
 }
 
+const char * chooseWord(char * category, void * cats) {
+  return "cat";
+}
+
+// Replace the blanks in one line
+void processLine(char * line) {
+  char * start = line;
+  char * end = NULL;
+
+  while ((start = strchr(start, '_')) != NULL) {
+    end = strchr(start + 1, '_');
+    if (end == NULL) {
+      fprintf(stderr, "Error: unmatched underscore in this line: %s\n", line);
+      exit(EXIT_FAILURE);
+    }
+
+    // Here we print the text before the blank
+    *start = '\0';
+    printf("%s", line);
+
+    line = end + 1;
+    start = line;
+  }
+
+  // Here we print the remaining of the line
+  printf("%s", line);
+}
+
 int main(int argc, char * argv[]) {
   if (argc != 2) {
     fprintf(stderr, "Usage: %s <story_template_file>\n", argv[0]);
