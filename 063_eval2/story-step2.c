@@ -29,3 +29,38 @@ void addWordToCategory(catarray_t * categories,
   categories->arr[categories->n].n_words = 1;
   categories->n++;
 }
+
+void readCategories(const char * filename, catarray_t * categories) {
+  FILE * file = fopen(filename, "r");
+  if (file == NULL) {
+    perror("Error: There is something wrong when trying to open the file");
+    exit(EXIT_FAILURE);
+  }
+
+  char * line = NULL;
+  size_t len = 0;
+  ssize_t read;
+
+  while ((read = getline(&line, &len, file)) != -1) {
+    char * colon = strchr(line, ':');
+    if (colon == NULL) {
+      fprintf(stderr, "Error: There is no colon in this line: %s\n", line);
+      exit(EXIT_FAILURE);
+    }
+
+    *colon = '\0';
+    char * category = line;
+    char * word = colon + 1;
+
+    // Here we need to remove the new line character from the word
+    char * newline = strchr(word, '\n');
+    if (newline != NULL) {
+      *newline = '\0';
+    }
+
+    addWordToCategory(categories, category, word);
+  }
+
+  free(line);
+  fclose(file);
+}
