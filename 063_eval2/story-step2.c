@@ -64,3 +64,28 @@ void readCategories(const char * filename, catarray_t * categories) {
   free(line);
   fclose(file);
 }
+
+void freeCategories(catarray_t * categories) {
+  for (size_t i = 0; i < categories->n; i++) {
+    free(categories->arr[i].name);
+    for (size_t j = 0; j < categories->arr[i].n_words; j++) {
+      free(categories->arr[i].words[j]);
+    }
+    free(categories->arr[i].words);
+  }
+  free(categories->arr);
+}
+
+int main(int argc, char * argv[]) {
+  if (argc != 2) {
+    fprintf(stderr, "Here we use: %s <categories_file>\n", argv[0]);
+    exit(EXIT_FAILURE);
+  }
+
+  catarray_t categories = {NULL, 0};
+  readCategories(argv[1], &categories);
+
+  printWords(&categories);
+  freeCategories(&categories);
+  return EXIT_SUCCESS;
+}

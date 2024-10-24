@@ -54,7 +54,7 @@ void readStoryTemplate(const char * filename) {
 
 int main(int argc, char * argv[]) {
   if (argc != 2) {
-    fprintf(stderr, "Usage: %s <story_template_file>\n", argv[0]);
+    fprintf(stderr, "Here we use: %s <story_template_file>\n", argv[0]);
     exit(EXIT_FAILURE);
   }
 
