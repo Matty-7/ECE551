@@ -17,7 +17,7 @@ void processLine(char * line) {
       exit(EXIT_FAILURE);
     }
 
-    // Here we print the text before the blank
+    // Here I print the text before the blank
     *start = '\0';
     printf("%s", line);
 
@@ -27,7 +27,7 @@ void processLine(char * line) {
     start = line;
   }
 
-  // Here we print the remaining of the line
+  // Here I print the remaining of the line
   printf("%s", line);
 }
 
