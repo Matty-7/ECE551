@@ -1,0 +1,3 @@
+animal dragon unicorn
+place cave campus
+adjective good bad
