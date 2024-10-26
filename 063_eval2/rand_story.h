@@ -7,5 +7,6 @@
 
 void readCategories(const char * filename, catarray_t * categories);
 void freeCategories(catarray_t * categorries);
+void addWordToCategory(catarray_t * categories, const char * category, const char * word);
 
 #endif

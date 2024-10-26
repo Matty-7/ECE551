@@ -34,10 +34,11 @@ void processStoryTemplate(const char * filename, catarray_t * categories) {
   size_t n_used = 0;
 
   while ((read = getline(&line, &len, file)) != -1) {
-    char * start = line;
+    char * current_position = line;
+    char * start = NULL;
     char * end = NULL;
 
-    while ((start = strchr(start, '_')) != NULL) {
+    while ((start = strchr(current_position, '_')) != NULL) {
       end = strchr(start + 1, '_');
       if (end == NULL) {
         fprintf(stderr,
@@ -48,7 +49,7 @@ void processStoryTemplate(const char * filename, catarray_t * categories) {
 
       // We need to print the text before the placeholder
       *start = '\0';
-      printf("%s", line);
+      printf("%s", current_position);
 
       // We need to get the placeholder
       *end = '\0';
@@ -68,11 +69,10 @@ void processStoryTemplate(const char * filename, catarray_t * categories) {
       printf("%s", replacement);
 
       // Move the placeholder
-      line = end + 1;
-      start = line;
+      current_position = end + 1;
     }
 
-    printf("%s", line);
+    printf("%s", current_position);
   }
 
   for (size_t i = 0; i < n_used; i++) {
