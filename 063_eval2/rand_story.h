@@ -5,4 +5,7 @@
 
 //any functions you want your main to use
 
+void readCategories(const char * filename, catarray_t * categories);
+void freeCategories(catarray_t * categorries);
+
 #endif
