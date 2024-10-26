@@ -46,9 +46,11 @@ void processStoryTemplate(const char * filename, catarray_t * categories) {
         exit(EXIT_FAILURE);
       }
 
+      // We need to print the text before the placeholder
       *start = '\0';
       printf("%s", line);
 
+      // We need to get the placeholder
       *end = '\0';
       char * placeholder = start + 1;
 
@@ -65,6 +67,7 @@ void processStoryTemplate(const char * filename, catarray_t * categories) {
 
       printf("%s", replacement);
 
+      // Move the placeholder
       line = end + 1;
       start = line;
     }
