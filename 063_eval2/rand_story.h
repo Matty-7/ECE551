@@ -14,7 +14,7 @@ void addWordToCategory(catarray_t * categories, const char * category, const cha
 void removeWordFromCategory(catarray_t * categories,
                             const char * category,
                             const char * word);
-void addUsedWord(char *** usedWords, size_t * n_used, const char * word);
+void addUsedWord(char *** usedWords, size_t * n_used, char * word);
 
 const char * getUsedWord(char ** usedWords, size_t n_used, int index);
 

@@ -154,17 +154,13 @@ void addWordToCategory(catarray_t * categories,
 }
 
 // Here I put the used word in a list of used words
-void addUsedWord(char *** usedWords, size_t * n_used, const char * word) {
+void addUsedWord(char *** usedWords, size_t * n_used, char * word) {
   *usedWords = realloc(*usedWords, (*n_used + 1) * sizeof(**usedWords));
   if (*usedWords == NULL) {
     perror("Error: When reallocating memory for usedWords");
     exit(EXIT_FAILURE);
   }
-  (*usedWords)[*n_used] = strdup(word);
-  if ((*usedWords)[*n_used] == NULL) {
-    perror("Error: When duplicating word for usedWords");
-    exit(EXIT_FAILURE);
-  }
+  (*usedWords)[*n_used] = word;  //save the pointer directly
   (*n_used)++;
 }
 
@@ -220,8 +216,15 @@ void processStoryTemplate(const char * filename, catarray_t * categories, int no
 
       if (*endptr == '\0') {
         replacement = getUsedWord(usedWords, n_used, index);
-        addUsedWord(&usedWords, &n_used, replacement);
-        printf("%s", replacement);
+        char * replacementCopy = strdup(replacement);
+
+        if (replacementCopy == NULL) {
+          perror("Error duplicating replacement word");
+          exit(EXIT_FAILURE);
+        }
+
+        addUsedWord(&usedWords, &n_used, replacementCopy);
+        printf("%s", replacementCopy);
       }
       else {
         replacement = chooseWord(placeholder, categories);
