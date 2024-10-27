@@ -1,6 +1,6 @@
-Grading at 10/27/2024:02:56:46.882955
-For commit ID 52bf81cb4bc0187995896b31bba953a503769156
-Grading at Sat Oct 26 10:56:44 PM EDT 2024
+Grading at 10/27/2024:03:10:43.163818
+For commit ID c45c654a52f19f2783dba235e65b33e95732679c
+Grading at Sat Oct 26 11:10:41 PM EDT 2024
 Doing some basic checking for your submission
 
 Step 1
@@ -53,8 +53,8 @@ Now running YOUR tests for step 3
 It looks like you got different output from us on that case.
 Here is the diff (yours on left, ours on right):
 
-Once upon a time, there was a walrus. This walrus lived in a 	Once upon a time, there was a walrus. This walrus lived in a 
-peculiar cave. One day, it left its peculiar peculiar and met |	peculiar cave. One day, it left its peculiar cave and met a w
+Once upon a time, there was a walrus. This  lived in a very   |	Once upon a time, there was a walrus. This walrus lived in a 
+peculiar cave. One day, it left its   and met a walrus.	      |	peculiar cave. One day, it left its peculiar cave and met a w
 Your file did not match the expected output
 
 
@@ -74,8 +74,8 @@ Now running YOUR tests for step 4
 It looks like you got different output from us on that case.
 Here is the diff (yours on left, ours on right):
 
-Once upon a time, there was a walrus. This walrus lived in a 	Once upon a time, there was a walrus. This walrus lived in a 
-peculiar cave. One day, it left its peculiar peculiar and met |	peculiar cave. One day, it left its peculiar cave and met a w
+Once upon a time, there was a walrus. This  lived in a very   |	Once upon a time, there was a walrus. This walrus lived in a 
+peculiar cave. One day, it left its   and met a walrus.	      |	peculiar cave. One day, it left its peculiar cave and met a w
 Your file did not match the expected output
 
 
@@ -84,8 +84,9 @@ Your file did not match the expected output
 It looks like you got different output from us on that case.
 Here is the diff (yours on left, ours on right):
 
-Once upon a time, there was a walrus. This walrus lived in a 	Once upon a time, there was a walrus. This walrus lived in a 
-peculiar cave. One day, it left its peculiar peculiar and met |	peculiar cave. One day, it left its peculiar cave and met a d
+Once upon a time, there was a 0÷³				      |	Once upon a time, there was a walrus. This walrus lived in a 
+ðU. This  lived in a very				      |	peculiar cave. One day, it left its peculiar cave and met a d
+n\³UõU n\³UõU. One day, it left its   and met a .M³UõU.	      <
 Your file did not match the expected output
 
 
