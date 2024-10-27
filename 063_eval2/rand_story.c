@@ -206,25 +206,23 @@ void processStoryTemplate(const char * filename, catarray_t * categories, int no
       char * placeholder = start + 1;
 
       const char * replacement = NULL;
-      char * replacementCopy = NULL;
+
       char * endptr;
       int index = strtol(placeholder, &endptr, 10);
 
       if (*endptr == '\0') {
         replacement = getUsedWord(usedWords, n_used, index);
-        printf("%s", replacement);
       }
       else {
         replacement = chooseWord(placeholder, categories);
-        replacementCopy = strdup(replacement);
 
         if (noReuse) {
           removeWordFromCategory(categories, placeholder, replacement);
         }
 
-        addUsedWord(&usedWords, &n_used, replacementCopy);
+        addUsedWord(&usedWords, &n_used, replacement);
 
-        printf("%s", replacementCopy);
+        printf("%s", replacement);
       }
 
       // Move the placeholder
