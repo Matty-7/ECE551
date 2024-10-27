@@ -221,9 +221,8 @@ void processStoryTemplate(const char * filename, catarray_t * categories, int no
         }
 
         addUsedWord(&usedWords, &n_used, replacement);
-
-        printf("%s", replacement);
       }
+      printf("%s", replacement);
 
       // Move the placeholder
       current_position = end + 1;
