@@ -1,0 +1,9 @@
+animal:dragon
+animal:unicorn
+animal:lion
+place:castle
+place:campus
+place:duke
+adjective:magical
+adjective:dark
+adjective:enchanted

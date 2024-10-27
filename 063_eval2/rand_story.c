@@ -187,6 +187,7 @@ void processStoryTemplate(const char * filename, catarray_t * categories, int no
     char * start = NULL;
     char * end = NULL;
 
+    // Deal with the placeholder in each line
     while ((start = strchr(current_position, '_')) != NULL) {
       end = strchr(start + 1, '_');
       if (end == NULL) {
@@ -200,26 +201,31 @@ void processStoryTemplate(const char * filename, catarray_t * categories, int no
       *start = '\0';
       printf("%s", current_position);
 
-      // We need to get the placeholder
+      // We need to get the placeholder content
       *end = '\0';
       char * placeholder = start + 1;
 
-      const char * replacement;
+      const char * replacement = NULL;
+      char * replacementCopy = NULL;
       char * endptr;
       int index = strtol(placeholder, &endptr, 10);
+
       if (*endptr == '\0') {
         replacement = getUsedWord(usedWords, n_used, index);
+        printf("%s", replacement);
       }
       else {
         replacement = chooseWord(placeholder, categories);
-        addUsedWord(&usedWords, &n_used, replacement);
+        replacementCopy = strdup(replacement);
 
         if (noReuse) {
           removeWordFromCategory(categories, placeholder, replacement);
         }
-      }
 
-      printf("%s", replacement);
+        addUsedWord(&usedWords, &n_used, replacementCopy);
+
+        printf("%s", replacementCopy);
+      }
 
       // Move the placeholder
       current_position = end + 1;
