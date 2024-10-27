@@ -219,9 +219,10 @@ void processStoryTemplate(const char * filename, catarray_t * categories, int no
         if (noReuse) {
           removeWordFromCategory(categories, placeholder, replacement);
         }
-
-        addUsedWord(&usedWords, &n_used, replacement);
       }
+
+      addUsedWord(&usedWords, &n_used, replacement);
+
       printf("%s", replacement);
 
       // Move the placeholder
