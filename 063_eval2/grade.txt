@@ -1,6 +1,6 @@
-Grading at 10/27/2024:03:14:55.247479
-For commit ID 8f76fc1b182745365eaf958a9507835524b0ffaa
-Grading at Sat Oct 26 11:14:53 PM EDT 2024
+Grading at 10/27/2024:03:19:49.781134
+For commit ID 06145cbebad3e98822050f9c23c607f5a79df743
+Grading at Sat Oct 26 11:19:46 PM EDT 2024
 Doing some basic checking for your submission
 
 Step 1
@@ -50,13 +50,8 @@ Now running YOUR tests for step 3
 
 3.1: Current test is story-step3 words.txt story2.txt
 -----------------------------
-It looks like you got different output from us on that case.
-Here is the diff (yours on left, ours on right):
-
-Once upon a time, there was a walrus. This walrus lived in a 	Once upon a time, there was a walrus. This walrus lived in a 
-peculiar cave. One day, it left its peculiar peculiar and met |	peculiar cave. One day, it left its peculiar cave and met a w
-Your file did not match the expected output
-
+Your output looks good. Lets check valgrind
+Valgrind was clean
 
 Step 4
 Checking that story-step4 compiles
@@ -71,21 +66,22 @@ Now running YOUR tests for step 4
 
 4.1: Current test is story-step4 words.txt story2.txt
 -----------------------------
-It looks like you got different output from us on that case.
-Here is the diff (yours on left, ours on right):
-
-Once upon a time, there was a walrus. This walrus lived in a 	Once upon a time, there was a walrus. This walrus lived in a 
-peculiar cave. One day, it left its peculiar peculiar and met |	peculiar cave. One day, it left its peculiar cave and met a w
-Your file did not match the expected output
-
+Your output looks good. Lets check valgrind
+Valgrind was clean
 
 4.2: Current test is story-step4 -n words.txt story2.txt
 -----------------------------
 It looks like you got different output from us on that case.
 Here is the diff (yours on left, ours on right):
 
-Once upon a time, there was a 0÷ÉU. This NG—WÌU lived in a very   |	Once upon a time, there was a walrus. This walrus lived in a 
-.G—WÌU .G—WÌU. One day, it left its .G—WÌU .G—WÌU and met a nV—WÌU.     |	peculiar cave. One day, it left its peculiar cave and met a d
+Once upon a time, there was a 0GùkV. This £ø?		      |	Once upon a time, there was a walrus. This walrus lived in a 
+V lived in a very					      |	peculiar cave. One day, it left its peculiar cave and met a d
+ãø?							      <
+V ãø?							      <
+V. One day, it left its ãø?				      <
+V ãø?							      <
+V and met a ãø?						      <
+V.							      <
 Your file did not match the expected output
 
 
