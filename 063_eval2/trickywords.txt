@@ -1,9 +1,16 @@
 animal:dragon
 animal:unicorn
 animal:lion
+animal:phoenix
+animal:mermaid
 place:castle
 place:campus
 place:duke
+place:Charlotte
+place:UNC
 adjective:magical
 adjective:dark
 adjective:enchanted
+adjective:ancient
+adjective:beautiful
+adjective:handsome
