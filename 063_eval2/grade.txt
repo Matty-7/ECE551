@@ -1,6 +1,6 @@
-Grading at 10/29/2024:23:46:36.606136
-For commit ID 37adb2d54b2782d17c11d156d74b70934a246fb6
-Grading at Tue Oct 29 07:46:31 PM EDT 2024
+Grading at 10/29/2024:23:48:53.335198
+For commit ID 8c7e67dbc60412230c27bd91d96693db8ab7d33c
+Grading at Tue Oct 29 07:48:46 PM EDT 2024
 Doing some basic checking for your submission
 
 Step 1
@@ -21,6 +21,12 @@ Now running YOUR tests for step 1
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
+1.2: Current test is story-step1 trickywords.txt trickystory.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
 Step 2
 Checking that story-step2 compiles
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -37,6 +43,12 @@ Now running YOUR tests for step 2
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
+2.2: Current test is story-step2 trickywords.txt trickystory.txt  
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
 Step 3
 Checking that story-step3 compiles
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -49,6 +61,11 @@ Executable story-step3 exists (good)
 Now running YOUR tests for step 3
 
 3.1: Current test is story-step3 words.txt story2.txt
+-----------------------------
+Your output looks good. Lets check valgrind
+Valgrind was clean
+
+3.2: Current test is story-step3 trickywords.txt trickystory.txt  
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
