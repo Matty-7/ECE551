@@ -1,10 +1,14 @@
 story-step1 story.txt
 story-step1 trickywords.txt trickystory.txt
+story-step1 empty.txt
 story-step2 words.txt
-story-step2 trickywords.txt trickystory.txt  
+story-step2 trickywords.txt trickystory.txt
+story-step2 empty.txt
 story-step3 words.txt story2.txt
-story-step3 trickywords.txt trickystory.txt  
+story-step3 trickywords.txt trickystory.txt
+story-step3 empty.txt
 story-step4 words.txt story2.txt
 story-step4 -n words.txt story2.txt
 story-step4 trickywords.txt trickystory.txt
 story-step4 -n trickywords.txt trickystory.txt
+story-step4 empty.txt
