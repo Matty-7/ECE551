@@ -1,6 +1,6 @@
-Grading at 10/29/2024:23:56:22.396116
-For commit ID 187c42b023c9eb9a31484ea78577ff3b0a8ba697
-Grading at Tue Oct 29 07:56:10 PM EDT 2024
+Grading at 10/29/2024:23:59:36.029271
+For commit ID a3f1c62957394ab4b19bf8803cab3d61e61b4352
+Grading at Tue Oct 29 07:59:22 PM EDT 2024
 Doing some basic checking for your submission
 
 Step 1
@@ -38,6 +38,12 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
+1.5: Current test is story-step1 story.txt duplicate_words_categories.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
 Step 2
 Checking that story-step2 compiles
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -65,7 +71,13 @@ Valgrind was clean
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
-2.4: Current test is story-step2 story.txt multiple_colons.txt 
+2.4: Current test is story-step2 story.txt multiple_colons.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+2.5: Current test is story-step2 story.txt duplicate_words_categories.txt 
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
@@ -99,6 +111,12 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 3.4: Current test is story-step3 story.txt multiple_colons.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+3.5: Current test is story-step3 story.txt duplicate_words_categories.txt 
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
@@ -142,6 +160,12 @@ Your output looks good. Lets check valgrind
 Valgrind was clean
 
 4.6: Current test is story-step4 empty.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+4.7: Current test is story-step4 story.txt duplicate_words_categories.txt
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
