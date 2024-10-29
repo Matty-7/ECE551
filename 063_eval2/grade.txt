@@ -1,6 +1,6 @@
-Grading at 10/29/2024:23:52:01.243997
-For commit ID 2822c96158688bc7682029f2cd2687eced3caba6
-Grading at Tue Oct 29 07:51:51 PM EDT 2024
+Grading at 10/29/2024:23:56:22.396116
+For commit ID 187c42b023c9eb9a31484ea78577ff3b0a8ba697
+Grading at Tue Oct 29 07:56:10 PM EDT 2024
 Doing some basic checking for your submission
 
 Step 1
@@ -32,6 +32,12 @@ Valgrind was clean
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
+1.4: Current test is story-step1 story.txt multiple_colons.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
 Step 2
 Checking that story-step2 compiles
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -57,6 +63,12 @@ Valgrind was clean
 2.3: Current test is story-step2 empty.txt
 -----------------------------
 Your output looks good. Lets check valgrind
+Valgrind was clean
+
+2.4: Current test is story-step2 story.txt multiple_colons.txt 
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
 Valgrind was clean
 
 Step 3
@@ -86,6 +98,12 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
+3.4: Current test is story-step3 story.txt multiple_colons.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
 Step 4
 Checking that story-step4 compiles
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -107,17 +125,23 @@ Valgrind was clean
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
-4.3: Current test is story-step4 trickywords.txt trickystory.txt
+4.3: Current test is story-step4 story.txt multiple_colons.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+4.4: Current test is story-step4 trickywords.txt trickystory.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
-4.4: Current test is story-step4 -n trickywords.txt trickystory.txt
+4.5: Current test is story-step4 -n trickywords.txt trickystory.txt
 -----------------------------
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
-4.5: Current test is story-step4 empty.txt
+4.6: Current test is story-step4 empty.txt
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
