@@ -1,6 +1,6 @@
-Grading at 10/29/2024:23:59:36.029271
-For commit ID a3f1c62957394ab4b19bf8803cab3d61e61b4352
-Grading at Tue Oct 29 07:59:22 PM EDT 2024
+Grading at 10/30/2024:00:03:01.952635
+For commit ID 6b6a683b7cc27dade2dc9f76e76149bf0dcbdc9d
+Grading at Tue Oct 29 08:02:46 PM EDT 2024
 Doing some basic checking for your submission
 
 Step 1
@@ -32,13 +32,19 @@ Valgrind was clean
 Your output looks good. Lets check valgrind
 Valgrind was clean
 
-1.4: Current test is story-step1 story.txt multiple_colons.txt
+1.4: Current test is story-step1 story.txt incorrect_format.txt
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
-1.5: Current test is story-step1 story.txt duplicate_words_categories.txt
+1.5: Current test is story-step1 story.txt multiple_colons.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+1.6: Current test is story-step1 story.txt duplicate_words_categories.txt
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
@@ -77,7 +83,13 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
-2.5: Current test is story-step2 story.txt duplicate_words_categories.txt 
+2.5: Current test is story-step2 story.txt duplicate_words_categories.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+2.6: Current test is story-step2 story.txt incorrect_format.txt 
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
@@ -116,7 +128,13 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
-3.5: Current test is story-step3 story.txt duplicate_words_categories.txt 
+3.5: Current test is story-step3 story.txt duplicate_words_categories.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+3.6: Current test is story-step3 story.txt incorrect_format.txt 
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
@@ -166,6 +184,12 @@ Lets check if it valgrinds:
 Valgrind was clean
 
 4.7: Current test is story-step4 story.txt duplicate_words_categories.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+4.8: Current test is story-step4 story.txt incorrect_format.txt 
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
