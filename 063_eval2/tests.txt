@@ -1,18 +1,21 @@
 story-step1 story.txt
 story-step1 trickywords.txt trickystory.txt
 story-step1 empty.txt
+story-step1 story.txt incorrect_format.txt
 story-step1 story.txt multiple_colons.txt
 story-step1 story.txt duplicate_words_categories.txt
 story-step2 words.txt
 story-step2 trickywords.txt trickystory.txt
 story-step2 empty.txt
 story-step2 story.txt multiple_colons.txt
-story-step2 story.txt duplicate_words_categories.txt 
+story-step2 story.txt duplicate_words_categories.txt
+story-step2 story.txt incorrect_format.txt 
 story-step3 words.txt story2.txt
 story-step3 trickywords.txt trickystory.txt
 story-step3 empty.txt
 story-step3 story.txt multiple_colons.txt
-story-step3 story.txt duplicate_words_categories.txt 
+story-step3 story.txt duplicate_words_categories.txt
+story-step3 story.txt incorrect_format.txt 
 story-step4 words.txt story2.txt
 story-step4 -n words.txt story2.txt
 story-step4 story.txt multiple_colons.txt
@@ -20,3 +23,4 @@ story-step4 trickywords.txt trickystory.txt
 story-step4 -n trickywords.txt trickystory.txt
 story-step4 empty.txt
 story-step4 story.txt duplicate_words_categories.txt
+story-step4 story.txt incorrect_format.txt 
