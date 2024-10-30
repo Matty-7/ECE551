@@ -1,6 +1,6 @@
-Grading at 10/30/2024:00:03:01.952635
-For commit ID 6b6a683b7cc27dade2dc9f76e76149bf0dcbdc9d
-Grading at Tue Oct 29 08:02:46 PM EDT 2024
+Grading at 10/30/2024:00:06:40.402893
+For commit ID 600a42f758205c0f6742311342bed12cf9280434
+Grading at Tue Oct 29 08:06:22 PM EDT 2024
 Doing some basic checking for your submission
 
 Step 1
@@ -50,6 +50,12 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
+1.7: Current test is story-step1 story.txt special_characters_categories.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
 Step 2
 Checking that story-step2 compiles
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -89,7 +95,13 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
-2.6: Current test is story-step2 story.txt incorrect_format.txt 
+2.6: Current test is story-step2 story.txt incorrect_format.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+2.7: Current test is story-step2 story.txt special_characters_categories.txt 
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
@@ -134,7 +146,13 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
-3.6: Current test is story-step3 story.txt incorrect_format.txt 
+3.6: Current test is story-step3 story.txt incorrect_format.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+3.7: Current test is story-step3 story.txt special_characters_categories.txt 
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
@@ -183,13 +201,19 @@ Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
-4.7: Current test is story-step4 story.txt duplicate_words_categories.txt
+4.7: Current test is story-step4 story.txt special_characters_categories.txt 
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
 Valgrind was clean
 
-4.8: Current test is story-step4 story.txt incorrect_format.txt 
+4.8: Current test is story-step4 story.txt duplicate_words_categories.txt
+-----------------------------
+Great: we both considered this an error
+Lets check if it valgrinds:
+Valgrind was clean
+
+4.9: Current test is story-step4 story.txt incorrect_format.txt 
 -----------------------------
 Great: we both considered this an error
 Lets check if it valgrinds:
