@@ -1,6 +1,6 @@
-Grading at 10/31/2024:15:10:27.262346
-For commit ID 8706647d23d0d0caa490e0b951f408679074889a
-Grading at Thu Oct 31 11:10:27 AM EDT 2024
+Grading at 10/31/2024:15:17:13.229295
+For commit ID 836b17303403866de2de5fe557954210102f0003
+Grading at Thu Oct 31 11:17:07 AM EDT 2024
 Looking for malloc in your files
 No uses found (good).
 Looking for free in your files
@@ -14,6 +14,22 @@ No uses found (good).
 Looking for printf in your files
 No uses found (good).
 Attempting to compile with make
-The code did not compile!
+g++ -Wall -Wextra -std=c++11 -g -o sortLines sortLines.o
+Using sortLines..
+#################################################
+testcase1:
+testcase1 passed, your program successfully indicated a failure
+valgrind was clean
+#################################################
+testcase2:
+Your output is correct
+valgrind was clean
+#################################################
+testcase3:
+Your output is correct
+valgrind was clean
+#################################################
+testcase4:
+Your output is incorrect
 
-Overall Grade: F
+Overall Grade: C
