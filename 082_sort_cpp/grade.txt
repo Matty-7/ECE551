@@ -1,6 +1,6 @@
-Grading at 10/31/2024:15:17:13.229295
-For commit ID 836b17303403866de2de5fe557954210102f0003
-Grading at Thu Oct 31 11:17:07 AM EDT 2024
+Grading at 10/31/2024:15:22:55.175789
+For commit ID b538d29b263a4d69e6ca6d7015d47f2c9dd5cb9c
+Grading at Thu Oct 31 11:22:49 AM EDT 2024
 Looking for malloc in your files
 No uses found (good).
 Looking for free in your files
@@ -14,7 +14,7 @@ No uses found (good).
 Looking for printf in your files
 No uses found (good).
 Attempting to compile with make
-g++ -Wall -Wextra -std=c++11 -g -o sortLines sortLines.o
+make: Nothing to be done for 'all'.
 Using sortLines..
 #################################################
 testcase1:
@@ -30,6 +30,7 @@ Your output is correct
 valgrind was clean
 #################################################
 testcase4:
-Your output is incorrect
+Your output is correct
+valgrind was clean
 
-Overall Grade: C
+Overall Grade: A
