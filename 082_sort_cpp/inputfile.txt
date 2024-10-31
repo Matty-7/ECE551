@@ -1,0 +1,18 @@
+apple
+banana
+Orange
+apple pie
+
+
+Apple
+
+   cherry
+
+durian
+eggplant
+Zebra
+
+line with spaces at the end        
+line with spaces at the start
+special_characters_!@#$%^&*()_+
+A very very very very very very very very very very long line that just keeps going and going and might be too long for some implementations of line reading functions to handle correctly

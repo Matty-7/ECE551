@@ -1,41 +1,48 @@
 #include <algorithm>
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
-#include <string>
 #include <vector>
 
-void read_lines(std::istream & stream, std::vector<std::string> & lines) {
+void do_sort(std::istream & is) {
+  std::vector<std::string> lines;
   std::string line;
-  while (std::getline(stream, line)) {
+
+  while (std::getline(is, line)) {
     lines.push_back(line);
   }
-}
 
-void sort_and_print_lines(std::vector<std::string> & lines) {
+  if (is.bad()) {
+    std::cerr << "Error: Failed to read from the input stream." << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
   std::sort(lines.begin(), lines.end());
-  for (const auto & line : lines) {
-    std::cout << line << '\n';
+
+  for (const auto & str : lines) {
+    std::cout << str << std::endl;
   }
 }
 
-int main(int argc, char * argv[]) {
-  std::vector<std::string> lines;
+int main(int argc, char ** argv) {
+  if (argc <= 0) {
+    std::cerr << "Error: Invalid argument count." << std::endl;
+    exit(EXIT_FAILURE);
+  }
 
   if (argc == 1) {
-    read_lines(std::cin, lines);
+    do_sort(std::cin);
   }
   else {
-    for (int i = 1; i < argc; i++) {
+    for (int i = 1; i < argc; ++i) {
       std::ifstream file(argv[i]);
       if (!file) {
-        std::cerr << "Error: Could not open the file" << argv[i] << '\n';
-        return EXIT_FAILURE;
+        std::cerr << "Error: Failed to open file " << argv[i] << std::endl;
+        exit(EXIT_FAILURE);
       }
-      read_lines(file, lines);
+      do_sort(file);
     }
   }
-
-  sort_and_print_lines(lines);
 
   return EXIT_SUCCESS;
 }
