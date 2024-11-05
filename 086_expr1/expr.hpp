@@ -16,7 +16,7 @@ class NumExpression : public Expression {
 
  public:
   NumExpression(long val) : value(val) {}
-  std::string toString() const override {
+  std::string toString() const {
     std::ostringstream oss;
     oss << value;
     return oss.str();
@@ -34,7 +34,7 @@ class PlusExpression : public Expression {
     delete lhs;
     delete rhs;
   }
-  std::string toString() const override {
+  std::string toString() const {
     return "(" + lhs->toString() + " + " + rhs->toString() + ")";
   }
 };
