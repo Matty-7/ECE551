@@ -1,0 +1,15 @@
+Grading at 11/05/2024:15:23:50.937538
+For commit ID f5c8394dff59e386458e22f73f352f50e7b64b08
+Grading at Tue Nov  5 10:23:50 AM EST 2024
+Compiling code
+In file included from expr.cpp:1:
+expr.hpp:19:26: error: override controls (override/final) only available with ‘-std=c++11’ or ‘-std=gnu++11’ [-Werror]
+   19 |   std::string toString() const override {
+      |                          ^~~~~
+expr.hpp:37:26: error: override controls (override/final) only available with ‘-std=c++11’ or ‘-std=gnu++11’ [-Werror]
+   37 |   std::string toString() const override {
+      |                          ^~~~~
+cc1plus: all warnings being treated as errors
+The code did not compile.
+
+Overall Grade: F
