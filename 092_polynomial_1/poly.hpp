@@ -56,16 +56,16 @@ class Polynomial {
 
   Polynomial operator-() const {
     Polynomial result = *this;
-    for (auto & coef : result.coefficients) {
-      coef = -coef;
+    for (size_t i = 0; i < result.coefficients.size(); i++) {
+      result.coefficients[i] = -result.coefficients[i];
     }
     return result;
   }
 
   Polynomial operator*(const NumT & scalar) const {
     Polynomial result = *this;
-    for (auto & coef : result.coefficients) {
-      coef *= scalar;
+    for (size_t i = 0; i < result.coefficients.size(); i++) {
+      result.coefficients[i] *= scalar;
     }
     result.trim();
     return result;
