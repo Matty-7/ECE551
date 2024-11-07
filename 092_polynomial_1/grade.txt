@@ -1,40 +1,6 @@
-Grading at 11/07/2024:23:07:25.272751
-For commit ID e6ed4ff4abc9c51644d1c16b7d7f0204929d537b
-Grading at Thu Nov  7 06:07:24 PM EST 2024
+Grading at 11/07/2024:23:10:06.128759
+For commit ID 73097f3ed0f2d8a600ec0f6da4fb2376d7c36600
+Grading at Thu Nov  7 06:10:05 PM EST 2024
 Compiling your code with our test main
-In file included from testmain.cpp:4:
-poly.hpp: In member function ‘Polynomial<NumT> Polynomial<NumT>::operator-() const’:
-poly.hpp:59:10: error: ‘auto’ changes meaning in C++11; please remove it [-Werror=c++11-compat]
-   59 |     for (auto & coef : result.coefficients) {
-      |          ^~~~
-      |          ----
-poly.hpp:59:17: error: ISO C++ forbids declaration of ‘coef’ with no type [-fpermissive]
-   59 |     for (auto & coef : result.coefficients) {
-      |                 ^~~~
-poly.hpp:59:24: error: range-based ‘for’ loops only available with ‘-std=c++11’ or ‘-std=gnu++11’ [-Werror]
-   59 |     for (auto & coef : result.coefficients) {
-      |                        ^~~~~~
-poly.hpp: In member function ‘Polynomial<NumT> Polynomial<NumT>::operator*(const NumT&) const’:
-poly.hpp:67:10: error: ‘auto’ changes meaning in C++11; please remove it [-Werror=c++11-compat]
-   67 |     for (auto & coef : result.coefficients) {
-      |          ^~~~
-      |          ----
-poly.hpp:67:17: error: ISO C++ forbids declaration of ‘coef’ with no type [-fpermissive]
-   67 |     for (auto & coef : result.coefficients) {
-      |                 ^~~~
-poly.hpp:67:24: error: range-based ‘for’ loops only available with ‘-std=c++11’ or ‘-std=gnu++11’ [-Werror]
-   67 |     for (auto & coef : result.coefficients) {
-      |                        ^~~~~~
-poly.hpp: In instantiation of ‘Polynomial<NumT> Polynomial<NumT>::operator*(const NumT&) const [with NumT = double]’:
-testmain.cpp:81:42:   required from here
-poly.hpp:67:5: error: cannot bind non-const lvalue reference of type ‘int&’ to a value of type ‘double’
-   67 |     for (auto & coef : result.coefficients) {
-      |     ^~~
-poly.hpp:67:17: error: loop variable ‘coef’ of type ‘int&’ binds to a temporary constructed from type ‘double’ [-Werror=range-loop-construct]
-   67 |     for (auto & coef : result.coefficients) {
-      |                 ^~~~
-poly.hpp:67:17: note: use non-reference type ‘int’ to make the copy explicit or ‘const double&’ to prevent copying
-cc1plus: all warnings being treated as errors
-g++ failed
 
-Overall Grade: FAILED
+Overall Grade: PASSED
