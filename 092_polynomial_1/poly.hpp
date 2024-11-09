@@ -127,6 +127,31 @@ class Polynomial {
     }
     return os;
   }
+
+  NumT eval(const NumT & x) const {
+    NumT result = 0;
+    NumT power_of_x = 1;
+    for (size_t i = 0; i < coefficients.size(); i++) {
+      result += coefficients[i] * power_of_x;
+      power_of_x *= x;
+    }
+    return result;
+  }
+
+  Polynomial derivative() const {
+    Polynomial result;
+    if (coefficients.size() <= 1) {
+      return result;
+    }
+    result.coefficients.resize(coefficients.size() - 1, NumT(0));
+    for (size_t i = 1; i < coefficients.size(); i++) {
+      result.coefficients[i - 1] = NumT(i) * coefficients[i];
+    }
+    result.trim();
+    return result;
+  }
+
+  NumT operator()(const NumT & x) const { return eval(x); }
 };
 
 #endif  // POLY_HPP
