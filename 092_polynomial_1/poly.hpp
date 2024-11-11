@@ -14,7 +14,7 @@ class convergence_failure : public std::exception {
 
   explicit convergence_failure(const ValueType & x) : value(x) {}
 
-  const char * what() const noexcept override { return "Convergence failure"; }
+  const char * what() const throw() { return "Convergence failure"; }
 };
 
 template<typename NumT>
