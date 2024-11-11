@@ -1,11 +1,7 @@
-Grading at 11/11/2024:14:15:05.351782
-For commit ID 1bce577bfdc0f9f62e231bfa114c2bcc0938c3a4
-Grading at Mon Nov 11 09:15:05 AM EST 2024
+Grading at 11/11/2024:14:26:45.810045
+For commit ID 00871b8ec6771fbc10df02b2f42587ba0801fd4c
+Grading at Mon Nov 11 09:26:45 AM EST 2024
 Compiling your code with our test main
-In file included from testmain.cpp:4:
-poly.hpp:12:16: error: class ‘Polynomial<NumT>’ is implicitly friends with itself [-Werror]
-   12 |   friend class Polynomial;
-      |                ^~~~~~~~~~
 testmain.cpp: In function ‘int main()’:
 testmain.cpp:31:10: error: ‘convergence_failure’ does not name a type
    31 |   catch (convergence_failure<double> & cf) {
@@ -31,36 +27,6 @@ testmain.cpp:38:29: error: expected primary-expression before ‘<’ token
 testmain.cpp:38:30: error: expected primary-expression before ‘double’
    38 |   catch (convergence_failure<double> & cf) {
       |                              ^~~~~~
-In file included from testmain.cpp:4:
-poly.hpp: In instantiation of ‘Polynomial<OtherNumT> Polynomial<NumT>::convert() const [with OtherNumT = double; NumT = int]’:
-testmain.cpp:11:52:   required from here
-poly.hpp:158:12: error: ‘std::vector<double, std::allocator<double> > Polynomial<double>::coefficients’ is private within this context
-  158 |     result.coefficients.resize(coefficients.size());
-      |     ~~~~~~~^~~~~~~~~~~~
-poly.hpp:11:21: note: declared private here
-   11 |   std::vector<NumT> coefficients;
-      |                     ^~~~~~~~~~~~
-poly.hpp:160:14: error: ‘std::vector<double, std::allocator<double> > Polynomial<double>::coefficients’ is private within this context
-  160 |       result.coefficients[i] = OtherNumT(coefficients[i]);
-      |       ~~~~~~~^~~~~~~~~~~~
-poly.hpp:11:21: note: declared private here
-   11 |   std::vector<NumT> coefficients;
-      |                     ^~~~~~~~~~~~
-poly.hpp: In instantiation of ‘Polynomial<OtherNumT> Polynomial<NumT>::convert() const [with OtherNumT = std::complex<double>; NumT = double]’:
-testmain.cpp:14:73:   required from here
-poly.hpp:158:12: error: ‘std::vector<std::complex<double>, std::allocator<std::complex<double> > > Polynomial<std::complex<double> >::coefficients’ is private within this context
-  158 |     result.coefficients.resize(coefficients.size());
-      |     ~~~~~~~^~~~~~~~~~~~
-poly.hpp:11:21: note: declared private here
-   11 |   std::vector<NumT> coefficients;
-      |                     ^~~~~~~~~~~~
-poly.hpp:160:14: error: ‘std::vector<std::complex<double>, std::allocator<std::complex<double> > > Polynomial<std::complex<double> >::coefficients’ is private within this context
-  160 |       result.coefficients[i] = OtherNumT(coefficients[i]);
-      |       ~~~~~~~^~~~~~~~~~~~
-poly.hpp:11:21: note: declared private here
-   11 |   std::vector<NumT> coefficients;
-      |                     ^~~~~~~~~~~~
-cc1plus: all warnings being treated as errors
 g++ failed
 
 Overall Grade: FAILED
