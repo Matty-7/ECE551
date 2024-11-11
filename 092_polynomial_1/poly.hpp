@@ -9,6 +9,7 @@ template<typename NumT>
 class Polynomial {
  private:
   std::vector<NumT> coefficients;
+  friend class Polynomial;
 
   void trim() {
     while (!coefficients.empty() && coefficients.back() == NumT(0)) {
@@ -150,6 +151,57 @@ class Polynomial {
     result.trim();
     return result;
   }
+
+  template<typename OtherNumT>
+  Polynomial<OtherNumT> convert() const {
+    Polynomial<OtherNumT> result;
+    result.coefficients.resize(coefficients.size());
+    for (size_t i = 0; i < coefficients.size(); i++) {
+      result.coefficients[i] = OtherNumT(coefficients[i]);
+    }
+    return result;
+  }
+
+  // The findZero function within the Polynomial class
+  template<typename ToleranceType>
+  NumT findZero(NumT initial_guess,
+                unsigned max_steps,
+                const ToleranceType & tolerance,
+                const ToleranceType & deriv_tolerance) {
+    Polynomial<NumT> deriv = derivative();
+    NumT current_x = initial_guess;
+
+    for (unsigned steps_remaining = max_steps; steps_remaining > 0; --steps_remaining) {
+      NumT y = eval(current_x);
+
+      // Check if we are close enough to zero
+      if (std::abs(y) <= tolerance) {
+        return current_x;
+      }
+
+      NumT dy = deriv.eval(current_x);
+
+      // Check if the derivative is too close to zero
+      if (std::abs(dy) < deriv_tolerance) {
+        throw convergence_failure<NumT>(current_x);
+      }
+
+      // Update x based on the Newton-Raphson method
+      current_x = current_x - y / dy;
+    }
+    throw convergence_failure<NumT>(current_x);
+  }
+
+  // The convergence_failure exception class
+  template<typename ValueType>
+  class convergence_failure : public std::exception {
+   public:
+    const ValueType value;
+
+    explicit convergence_failure(const ValueType & x) : value(x) {}
+
+    virtual const char * what() const throw() { return "Convergence failure"; }
+  };
 
   NumT operator()(const NumT & x) const { return eval(x); }
 };
