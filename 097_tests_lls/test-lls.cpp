@@ -3,91 +3,82 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "il.h"
-void testList(void) {
-  IntList lst = IntList();
-  assert(lst.getSize() == 0 && lst.size == 0 && lst.head == NULL && lst.tail == NULL);
-  //[]
-  lst.addFront(1);
-  assert(lst.getSize() == 1 && lst.size == 1 && lst.head == lst.tail &&
-         lst.head != NULL && lst.head->data == 1 && lst.head->next == NULL &&
-         lst.head->prev == NULL);
-  //[1]
-  lst.addBack(2);
-  assert(lst.getSize() == 2 && lst.size == 2 && lst.head->data == 1 &&
-         lst.head->next->data == 2 && lst.tail->data == 2 && lst.head->prev == NULL &&
-         lst.tail->next == NULL && lst.head->next->prev == lst.head);
-  //[1,2]
-  lst.remove(2);
-  assert(lst.getSize() == 1 && lst.size == 1 && lst.head == lst.tail &&
-         lst.head != NULL && lst.head->data == 1);
-  //[1]
-  lst.addFront(2);
-  assert(lst.getSize() == 2 && lst.size == 2 && lst.head->data == 2 &&
-         lst.head->next->data == 1 && lst.tail->data == 1 && lst.find(2) == 0 &&
-         lst[1] == 1 && lst.remove(3) == false);
-  //[2,1]
-  bool success = lst.remove(2);
-  assert(success == true && lst.getSize() == 1 && lst.size == 1 && lst.head == lst.tail &&
-         lst.head != NULL && lst.head->data == 1);
-  //[1]
-  IntList lst2 = IntList(lst);
-  //[1]
-  assert(lst2.getSize() == 1 && lst2.size == 1 && lst2.head == lst2.tail &&
-         lst2.head != NULL && lst2.head->data == 1);
-  //[1]
-  lst2.addBack(2);
-  assert(lst2.getSize() == 2 && lst2.size == 2 && lst2.head->data == 1 &&
-         lst2.head->next->data == 2 && lst2.tail->data == 2);
-  //[1,2]
-  lst2.remove(2);
-  assert(lst2.getSize() == 1 && lst2.size == 1 && lst2.head == lst2.tail &&
-         lst2.head != NULL && lst2.head->data == 1);
-  //[1]
-  lst2.addFront(2);
-  assert(lst2.getSize() == 2 && lst2.size == 2 && lst2.head->data == 2 &&
-         lst2.head->next->data == 1 && lst2.tail->data == 1 && lst2.find(2) == 0 &&
-         lst2[1] == 1 && lst2.remove(3) == false);
-  //[2,1]
-  success = lst2.remove(2);
-  assert(success == true && lst2.getSize() == 1 && lst2.size == 1 &&
-         lst2.head == lst2.tail && lst2.head != NULL && lst2.head->data == 1);
-  lst2.addFront(3);
-  //[3,1]
-  lst2.addFront(2);
-  assert(lst2.find(2) == 0 && lst2.find(3) == 1 && lst2.find(1) == 2);
-  //[2,3,1]
-  success = lst2.remove(3);
-  assert(success == true && lst2.head->data == 2 && lst2.tail->data == 1 &&
-         lst2.getSize() == 2 && lst2.size == 2 && lst2.head->next->next == NULL &&
-         lst2.tail->prev->prev == NULL && lst2.head->next->prev == lst2.head &&
-         lst2.tail->prev->next == lst2.tail);
-  //[2,1]
-  lst2.remove(2);
-  //[1]
-  lst2.addBack(1);
-  //[1,1]
-  assert(lst2.getSize() == 2 && lst2.size == 2 && lst2.head->data == 1 &&
-         lst2.head->next->data == 1 && lst2.tail->data == 1 && lst2[1] == 1 &&
-         lst2.remove(3) == false);
-  lst = lst2;
-  //[1,1]
-  assert(lst.getSize() == 2 && lst.size == 2 && lst.head->data == 1 &&
-         lst.head->next->data == 1 && lst.tail->data == 1 && lst[1] == 1 &&
-         lst.remove(3) == false);
-  lst.remove(1);
-  //[1]
-  assert(lst.getSize() == 1 && lst.size == 1 && lst.head == lst.tail &&
-         lst.head != NULL && lst.head->data == 1 && lst.find(2) == -1);
-  lst.remove(1);
-  //[]
-  assert(lst.getSize() == 0 && lst.size == 0 && lst.head == NULL && lst.tail == NULL);
-  for (int i = 0; i < 5; i++) {
-    lst.addBack(i);
+#include "il.hpp"
+
+class Tester {
+ public:
+  // testing for default constructor is done for you
+  void testDefCtor() {
+    IntList il;
+    assert(il.head == NULL);
+    assert(il.tail == NULL);
+    assert(il.getSize() == 0);
   }
-}
+  // example of another method you might want to write
+  void testAdd() {
+    IntList il;
+    il.addFront(1);  //[1]
+    assert(il.getSize() == 1 && il.head != NULL && il.tail == il.head &&
+           il.head->data == 1 && il.head->next == NULL && il.head->prev == NULL);
+    il.addFront(2);  //[2,1]
+    assert(il.getSize() == 2 && il.head != NULL && il.head->next != NULL &&
+           il.tail == il.head->next && il.head->data == 2 && il.head->prev == NULL &&
+           il.head->next->prev == il.head && il.head->next->next == NULL);
+    il.addBack(3);  //[2,1,3]
+    assert(il.getSize() == 3 && il.head->data == 2 && il.head->next->next->data == 3 &&
+           il.head->next->data == 1 && il.tail->data == 3 && il.tail->next == NULL &&
+           il.head->next == il.tail->prev && il.tail->prev->prev == il.head);
+  }
+  void testRuleofThree() {
+    IntList list1;
+    list1.addFront(1);
+    list1.addBack(2);  //[1,2]
+    IntList list2(list1);
+    assert(list2.getSize() == 2 && list2.head->data == 1 && list2.head->next->data == 2 &&
+           list2.head->next == list2.tail && list2.tail->prev == list2.head &&
+           list2.head->prev == NULL && list2.head->prev == list2.tail->next);
+    list1.remove(2);  //[1]
+    list2 = list1;    //[1]
+    assert(list2.getSize() == 1 && list2.head->data == 1 && list2.head == list2.tail &&
+           list2.head->next == NULL && list2.head->next == list2.head->prev);
+  }
+  void testRemoval() {
+    IntList il;
+    il.addFront(1);
+    il.addBack(2);  //[1,2]
+    bool flag = false;
+    flag = il.remove(2);  //[1]
+    assert(flag == true && il.getSize() == 1 && il.head->data == 1 &&
+           il.tail == il.head && il.head->next == NULL && il.head->next == il.head->prev);
+    flag = false;
+    il.addFront(2);       //[2,1]
+    flag = il.remove(2);  //[1]
+    assert(flag == true && il.getSize() == 1 && il.head->data == 1 &&
+           il.head == il.tail && il.head->next == NULL && il.head->next == il.head->prev);
+    flag = il.remove(2);  //[1]
+    assert(flag == false && il.getSize() == 1 && il.head->data == 1 &&
+           il.head == il.tail && il.head->next == NULL && il.head->next == il.head->prev);
+    il.addFront(1);       //[1,1]
+    flag = il.remove(1);  //[1]
+    assert(flag == true && il.getSize() == 1 && il.head->data == 1 &&
+           il.head == il.tail && il.head->next == NULL && il.head->next == il.tail->prev);
+    flag = il.remove(1);  //[]
+    assert(flag == true && il.getSize() == 0 && il.head == NULL && il.head == il.tail);
+    il.addFront(1);
+    il.addFront(3);
+    il.addFront(2);       //[2,3,1]
+    flag = il.remove(3);  //[2,1]
+    assert(flag == true && il.getSize() == 2 && il.head->data == 2 &&
+           il.tail->data == 1 && il.head->next == il.tail && il.tail->prev == il.head &&
+           il.head->prev == NULL && il.head->prev == il.tail->next);
+  }
+};
 
 int main(void) {
-  testList();
+  Tester t;
+  t.testDefCtor();
+  t.testAdd();
+  t.testRemoval();
+  t.testRuleofThree();
   return EXIT_SUCCESS;
 }
