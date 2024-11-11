@@ -2,6 +2,7 @@
 #define POLY_HPP
 
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <vector>
 
@@ -9,6 +10,8 @@ template<typename NumT>
 class Polynomial {
  private:
   std::vector<NumT> coefficients;
+
+  template<typename OtherNumT>
   friend class Polynomial;
 
   void trim() {
@@ -153,6 +156,7 @@ class Polynomial {
   }
 
   template<typename OtherNumT>
+
   Polynomial<OtherNumT> convert() const {
     Polynomial<OtherNumT> result;
     result.coefficients.resize(coefficients.size());
@@ -162,7 +166,6 @@ class Polynomial {
     return result;
   }
 
-  // The findZero function within the Polynomial class
   template<typename ToleranceType>
   NumT findZero(NumT initial_guess,
                 unsigned max_steps,
@@ -174,25 +177,21 @@ class Polynomial {
     for (unsigned steps_remaining = max_steps; steps_remaining > 0; --steps_remaining) {
       NumT y = eval(current_x);
 
-      // Check if we are close enough to zero
       if (std::abs(y) <= tolerance) {
         return current_x;
       }
 
       NumT dy = deriv.eval(current_x);
 
-      // Check if the derivative is too close to zero
       if (std::abs(dy) < deriv_tolerance) {
         throw convergence_failure<NumT>(current_x);
       }
 
-      // Update x based on the Newton-Raphson method
       current_x = current_x - y / dy;
     }
     throw convergence_failure<NumT>(current_x);
   }
 
-  // The convergence_failure exception class
   template<typename ValueType>
   class convergence_failure : public std::exception {
    public:
