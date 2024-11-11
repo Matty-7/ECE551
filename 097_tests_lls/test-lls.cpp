@@ -11,6 +11,7 @@ class Tester {
   void testAddFront();
   void testAddBack();
   void testRemove();
+  void testRemoveEdgeCases();
   void testOperatorAccess();
   void testFind();
   void testGetSize();
@@ -100,6 +101,23 @@ void Tester::testRemove() {
   assert(il.remove(50) == false);
 }
 
+void Tester::testRemoveEdgeCases() {
+  IntList il;
+  assert(il.remove(10) == false);
+
+  il.addBack(10);
+  assert(il.remove(10) == true);
+  assert(il.getSize() == 0);
+
+  il.addBack(20);
+  il.addBack(30);
+  il.addBack(40);
+  assert(il.remove(30) == true);
+  assert(il.head->data == 20);
+  assert(il.tail->data == 40);
+  assert(il.getSize() == 2);
+}
+
 void Tester::testOperatorAccess() {
   IntList il;
   il.addBack(10);
@@ -177,6 +195,15 @@ void Tester::testAssignmentOperator() {
 
   assigned[0] = 100;
   assert(original[0] == 10);
+
+  IntList empty;
+  assigned = empty;
+  assert(assigned.getSize() == 0);
+  assert(assigned.head == NULL);
+  assert(assigned.tail == NULL);
+
+  assigned = assigned;
+  assert(assigned.getSize() == 0);
 }
 
 int main(void) {
@@ -185,6 +212,7 @@ int main(void) {
   t.testAddFront();
   t.testAddBack();
   t.testRemove();
+  t.testRemoveEdgeCases();
   t.testOperatorAccess();
   t.testFind();
   t.testGetSize();
