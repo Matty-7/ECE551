@@ -14,6 +14,8 @@ class Tester {
   void testOperatorAccess();
   void testFind();
   void testGetSize();
+  void testCopyConstructor();
+  void testAssignmentOperator();
 };
 
 // testing for default constructor is done for you
@@ -139,7 +141,43 @@ void Tester::testGetSize() {
 
   il.remove(20);
   assert(il.getSize() == 0);
-};
+}
+
+void Tester::testCopyConstructor() {
+  IntList original;
+  original.addBack(10);
+  original.addBack(20);
+  original.addBack(30);
+
+  IntList copy(original);
+
+  assert(copy.getSize() == 3);
+  assert(copy[0] == 10);
+  assert(copy[1] == 20);
+  assert(copy[2] == 30);
+
+  copy[0] = 100;
+  assert(original[0] == 10);
+}
+
+void testAssignmentOperator() {
+  IntList original;
+  original.addBack(10);
+  original.addBack(20);
+
+  IntList assigned;
+  assigned.addBack(30);
+  assigned.addBack(40);
+
+  assigned = original;
+
+  assert(assigned.getSize() == 2);
+  assert(assigned[0] == 10);
+  assert(assigned[1] == 20);
+
+  assigned[0] = 100;
+  assert(original[0] == 10);
+}
 
 int main(void) {
   Tester t;
@@ -150,6 +188,8 @@ int main(void) {
   t.testOperatorAccess();
   t.testFind();
   t.testGetSize();
+  t.testCopyConstructor();
+  t.testAssignmentOperator();
   std::cout << "All tests passed!!" << std::endl;
 
   // write calls to your other test methods here
