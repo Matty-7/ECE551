@@ -1,5 +1,5 @@
-#ifndef INTLIST_H
-#define INTLIST_H
+#ifndef _IL_H_
+#define _IL_H_
 
 #include <cstddef>  // For size_t
 
@@ -33,4 +33,4 @@ class IntList {
   size_t getSize() const;
 };
 
-#endif  // INTLIST_H
+#endif  // _IL_H_
