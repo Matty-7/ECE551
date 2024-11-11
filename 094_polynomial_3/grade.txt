@@ -1,50 +1,6 @@
-Grading at 11/11/2024:14:51:47.186282
-For commit ID 7dd55818739c31487860078bcbe5d9bb6aa4cfd1
-Grading at Mon Nov 11 09:51:46 AM EST 2024
+Grading at 11/11/2024:15:17:48.858298
+For commit ID 2ef2bb1afc7fa220c60099539db2990eceab636e
+Grading at Mon Nov 11 10:17:48 AM EST 2024
 Compiling your code with our test main
-In file included from testmain.cpp:4:
-poly.hpp:17:29: error: identifier ‘noexcept’ is a keyword in C++11 [-Werror=c++11-compat]
-   17 |   const char * what() const noexcept override { return "Convergence failure"; }
-      |                             ^~~~~~~~
-poly.hpp:17:23: error: expected ‘;’ at end of member declaration
-   17 |   const char * what() const noexcept override { return "Convergence failure"; }
-      |                       ^~~~~
-      |                            ;
-poly.hpp:17:29: error: ‘noexcept’ does not name a type
-   17 |   const char * what() const noexcept override { return "Convergence failure"; }
-      |                             ^~~~~~~~
-poly.hpp:17:29: note: C++11 ‘noexcept’ only available with ‘-std=c++11’ or ‘-std=gnu++11’
-poly.hpp: In instantiation of ‘class convergence_failure<double>’:
-testmain.cpp:31:40:   required from here
-poly.hpp:17:16: error: looser exception specification on overriding virtual function ‘const char* convergence_failure<ValueType>::what() const [with ValueType = double]’
-   17 |   const char * what() const noexcept override { return "Convergence failure"; }
-      |                ^~~~
-In file included from /usr/include/c++/11/exception:38,
-                 from /usr/include/c++/11/ios:39,
-                 from /usr/include/c++/11/istream:38,
-                 from /usr/include/c++/11/sstream:38,
-                 from /usr/include/c++/11/complex:45,
-                 from testmain.cpp:1:
-/usr/include/c++/11/bits/exception.h:76:5: note: overridden function is ‘virtual const char* std::exception::what() const throw ()’
-   76 |     what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
-      |     ^~~~
-In file included from testmain.cpp:4:
-poly.hpp: In instantiation of ‘class convergence_failure<std::complex<double> >’:
-poly.hpp:198:15:   required from ‘NumT Polynomial<NumT>::findZero(NumT, unsigned int, const ToleranceType&, const ToleranceType&) [with ToleranceType = double; NumT = std::complex<double>]’
-testmain.cpp:49:27:   required from here
-poly.hpp:17:16: error: looser exception specification on overriding virtual function ‘const char* convergence_failure<ValueType>::what() const [with ValueType = std::complex<double>]’
-   17 |   const char * what() const noexcept override { return "Convergence failure"; }
-      |                ^~~~
-In file included from /usr/include/c++/11/exception:38,
-                 from /usr/include/c++/11/ios:39,
-                 from /usr/include/c++/11/istream:38,
-                 from /usr/include/c++/11/sstream:38,
-                 from /usr/include/c++/11/complex:45,
-                 from testmain.cpp:1:
-/usr/include/c++/11/bits/exception.h:76:5: note: overridden function is ‘virtual const char* std::exception::what() const throw ()’
-   76 |     what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
-      |     ^~~~
-cc1plus: all warnings being treated as errors
-g++ failed
 
-Overall Grade: FAILED
+Overall Grade: PASSED
