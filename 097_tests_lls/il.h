@@ -1,8 +1,8 @@
 #ifndef _IL_H_
 #define _IL_H_
 
-#include <cstddef>  // For size_t
-
+#include <cstdlib>
+void testList(void);
 class IntList {
  private:
   class Node {
@@ -10,27 +10,26 @@ class IntList {
     int data;
     Node * next;
     Node * prev;
-    Node() : data(0), next(nullptr), prev(nullptr) {}
-    explicit Node(int d) : data(d), next(nullptr), prev(nullptr) {}
+    Node() : data(0), next(NULL), prev(NULL){};
+    Node(int d) : data(d), next(NULL), prev(NULL){};
   };
-
   Node * head;
   Node * tail;
-  size_t size;
+  int size;
 
  public:
   IntList();
   IntList(const IntList & rhs);
   IntList & operator=(const IntList & rhs);
   ~IntList();
-
-  void addFront(int item);
-  void addBack(int item);
-  bool remove(int item);
-  int & operator[](size_t index);
-  const int & operator[](size_t index) const;
-  int find(int item) const;
-  size_t getSize() const;
+  void addFront(const int & item);
+  void addBack(const int & item);
+  bool remove(const int & item);
+  int & operator[](int index);
+  const int & operator[](int index) const;
+  int find(const int & item);
+  int getSize() const;
+  friend void testList(void);
 };
 
-#endif  // _IL_H_
+#endif
