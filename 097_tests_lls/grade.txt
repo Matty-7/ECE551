@@ -1,8 +1,44 @@
-Grading at 11/11/2024:22:35:48.552713
-For commit ID 0d8604c459e63ba581fa479e4395a09fbd641a97
-Grading at Mon Nov 11 05:35:48 PM EST 2024
+Grading at 11/11/2024:22:39:43.642885
+For commit ID 3a2091a59a468b5be2598c4277832c310d0f453b
+Grading at Mon Nov 11 05:39:28 PM EST 2024
 **Testing correct implementation **
 -----------------------------------
-Could not compile test-lls.cpp with il.o
+
+**Testing broken implementation 10**
+-----------------------------------
+
+**Testing broken implementation 11**
+-----------------------------------
+
+**Testing broken implementation 12**
+-----------------------------------
+
+**Testing broken implementation 13**
+-----------------------------------
+
+**Testing broken implementation 14**
+-----------------------------------
+
+**Testing broken implementation 15**
+-----------------------------------
+
+**Testing broken implementation 16**
+-----------------------------------
+
+**Testing broken implementation 17**
+-----------------------------------
+
+**Testing broken implementation 18**
+-----------------------------------
+
+**Testing broken implementation 19**
+-----------------------------------
+
+**Testing broken implementation 1**
+-----------------------------------
+
+**Testing broken implementation 20**
+-----------------------------------
+Your test program did not identify /usr/local/ece551/lls/il20.o as broken!
 
 Overall Grade: FAILED
