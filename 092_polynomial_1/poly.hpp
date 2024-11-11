@@ -3,8 +3,19 @@
 
 #include <algorithm>
 #include <cmath>
+#include <exception>
 #include <iostream>
 #include <vector>
+
+template<typename ValueType>
+class convergence_failure : public std::exception {
+ public:
+  const ValueType value;
+
+  explicit convergence_failure(const ValueType & x) : value(x) {}
+
+  const char * what() const noexcept override { return "Convergence failure"; }
+};
 
 template<typename NumT>
 class Polynomial {
@@ -191,16 +202,6 @@ class Polynomial {
     }
     throw convergence_failure<NumT>(current_x);
   }
-
-  template<typename ValueType>
-  class convergence_failure : public std::exception {
-   public:
-    const ValueType value;
-
-    explicit convergence_failure(const ValueType & x) : value(x) {}
-
-    virtual const char * what() const throw() { return "Convergence failure"; }
-  };
 
   NumT operator()(const NumT & x) const { return eval(x); }
 };
