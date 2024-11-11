@@ -160,7 +160,7 @@ void Tester::testCopyConstructor() {
   assert(original[0] == 10);
 }
 
-void testAssignmentOperator() {
+void Tester::testAssignmentOperator() {
   IntList original;
   original.addBack(10);
   original.addBack(20);
