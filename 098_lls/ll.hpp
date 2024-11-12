@@ -18,7 +18,7 @@ class LinkedList {
     Node * next;
     Node * prev;
 
-    Node(const T & data) : data(data), next(nullptr), prev(nullptr) {}
+    Node(const T & data) : data(data), next(NULL), prev(NULL) {}
   };
 
   Node * head;
@@ -31,20 +31,20 @@ class LinkedList {
     const char * what() const throw() { return "Index out of range"; }
   };
 
-  LinkedList() : head(nullptr), tail(nullptr), size(0) {}
+  LinkedList() : head(NULL), tail(NULL), size(0) {}
 
   ~LinkedList() {
     Node * current = head;
-    while (current != nullptr) {
+    while (current != NULL) {
       Node * next = current->next;
       delete current;
       current = next;
     }
   }
 
-  LinkedList(const LinkedList & other) : head(nullptr), tail(nullptr), size(0) {
-    Node *current = other, head;
-    while (current != nullptr) {
+  LinkedList(const LinkedList & other) : head(NULL), tail(NULL), size(0) {
+    Node * current = other.head;
+    while (current != NULL) {
       addBack(current->data);
       current = current->next;
     }
@@ -57,19 +57,19 @@ class LinkedList {
 
   friend void swap(LinkedList & first, LinkedList & second) {
     std::swap(first.head, second.head);
-    std::swap(first.tail, second.tial);
+    std::swap(first.tail, second.tail);
     std::swap(first.size, second.size);
   }
 
   void addFront(const T & item) {
     Node * new_node = new Node(item);
     new_node->next = head;
-    if (head != nullptr) {
+    if (head != NULL) {
       head->prev = new_node;
     }
 
     head = new_node;
-    if (tail == nullptr) {
+    if (tail == NULL) {
       tail = new_node;
     }
     ++size;
@@ -78,11 +78,11 @@ class LinkedList {
   void addBack(const T & item) {
     Node * new_node = new Node(item);
     new_node->prev = tail;
-    if (tail != nullptr) {
+    if (tail != NULL) {
       tail->next = new_node;
     }
     tail = new_node;
-    if (head == nullptr) {
+    if (head == NULL) {
       head = new_node;
     }
     ++size;
@@ -90,7 +90,7 @@ class LinkedList {
 
   bool remove(const T & item) {
     Node * current = head;
-    while (current != nullptr) {
+    while (current != NULL) {
       if (current->data == item) {
         if (current->prev) {
           current->prev->next = current->next;
@@ -140,7 +140,7 @@ class LinkedList {
   int find(const T & item) const {
     Node * current = head;
     int index = 0;
-    while (current != nullptr) {
+    while (current != NULL) {
       if (current->data == item) {
         return index;
       }
