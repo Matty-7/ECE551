@@ -1,0 +1,12 @@
+Grading at 11/12/2024:02:53:52.390722
+For commit ID 87c000ef6d2ddf242d63500bffbe7d9120b1a5d5
+Grading at Mon Nov 11 09:53:52 PM EST 2024
+Reading your quiz answers from answers.txt
+You got 2 questions incorrect.
+You might want to review these concepts:
+------------
+Terminology, adding to and removing from a BST
+Terminology and Adding to a BST
+------------
+
+Overall Grade: FAILED
