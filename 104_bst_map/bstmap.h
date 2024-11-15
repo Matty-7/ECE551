@@ -36,7 +36,7 @@ class BstMap : public Map<K, V> {
     return current;
   }
 
-  const V & lookup(Node * current, const K & key) const {
+  const V & lookup(Node * current, const K & key) const throw(std::invalid_argument) {
     if (current == NULL) {
       throw std::invalid_argument("Key not found");
     }
