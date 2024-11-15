@@ -104,7 +104,7 @@ class BstMap : public Map<K, V> {
 
   void add(const K & key, const V & value) { root = add(root, key, value); }
 
-  const V & lookup(const K & key) const { return lookup(root, key); }
+  virtual const V & lookup(const K & key) const throw(std::invalid_argument);
 
   void remove(const K & key) { root = remove(root, key); }
 };
