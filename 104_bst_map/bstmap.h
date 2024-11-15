@@ -104,9 +104,22 @@ class BstMap : public Map<K, V> {
 
   void add(const K & key, const V & value) { root = add(root, key, value); }
 
-  virtual const V & lookup(const K & key) const throw(std::invalid_argument);
+  const V & lookup(const K & key) const throw(std::invalid_argument) {
+    Node * current = root;
+    while (current != NULL) {
+      if (key == current->key) {
+        return current->value;
+      }
+      else if (key < current->key) {
+        current = current->left;
+      }
+      else {
+        current = current->right;
+      }
+    }
+    throw std::invalid_argument("Key not found");
+  }
 
   void remove(const K & key) { root = remove(root, key); }
 };
-
 #endif
