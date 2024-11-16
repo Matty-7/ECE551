@@ -1,0 +1,49 @@
+Grading at 11/16/2024:17:51:34.827064
+For commit ID b260e0a381a729415d4dac56152c168224e21153
+Grading at Sat Nov 16 12:51:29 PM EST 2024
+compiling
+g++ -ggdb3 -Wall -Werror -pedantic -o testTree testTree.cpp readFreq.cpp buildTree.cpp
+Make succeed, testTree created
+Testcase 1
+-----------------------
+Checking output:
+Line_1_did_not_match
+Line_2_did_not_match
+Line_4_did_not_match
+Line_5_did_not_match
+Line_6_did_not_match
+Line_7_did_not_match
+Your file did not match the expected output
+**Testcase failed **
+Testcase 2
+-----------------------
+Checking output:
+Line_3_did_not_match
+Line_12_did_not_match
+Line_14_did_not_match
+Line_15_did_not_match
+Line_19_did_not_match
+Line_20_did_not_match
+Line_26_did_not_match
+Line_33_did_not_match
+Line_35_did_not_match
+Your file did not match the expected output
+**Testcase failed **
+Testcase 3
+-----------------------
+Checking output:
+Line_11_did_not_match
+Line_24_did_not_match
+Line_27_did_not_match
+Your file did not match the expected output
+**Testcase failed **
+Testcase 4
+-----------------------
+Checking output:
+Line_15_did_not_match
+Line_16_did_not_match
+Line_17_did_not_match
+Your file did not match the expected output
+**Testcase failed **
+
+Overall Grade: F
