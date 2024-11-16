@@ -1,8 +1,8 @@
 #include "readFreq.h"
 
+#include <stdint.h>
 #include <stdio.h>
 
-#include <cstdint>
 #include <cstdlib>
 #include <fstream>
 
