@@ -1,6 +1,6 @@
-Grading at 11/17/2024:18:32:32.843358
-For commit ID 6b13dece91bd1c3c6f1426854c3d6cb4c97e9771
-Grading at Sun Nov 17 01:32:31 PM EST 2024
+Grading at 11/17/2024:18:35:36.030801
+For commit ID 6c0b3a39302daffcd82e2413d8ef0d83c78dc939
+Grading at Sun Nov 17 01:35:33 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 
 Running your test cases
@@ -16,6 +16,11 @@ Compiling ships-step1
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
 g++ -o ships-step1 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step1.cpp ShipManager.o
 rm ShipManager.o
-The code did not compile!
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+ *** This is one of the three test cases for step 1 early start EC **
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
