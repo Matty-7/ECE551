@@ -1,6 +1,6 @@
-Grading at 11/17/2024:18:35:36.030801
-For commit ID 6c0b3a39302daffcd82e2413d8ef0d83c78dc939
-Grading at Sun Nov 17 01:35:33 PM EST 2024
+Grading at 11/17/2024:18:55:41.468013
+For commit ID e1c79052f875d8b83926bee5a3953ecd0f2a4bf5
+Grading at Sun Nov 17 01:55:36 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 
 Running your test cases
@@ -20,6 +20,27 @@ Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
  *** This is one of the three test cases for step 1 early start EC **
+-------------------------
+ This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/ships1.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+ *** This is one of the three test cases for step 1 early start EC **
+-------------------------
+ This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/ships2.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+ *** This is one of the three test cases for step 1 early start EC **
+**step1 basic tests passed for jh730 at 1731869741** : f44860fe43f741f323e57be3ddc51a47cef44abc  -
 You have PASSED all of your test cases
 Keep adding test cases until you are satisfied your program is correct
 
