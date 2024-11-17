@@ -47,11 +47,14 @@ bool ShipManager::parseShipLine(const std::string& line, Ship& ship) {
     ship.name = segments[0];
     ship.source = segments[2];
     ship.destination = segments[3];
-    try {
-        ship.capacity = std::stoull(segments[4]); // Here I convert the capacity from string to uint64_t
-    } catch (...) {
-        return false;
+    
+    std::istringstream capacityStream(segments[4]);
+    uint64_t capacity;
+    if (!(capacityStream >> capacity)) {
+        return false; // Conversion failed
     }
+    ship.capacity = capacity;
+
     return true;
 }
 
