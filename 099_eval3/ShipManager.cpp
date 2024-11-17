@@ -1,11 +1,15 @@
 #include "ShipManager.hpp"
 
 #include <algorithm>
+<<<<<<< HEAD
 #include <fstream>
 #include <iostream>
 #include <set>
 #include <sstream>
 #include <vector>
+=======
+#include <stdint.h>
+>>>>>>> d17a2fd7a96a5313075b0f9744f5993e7853dbe0
 
 bool ShipManager::loadShipsFromFile(const std::string & filename) {
   std::ifstream infile(filename.c_str());
@@ -51,6 +55,7 @@ bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {
   ship.source = segments[2];
   ship.destination = segments[3];
 
+<<<<<<< HEAD
   // Convert capacity from string to uint64_t
   std::istringstream capacityStream(segments[4]);
   uint64_t capacity;
@@ -58,6 +63,15 @@ bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {
     return false;
   }
   ship.capacity = capacity;
+=======
+    // Convert capacity from string to uint64_t using stringstream
+    std::istringstream capacityStream(segments[4]);
+    uint64_t capacity;
+    if (!(capacityStream >> capacity)) {
+        return false;
+    }
+    ship.capacity = capacity;
+>>>>>>> d17a2fd7a96a5313075b0f9744f5993e7853dbe0
 
   return true;
 }
@@ -68,7 +82,14 @@ void ShipManager::printRouteCapacities() const {
                                                               routeCapacities.end());
   std::sort(sortedRoutes.begin(), sortedRoutes.end());
 
+<<<<<<< HEAD
   for (const auto & route : sortedRoutes) {
     std::cout << route.first << " has total capacity " << route.second << std::endl;
   }
+=======
+    for (std::vector<std::pair<std::string, uint64_t> >::const_iterator it = sortedRoutes.begin();
+         it != sortedRoutes.end(); ++it) {
+        std::cout << it->first << " has total capacity " << it->second << std::endl;
+    }
+>>>>>>> d17a2fd7a96a5313075b0f9744f5993e7853dbe0
 }
