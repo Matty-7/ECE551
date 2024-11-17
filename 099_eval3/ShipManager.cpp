@@ -7,13 +7,13 @@
 #include <algorithm>
 
 bool ShipManager::loadShipsFromFile(const std::string& filename) {
-    std::ifstream infile(filename);
+    std::ifstream infile(filename.c_str()); 
     if (!infile) {
         std::cerr << "Error opening file: " << filename << std::endl;
         return false;
     }
 
-    // I use a set to check for duplicates
+    // Use a set to check for duplicates
     std::set<std::string> shipNames;
     std::string line;
     while (std::getline(infile, line)) {
@@ -32,26 +32,28 @@ bool ShipManager::loadShipsFromFile(const std::string& filename) {
     return true;
 }
 
-// It can parse a line from the ships file and fills in the Ship struct
 bool ShipManager::parseShipLine(const std::string& line, Ship& ship) {
     std::istringstream iss(line);
     std::string segment;
     std::vector<std::string> segments;
 
-    // It can split the line into segments by using ':' as the delimiter
+    // Split the line into segments using ':' as the delimiter
     while (std::getline(iss, segment, ':')) {
         segments.push_back(segment);
     }
-    // I need to check if there are 5 fields: Name, Type info, Source, Destination, and Capacity
+
+    // Check if there are 5 fields
     if (segments.size() != 5) return false;
+
     ship.name = segments[0];
     ship.source = segments[2];
     ship.destination = segments[3];
-    
+
+    // Convert capacity from string to uint64_t
     std::istringstream capacityStream(segments[4]);
     uint64_t capacity;
     if (!(capacityStream >> capacity)) {
-        return false; // Conversion failed
+        return false;
     }
     ship.capacity = capacity;
 
@@ -59,7 +61,7 @@ bool ShipManager::parseShipLine(const std::string& line, Ship& ship) {
 }
 
 void ShipManager::printRouteCapacities() const {
-    // I sort the routes by their capacity
+    // Sort the routes by their names
     std::vector<std::pair<std::string, uint64_t> > sortedRoutes(routeCapacities.begin(), routeCapacities.end());
     std::sort(sortedRoutes.begin(), sortedRoutes.end());
 
