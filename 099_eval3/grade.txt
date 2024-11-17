@@ -1,0 +1,19 @@
+Grading at 11/17/2024:18:03:44.538038
+For commit ID c24e52f83ba085a149fc376d2bf61ad6695b0c28
+Grading at Sun Nov 17 01:03:43 PM EST 2024
+Doing make clean
+rm -rf *.o *~ ships-step1 
+Running your test cases
+-------------------------
+ This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/ships0.txt 
+-------------------------
+I need to compile your code for ships-step1 (make ships-step1)
+
+Compiling ships-step1
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
+The code did not compile!
+
+Overall Grade: NO GRADE YET
