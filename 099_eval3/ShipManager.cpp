@@ -5,6 +5,7 @@
 #include <set>
 #include <vector>
 #include <algorithm>
+#include <stdint.h>
 
 bool ShipManager::loadShipsFromFile(const std::string& filename) {
     std::ifstream infile(filename.c_str()); 
@@ -49,7 +50,7 @@ bool ShipManager::parseShipLine(const std::string& line, Ship& ship) {
     ship.source = segments[2];
     ship.destination = segments[3];
 
-    // Convert capacity from string to uint64_t
+    // Convert capacity from string to uint64_t using stringstream
     std::istringstream capacityStream(segments[4]);
     uint64_t capacity;
     if (!(capacityStream >> capacity)) {
@@ -65,7 +66,8 @@ void ShipManager::printRouteCapacities() const {
     std::vector<std::pair<std::string, uint64_t> > sortedRoutes(routeCapacities.begin(), routeCapacities.end());
     std::sort(sortedRoutes.begin(), sortedRoutes.end());
 
-    for (std::vector<std::pair<std::string, uint64_t> >::const_iterator it = sortedRoutes.begin(); it != sortedRoutes.end(); ++it) {
+    for (std::vector<std::pair<std::string, uint64_t> >::const_iterator it = sortedRoutes.begin();
+         it != sortedRoutes.end(); ++it) {
         std::cout << it->first << " has total capacity " << it->second << std::endl;
     }
 }
