@@ -33,8 +33,8 @@ public:
             return false;
         }
         // I need to check if the ship can carry the hazardous materials
-        for (const std::string & property : cargo.properties) {
-            if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), property) == hazmatCapabilities.end()) {
+        for (std::vector<std::string>::const_iterator it = cargo.properties.begin(); it != cargo.properties.end(); ++it) {
+            if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), *it) == hazmatCapabilities.end()) {
                 return false;
             }
         }

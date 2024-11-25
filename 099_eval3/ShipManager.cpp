@@ -83,7 +83,8 @@ void ShipManager::printRouteCapacities() const {
 }
 
 void ShipManager::printShipDetails() const {
-    for (const Ship& ship : ships) {
+    for (std::vector<Ship>::const_iterator it = ships.begin(); it != ships.end(); ++it) {
+        const Ship& ship = *it;
         std::cout << "Ship Name: " << ship.name << ", Source: " << ship.source
                   << ", Destination: " << ship.destination << ", Capacity: " << ship.capacity << std::endl;
     }
