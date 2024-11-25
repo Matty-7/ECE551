@@ -94,13 +94,6 @@ bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {
     }
     ship.capacity = capacity;
 
-    // Add ship to ships vector
-    ships.push_back(ship);
-
-    // Update route capacities
-    std::string route = "(" + ship.source + " -> " + ship.destination + ")";
-    routeCapacities[route] += ship.capacity;
-
     return true;
 }
 
