@@ -6,6 +6,8 @@
 #include "CargoManager.hpp"
 #include "Ship.hpp"
 
+bool compareShipsByName(const Ship* a, const Ship* b);
+
 int main(int argc, char * argv[]) {
     if (argc != 3) {
         std::cerr << "Here we use: " << argv[0] << " <ships_file> <cargo_file>" << std::endl;
