@@ -1,8 +1,8 @@
-Grading at 11/17/2024:18:55:41.468013
-For commit ID e1c79052f875d8b83926bee5a3953ecd0f2a4bf5
-Grading at Sun Nov 17 01:55:36 PM EST 2024
+Grading at 11/25/2024:14:46:40.097563
+For commit ID 68445423693036bb6039c0548fe570722ebe6cda
+Grading at Mon Nov 25 09:46:30 AM EST 2024
 Doing make clean
-rm -rf *.o *~ ships-step1 
+rm -rf *.o *~ ships-step1 ships-step2 
 Running your test cases
 -------------------------
  This test case will run 
@@ -13,9 +13,10 @@ Running your test cases
 I need to compile your code for ships-step1 (make ships-step1)
 
 Compiling ships-step1
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
-g++ -o ships-step1 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step1.cpp ShipManager.o
-rm ShipManager.o
+g++ -o ships-step1 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step1.cpp CargoManager.o ShipManager.o
+rm CargoManager.o ShipManager.o
 Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
@@ -40,6 +41,70 @@ Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
  *** This is one of the three test cases for step 1 early start EC **
+-------------------------
+ This test case will run 
+ ship-step2 
+ With arguments 
+ inputs/ship0.txt 
+-------------------------
+ship-step2 does not seem to be a valid command for this assignment
+Skipping this testcase
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/ships1.txt 
+-------------------------
+I need to compile your code for ships-step2 (make ships-step2)
+
+Compiling ships-step2
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
+g++ -o ships-step2 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step2.cpp CargoManager.o ShipManager.o
+rm CargoManager.o ShipManager.o
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/ships2.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+-------------------------
+ This test case will run 
+ ship-step2 
+ With arguments 
+ inputs/cargo0.txt 
+-------------------------
+ship-step2 does not seem to be a valid command for this assignment
+Skipping this testcase
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/cargo1.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/cargo2.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1731869741** : f44860fe43f741f323e57be3ddc51a47cef44abc  -
 You have PASSED all of your test cases
 Keep adding test cases until you are satisfied your program is correct
