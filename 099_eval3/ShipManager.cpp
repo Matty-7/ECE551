@@ -12,7 +12,7 @@
 bool ShipManager::loadShipsFromFile(const std::string & filename) {
   std::ifstream infile(filename.c_str());
   if (!infile) {
-    std::cerr << "Error opening file: " << filename << std::endl;
+    std::cerr << "There is an error during opening the file: " << filename << std::endl;
     return false;
   }
 
@@ -22,17 +22,21 @@ bool ShipManager::loadShipsFromFile(const std::string & filename) {
   while (std::getline(infile, line)) {
     Ship ship;
     if (!parseShipLine(line, ship)) {
-      std::cerr << "Error parsing line: " << line << std::endl;
+      std::cerr << "There is an error during parsing the line: " << line << std::endl;
       return false;
     }
     if (!shipNames.insert(ship.name).second) {
-      std::cerr << "Duplicate ship name: " << ship.name << std::endl;
+      std::cerr << "There is a duplicate ship name: " << ship.name << std::endl;
       return false;
     }
     std::string route = "(" + ship.source + " -> " + ship.destination + ")";
     routeCapacities[route] += ship.capacity;
   }
   return true;
+}
+
+std::vector<Ship>& ShipManager::getShips() {
+    return ships;
 }
 
 bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {

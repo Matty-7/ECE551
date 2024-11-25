@@ -5,19 +5,24 @@
 
 #include <map>
 #include <string>
+#include <vector>
+#include "Ship.hpp"
+
+struct Ship {
+    std::string name;
+    std::string source;
+    std::string destination;
+    uint64_t capacity;
+};
 
 class ShipManager {
  public:
   bool loadShipsFromFile(const std::string & filename);
   void printRouteCapacities() const;
+  std::vector<Ship>& getShips();
 
  private:
-  struct Ship {
-    std::string name;
-    std::string source;
-    std::string destination;
-    uint64_t capacity;
-  };
+  std::vector<Ship> ships;
 
   bool parseShipLine(const std::string & line, Ship & ship);
   std::map<std::string, uint64_t> routeCapacities;
