@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include <cstdint>
+#include <limits>
 
 struct Cargo {
     std::string name;
