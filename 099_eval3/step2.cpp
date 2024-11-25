@@ -36,7 +36,7 @@ int main(int argc, char * argv[]) {
         });
 
         if (eligibleShips.empty()) {
-            std::cout << "No ships can carry the " << cargo->name << " from " << cargo->source << " to " << cargo->destination << std::endl;
+            std::cout << "There is no ship can carry the " << cargo->name << " from " << cargo->source << " to " << cargo->destination << std::endl;
         } else {
             std::cout << eligibleShips.size() << " ships can carry the " << cargo->name << " from " << cargo->source << " to " << cargo->destination << std::endl;
             for (std::vector<Ship*>::const_iterator ship = eligibleShips.begin(); ship != eligibleShips.end(); ++ship) {
