@@ -31,32 +31,20 @@ public:
             return false;
         }
 
-        // Check if cargo has "container" property
-        bool hasContainerProperty = false;
-        for (std::vector<std::string>::const_iterator it = cargo.properties.begin(); 
-            it != cargo.properties.end(); 
-            ++it) {
-            if (*it == "container") {
-                hasContainerProperty = true;
-            }
-            // Check hazardous materials if property starts with "hazardous-"
-            if (it->compare(0, 9, "hazardous-") == 0) {
-                std::string hazmat = it->substr(9);
-                if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), hazmat) 
-                    == hazmatCapabilities.end()) {
-                    return false;
-                }
-            }
-        }
-
-        // If cargo doesn't have container property, it can't be loaded
-        if (!hasContainerProperty) {
-            return false;
-        }
-
         // Check source and destination
         if (source != cargo.source || destination != cargo.destination) {
             return false;
+        }
+
+        // Check hazardous materials
+        for (std::vector<std::string>::const_iterator it = cargo.properties.begin(); 
+            it != cargo.properties.end(); 
+            ++it) {
+            // If the ship doesn't have the capability to handle this hazardous material
+            if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), *it) 
+                == hazmatCapabilities.end()) {
+                return false;
+            }
         }
 
         return true;
