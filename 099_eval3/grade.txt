@@ -1,6 +1,6 @@
-Grading at 11/25/2024:15:44:09.558277
-For commit ID 1b65a269838b09598de6cafd8fcf43d0d550c1ae
-Grading at Mon Nov 25 10:44:08 AM EST 2024
+Grading at 11/25/2024:15:49:17.239445
+For commit ID 6c6d19dcd38835897ec1aa445a150ad0a659dc70
+Grading at Mon Nov 25 10:49:09 AM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 
 Running your test cases
@@ -15,7 +15,66 @@ I need to compile your code for ships-step1 (make ships-step1)
 Compiling ships-step1
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
-rm CargoManager.o
-The code did not compile!
+g++ -o ships-step1 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step1.cpp CargoManager.o ShipManager.o
+rm CargoManager.o ShipManager.o
+Running our code...
+Running your code
+You said this was an error (exit status was 1), but we said it was valid
+Note: this may happen if your code timed out too...
+Here is what you printed to stderr:
+------
+There is an error during parsing the line: The Majestic Dreadnought:Container,4,radioactive,explosive,toxic:Mordor:Sarth:1550
+------
+-------------------------
+ This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/ships1.txt 
+-------------------------
+Running our code...
+Running your code
+You said this was an error (exit status was 1), but we said it was valid
+Note: this may happen if your code timed out too...
+Here is what you printed to stderr:
+------
+There is an error during parsing the line: The Dawn Clipper:Container,2:Luthadel:Midgar:1700
+------
+-------------------------
+ This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/ships2.txt 
+-------------------------
+Running our code...
+Running your code
+You said this was an error (exit status was 1), but we said it was valid
+Note: this may happen if your code timed out too...
+Here is what you printed to stderr:
+------
+There is an error during parsing the line: The Dawn Boat:Animals,50:Midgar:Mordor:190
+------
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/ships0.txt inputs/cargo0.txt 
+-------------------------
+I need to compile your code for ships-step2 (make ships-step2)
+
+Compiling ships-step2
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
+g++ -o ships-step2 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step2.cpp CargoManager.o ShipManager.o
+rm CargoManager.o ShipManager.o
+Running our code...
+Running your code
+You said this was an error (exit status was 1), but we said it was valid
+Note: this may happen if your code timed out too...
+Here is what you printed to stderr:
+------
+There is an error during parsing the line: The Majestic Dreadnought:Container,4,radioactive,explosive,toxic:Mordor:Sarth:1550
+------
+You have FAILED one or more of your test cases
+Keep debugging
 
 Overall Grade: NO GRADE YET
