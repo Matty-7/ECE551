@@ -50,37 +50,47 @@ bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {
     segments.push_back(segment);
   }
 
-  // Check if there are 5 fields
-  if (segments.size() != 5)
+  // Here we check if there are at least 5 fields
+  if (segments.size() < 5)
     return false;
 
   ship.name = segments[0];
 
-  std::istringstream slotsStream(segments[1]);
+  // Parse type info and slots from segment[1]
+  std::istringstream typeInfo(segments[1]);
+  std::string typeSegment;
+  std::vector<std::string> typeSegments;
+  
+  // Split type info by ','
+  while (std::getline(typeInfo, typeSegment, ',')) {
+    if (!typeSegment.empty()) {
+      typeSegments.push_back(typeSegment);
+    }
+  }
+
+  if (typeSegments.size() > 1) {
+    std::istringstream slotsStream(typeSegments[1]);
     unsigned int slots;
     if (!(slotsStream >> slots)) {
-        return false;
+      return false;
     }
     ship.slots = slots;
+  }
+
+  // Parse hazmat capabilities (remaining elements in type info)
+  for (size_t i = 2; i < typeSegments.size(); ++i) {
+    ship.hazmatCapabilities.push_back(typeSegments[i]);
+  }
 
   ship.source = segments[2];
   ship.destination = segments[3];
 
-  // Convert capacity from string to uint64_t using stringstream
   std::istringstream capacityStream(segments[4]);
   uint64_t capacity;
   if (!(capacityStream >> capacity)) {
     return false;
   }
   ship.capacity = capacity;
-
-  if (segments.size() > 5) {
-        std::istringstream hazmatStream(segments[5]);
-        std::string hazmat;
-        while (std::getline(hazmatStream, hazmat, ',')) {
-            ship.hazmatCapabilities.push_back(hazmat);
-        }
-    }
 
   return true;
 }
