@@ -31,6 +31,7 @@ bool ShipManager::loadShipsFromFile(const std::string & filename) {
     }
     std::string route = "(" + ship.source + " -> " + ship.destination + ")";
     routeCapacities[route] += ship.capacity;
+    ships.push_back(ship);
   }
   return true;
 }
@@ -54,6 +55,14 @@ bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {
     return false;
 
   ship.name = segments[0];
+
+  std::istringstream slotsStream(segments[1]);
+    unsigned int slots;
+    if (!(slotsStream >> slots)) {
+        return false;
+    }
+    ship.slots = slots;
+
   ship.source = segments[2];
   ship.destination = segments[3];
 
@@ -64,6 +73,14 @@ bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {
     return false;
   }
   ship.capacity = capacity;
+
+  if (segments.size() > 5) {
+        std::istringstream hazmatStream(segments[5]);
+        std::string hazmat;
+        while (std::getline(hazmatStream, hazmat, ',')) {
+            ship.hazmatCapabilities.push_back(hazmat);
+        }
+    }
 
   return true;
 }
