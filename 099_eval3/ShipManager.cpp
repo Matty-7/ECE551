@@ -1,5 +1,5 @@
 #include "ShipManager.hpp"
-
+#include "Ship.hpp"
 #include <stdint.h>
 
 #include <algorithm>

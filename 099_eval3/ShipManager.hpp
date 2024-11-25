@@ -8,13 +8,6 @@
 #include <vector>
 #include "Ship.hpp"
 
-struct Ship {
-    std::string name;
-    std::string source;
-    std::string destination;
-    uint64_t capacity;
-};
-
 class ShipManager {
  public:
   bool loadShipsFromFile(const std::string & filename);
