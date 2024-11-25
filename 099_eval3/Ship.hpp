@@ -21,30 +21,46 @@ public:
     Ship() : usedCapacity(0), slots(0) {}
 
     bool canLoadCargo(const Cargo & cargo) const {
-    // Check capacity
-    if (usedCapacity + cargo.weight > capacity) {
-        return false;
-    }
+        // Check capacity
+        if (usedCapacity + cargo.weight > capacity) {
+            return false;
+        }
 
-    // Check slots
-    if (loadedCargo.size() >= slots) {
-        return false;
-    }
+        // Check slots
+        if (loadedCargo.size() >= slots) {
+            return false;
+        }
 
-    // Check hazardous materials only if cargo has properties
-    if (!cargo.properties.empty()) {
+        // Check if cargo has "container" property
+        bool hasContainerProperty = false;
         for (std::vector<std::string>::const_iterator it = cargo.properties.begin(); 
-             it != cargo.properties.end(); 
-             ++it) {
-            if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), *it) 
-                == hazmatCapabilities.end()) {
-                return false;
+            it != cargo.properties.end(); 
+            ++it) {
+            if (*it == "container") {
+                hasContainerProperty = true;
+            }
+            // Check hazardous materials if property starts with "hazardous-"
+            if (it->compare(0, 9, "hazardous-") == 0) {
+                std::string hazmat = it->substr(9);
+                if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), hazmat) 
+                    == hazmatCapabilities.end()) {
+                    return false;
+                }
             }
         }
-    }
 
-    return true;
-}
+        // If cargo doesn't have container property, it can't be loaded
+        if (!hasContainerProperty) {
+            return false;
+        }
+
+        // Check source and destination
+        if (source != cargo.source || destination != cargo.destination) {
+            return false;
+        }
+
+        return true;
+    }
 
     void loadCargo(const Cargo & cargo) {
         if (canLoadCargo(cargo)) {

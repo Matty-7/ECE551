@@ -117,11 +117,13 @@ void ShipManager::printShipDetails() const {
         std::cout << "The Container Ship " << ship.name << "(" << ship.usedCapacity 
                   << "/" << ship.capacity << ") is carrying : " << std::endl;
         
+        // Print each cargo item
         for (std::vector<Cargo>::const_iterator cargo = ship.loadedCargo.begin();
              cargo != ship.loadedCargo.end(); ++cargo) {
             std::cout << "  " << cargo->name << "(" << cargo->weight << ")" << std::endl;
         }
         
+        // Print remaining slots
         std::cout << "  (" << (ship.slots - ship.loadedCargo.size()) 
                   << ") slots remain" << std::endl;
     }
