@@ -52,3 +52,8 @@ int main(int argc, char * argv[]) {
 
     return EXIT_SUCCESS;
 }
+
+bool compareShipsByName(const Ship* a, const Ship* b) {
+    return a->name < b->name;
+}
+
