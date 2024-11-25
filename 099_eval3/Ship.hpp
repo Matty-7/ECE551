@@ -4,13 +4,13 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <cstdint>
+#include <limits>
 
 struct Cargo {
     std::string name;
     std::string source;
     std::string destination;
-    uint64_t weight;
+    unsigned long weight;
     std::vector<std::string> properties;
 };
 
@@ -19,8 +19,8 @@ public:
     std::string name;
     std::string source;
     std::string destination;
-    uint64_t capacity;
-    uint64_t usedCapacity;
+    unsigned long capacity;
+    unsigned long usedCapacity;
     unsigned int slots;
     std::vector<std::string> hazmatCapabilities;
     std::vector<Cargo> loadedCargo;
