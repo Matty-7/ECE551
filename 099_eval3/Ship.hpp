@@ -21,11 +21,6 @@ public:
     Ship() : usedCapacity(0), slots(0) {}
 
     bool canLoadCargo(const Cargo & cargo) const {
-    // Check source and destination
-    if (source != cargo.source || destination != cargo.destination) {
-        return false;
-    }
-
     // Check capacity
     if (usedCapacity + cargo.weight > capacity) {
         return false;
@@ -36,13 +31,15 @@ public:
         return false;
     }
 
-    // Check hazardous materials
-    for (std::vector<std::string>::const_iterator it = cargo.properties.begin(); 
-         it != cargo.properties.end(); 
-         ++it) {
-        if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), *it) 
-            == hazmatCapabilities.end()) {
-            return false;
+    // Check hazardous materials only if cargo has properties
+    if (!cargo.properties.empty()) {
+        for (std::vector<std::string>::const_iterator it = cargo.properties.begin(); 
+             it != cargo.properties.end(); 
+             ++it) {
+            if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), *it) 
+                == hazmatCapabilities.end()) {
+                return false;
+            }
         }
     }
 

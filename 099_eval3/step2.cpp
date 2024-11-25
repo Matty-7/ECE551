@@ -24,10 +24,14 @@ int main(int argc, char * argv[]) {
         return EXIT_FAILURE;
     }
 
-    for (std::vector<Cargo>::const_iterator cargo = cargoList.begin(); cargo != cargoList.end(); ++cargo) {
+    for (std::vector<Cargo>::const_iterator cargo = cargoList.begin(); 
+         cargo != cargoList.end(); 
+         ++cargo) {
         std::vector<Ship*> eligibleShips;
 
-        for (std::vector<Ship>::iterator ship = manager.getShips().begin(); ship != manager.getShips().end(); ++ship) {
+        for (std::vector<Ship>::iterator ship = manager.getShips().begin(); 
+             ship != manager.getShips().end(); 
+             ++ship) {
             if (ship->canLoadCargo(*cargo)) {
                 eligibleShips.push_back(&(*ship));
             }
@@ -36,14 +40,22 @@ int main(int argc, char * argv[]) {
         std::sort(eligibleShips.begin(), eligibleShips.end(), compareShipsByName);
 
         if (eligibleShips.empty()) {
-            std::cout << "No ships can carry the " << cargo->name << " from " << cargo->source << " to " << cargo->destination << std::endl;
+            std::cout << "No ships can carry the " << cargo->name << " from " 
+                     << cargo->source << " to " << cargo->destination << std::endl;
         } else {
-            std::cout << eligibleShips.size() << " ships can carry the " << cargo->name << " from " << cargo->source << " to " << cargo->destination << std::endl;
-            for (std::vector<Ship*>::const_iterator ship = eligibleShips.begin(); ship != eligibleShips.end(); ++ship) {
+            std::cout << eligibleShips.size() << " ships can carry the " << cargo->name 
+                     << " from " << cargo->source << " to " << cargo->destination << std::endl;
+            for (std::vector<Ship*>::const_iterator ship = eligibleShips.begin(); 
+                 ship != eligibleShips.end(); 
+                 ++ship) {
                 std::cout << "  " << (*ship)->name << std::endl;
             }
-            eligibleShips.front()->loadCargo(*cargo);
-            std::cout << "**Loading the cargo onto " << eligibleShips.front()->name << "**" << std::endl;
+            
+            Ship* bestShip = eligibleShips.front();
+            if (bestShip->canLoadCargo(*cargo)) {
+                bestShip->loadCargo(*cargo);
+                std::cout << "  **Loading the cargo onto " << bestShip->name << "**" << std::endl;
+            }
         }
     }
 
@@ -56,4 +68,3 @@ int main(int argc, char * argv[]) {
 bool compareShipsByName(const Ship* a, const Ship* b) {
     return a->name < b->name;
 }
-
