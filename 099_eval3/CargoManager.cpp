@@ -9,7 +9,7 @@ struct Cargo {
     std::string name;
     std::string source;
     std::string destination;
-    uint64_t weight;
+    unsigned long long weight;
     std::vector<std::string> properties;
 };
 
