@@ -21,18 +21,33 @@ public:
     Ship() : usedCapacity(0), slots(0) {}
 
     bool canLoadCargo(const Cargo & cargo) const {
-        // I need to check if the ship has enough capacity and slots
-        if (usedCapacity + cargo.weight > capacity || slots <= loadedCargo.size()) {
+    // Check source and destination
+    if (source != cargo.source || destination != cargo.destination) {
+        return false;
+    }
+
+    // Check capacity
+    if (usedCapacity + cargo.weight > capacity) {
+        return false;
+    }
+
+    // Check slots
+    if (loadedCargo.size() >= slots) {
+        return false;
+    }
+
+    // Check hazardous materials
+    for (std::vector<std::string>::const_iterator it = cargo.properties.begin(); 
+         it != cargo.properties.end(); 
+         ++it) {
+        if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), *it) 
+            == hazmatCapabilities.end()) {
             return false;
         }
-        // I need to check if the ship can carry the hazardous materials
-        for (std::vector<std::string>::const_iterator it = cargo.properties.begin(); it != cargo.properties.end(); ++it) {
-            if (std::find(hazmatCapabilities.begin(), hazmatCapabilities.end(), *it) == hazmatCapabilities.end()) {
-                return false;
-            }
-        }
-        return true;
     }
+
+    return true;
+}
 
     void loadCargo(const Cargo & cargo) {
         if (canLoadCargo(cargo)) {
