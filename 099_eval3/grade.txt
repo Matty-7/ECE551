@@ -1,6 +1,6 @@
-Grading at 11/25/2024:16:00:05.412185
-For commit ID f78a2cd14b02b883105da063644717314c759c8c
-Grading at Mon Nov 25 10:59:57 AM EST 2024
+Grading at 11/25/2024:16:03:43.605667
+For commit ID dce3e59c0c80e12b4d4a312ac436f988f8e814a4
+Grading at Mon Nov 25 11:03:35 AM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 
 Running your test cases
@@ -110,6 +110,7 @@ The Container Ship The Shining Turtle(0/500) is carrying :    |	The Container Sh
   (3) slots remain					      |	  radioactive waste(100)
 							      >	  (2) slots remain
 Your file did not match the expected output
+You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1732550405** : a8198f8db34057b0f8344607be531a836b698300  -
 You have FAILED one or more of your test cases
 Keep debugging
