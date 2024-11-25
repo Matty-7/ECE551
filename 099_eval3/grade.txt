@@ -1,6 +1,6 @@
-Grading at 11/25/2024:16:26:45.531067
-For commit ID 3a1c54df65f2fd680a630193ac5cf53db198a0a3
-Grading at Mon Nov 25 11:26:37 AM EST 2024
+Grading at 11/25/2024:16:31:03.852401
+For commit ID 6c5c751c84f321795be3914ff055bea5a21a0f06
+Grading at Mon Nov 25 11:30:55 AM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 
 Running your test cases
@@ -58,67 +58,57 @@ Running our code...
 Running your code
 We both agreed this was not an error, but your output is different from ours
 Your output on the left, ours on the right
-3 ships can carry the toy cars from Mordor to Sarth		3 ships can carry the toy cars from Mordor to Sarth
-  The Majestic Dreadnought					  The Majestic Dreadnought
-  The Shining Turtle						  The Shining Turtle
-  The Swift Shark						  The Swift Shark
-  **Loading the cargo onto The Majestic Dreadnought**		  **Loading the cargo onto The Majestic Dreadnought**
-3 ships can carry the fireworks from Mordor to Sarth	      |	2 ships can carry the fireworks from Mordor to Sarth
-  The Majestic Dreadnought					  The Majestic Dreadnought
-  The Shining Turtle						  The Shining Turtle
-  The Swift Shark					      <
-  **Loading the cargo onto The Majestic Dreadnought**		  **Loading the cargo onto The Majestic Dreadnought**
-2 ships can carry the used batteries from Mordor to Luthadel  |	1 ships can carry the used batteries from Mordor to Luthadel
-  The Majestic Kraken						  The Majestic Kraken
-  The Night Eagle					      <
-  **Loading the cargo onto The Majestic Kraken**		  **Loading the cargo onto The Majestic Kraken**
-3 ships can carry the radioactive waste from Mordor to Sarth  |	2 ships can carry the radioactive waste from Mordor to Sarth
-  The Majestic Dreadnought					  The Majestic Dreadnought
-  The Shining Turtle						  The Shining Turtle
-  The Swift Shark					      <
-  **Loading the cargo onto The Majestic Dreadnought**		  **Loading the cargo onto The Majestic Dreadnought**
-3 ships can carry the radioactive waste from Mordor to Sarth  |	2 ships can carry the radioactive waste from Mordor to Sarth
-  The Majestic Dreadnought					  The Majestic Dreadnought
-  The Shining Turtle						  The Shining Turtle
-  The Swift Shark					      <
-  **Loading the cargo onto The Majestic Dreadnought**		  **Loading the cargo onto The Majestic Dreadnought**
-2 ships can carry the radioactive waste from Mordor to Sarth  |	1 ships can carry the radioactive waste from Mordor to Sarth
-  The Shining Turtle						  The Shining Turtle
-  The Swift Shark					      <
-  **Loading the cargo onto The Shining Turtle**			  **Loading the cargo onto The Shining Turtle**
-2 ships can carry the radioactive waste from Mordor to Luthad |	1 ships can carry the radioactive waste from Mordor to Luthad
-  The Majestic Kraken						  The Majestic Kraken
-  The Night Eagle					      <
-  **Loading the cargo onto The Majestic Kraken**		  **Loading the cargo onto The Majestic Kraken**
-1 ships can carry the cloth from Mordor to Luthadel		1 ships can carry the cloth from Mordor to Luthadel
-  The Night Eagle						  The Night Eagle
-  **Loading the cargo onto The Night Eagle**			  **Loading the cargo onto The Night Eagle**
-2 ships can carry the rat poison from Mordor to Sarth	      |	No ships can carry the rat poison from Mordor to Sarth
-  The Shining Turtle					      <
-  The Swift Shark					      <
-  **Loading the cargo onto The Shining Turtle**		      <
+No ships can carry the toy cars from Mordor to Sarth	      |	3 ships can carry the toy cars from Mordor to Sarth
+No ships can carry the fireworks from Mordor to Sarth	      |	  The Majestic Dreadnought
+No ships can carry the used batteries from Mordor to Luthadel |	  The Shining Turtle
+No ships can carry the radioactive waste from Mordor to Sarth |	  The Swift Shark
+No ships can carry the radioactive waste from Mordor to Sarth |	  **Loading the cargo onto The Majestic Dreadnought**
+No ships can carry the radioactive waste from Mordor to Sarth |	2 ships can carry the fireworks from Mordor to Sarth
+No ships can carry the radioactive waste from Mordor to Lutha |	  The Majestic Dreadnought
+No ships can carry the cloth from Mordor to Luthadel	      |	  The Shining Turtle
+							      >	  **Loading the cargo onto The Majestic Dreadnought**
+							      >	1 ships can carry the used batteries from Mordor to Luthadel
+							      >	  The Majestic Kraken
+							      >	  **Loading the cargo onto The Majestic Kraken**
+							      >	2 ships can carry the radioactive waste from Mordor to Sarth
+							      >	  The Majestic Dreadnought
+							      >	  The Shining Turtle
+							      >	  **Loading the cargo onto The Majestic Dreadnought**
+							      >	2 ships can carry the radioactive waste from Mordor to Sarth
+							      >	  The Majestic Dreadnought
+							      >	  The Shining Turtle
+							      >	  **Loading the cargo onto The Majestic Dreadnought**
+							      >	1 ships can carry the radioactive waste from Mordor to Sarth
+							      >	  The Shining Turtle
+							      >	  **Loading the cargo onto The Shining Turtle**
+							      >	1 ships can carry the radioactive waste from Mordor to Luthad
+							      >	  The Majestic Kraken
+							      >	  **Loading the cargo onto The Majestic Kraken**
+							      >	1 ships can carry the cloth from Mordor to Luthadel
+							      >	  The Night Eagle
+							      >	  **Loading the cargo onto The Night Eagle**
+No ships can carry the rat poison from Mordor to Sarth		No ships can carry the rat poison from Mordor to Sarth
 ---Done Loading---Here are the ships---				---Done Loading---Here are the ships---
-The Container Ship The Majestic Dreadnought(320/1550) is carr	The Container Ship The Majestic Dreadnought(320/1550) is carr
-  toy cars(20)							  toy cars(20)
-  fireworks(100)						  fireworks(100)
-  radioactive waste(100)					  radioactive waste(100)
-  radioactive waste(100)					  radioactive waste(100)
-  (0) slots remain						  (0) slots remain
-The Container Ship The Majestic Kraken(550/650) is carrying :	The Container Ship The Majestic Kraken(550/650) is carrying :
-  used batteries(50)						  used batteries(50)
-  radioactive waste(500)					  radioactive waste(500)
-  (7) slots remain						  (7) slots remain
+The Container Ship The Majestic Dreadnought(0/1550) is carryi |	The Container Ship The Majestic Dreadnought(320/1550) is carr
+  (4) slots remain					      |	  toy cars(20)
+The Container Ship The Majestic Kraken(0/650) is carrying :   |	  fireworks(100)
+  (9) slots remain					      |	  radioactive waste(100)
+							      >	  radioactive waste(100)
+							      >	  (0) slots remain
+							      >	The Container Ship The Majestic Kraken(550/650) is carrying :
+							      >	  used batteries(50)
+							      >	  radioactive waste(500)
+							      >	  (7) slots remain
 The Container Ship The Misty Dreadnought(0/1550) is carrying 	The Container Ship The Misty Dreadnought(0/1550) is carrying 
   (3) slots remain						  (3) slots remain
-The Container Ship The Night Eagle(200/1500) is carrying : 	The Container Ship The Night Eagle(200/1500) is carrying : 
-  cloth(200)							  cloth(200)
-  (5) slots remain						  (5) slots remain
+The Container Ship The Night Eagle(0/1500) is carrying :      |	The Container Ship The Night Eagle(200/1500) is carrying : 
+  (6) slots remain					      |	  cloth(200)
+							      >	  (5) slots remain
 The Container Ship The Swift Shark(0/2500) is carrying : 	The Container Ship The Swift Shark(0/2500) is carrying : 
   (5) slots remain						  (5) slots remain
-The Container Ship The Shining Turtle(120/500) is carrying :  |	The Container Ship The Shining Turtle(100/500) is carrying : 
-  radioactive waste(100)					  radioactive waste(100)
-  rat poison(20)					      |	  (2) slots remain
-  (1) slots remain					      <
+The Container Ship The Shining Turtle(0/500) is carrying :    |	The Container Ship The Shining Turtle(100/500) is carrying : 
+  (3) slots remain					      |	  radioactive waste(100)
+							      >	  (2) slots remain
 Your file did not match the expected output
 You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1732550405** : a8198f8db34057b0f8344607be531a836b698300  -
