@@ -102,7 +102,15 @@ void ShipManager::printRouteCapacities() const {
 void ShipManager::printShipDetails() const {
     for (std::vector<Ship>::const_iterator it = ships.begin(); it != ships.end(); ++it) {
         const Ship& ship = *it;
-        std::cout << "Ship Name: " << ship.name << ", Source: " << ship.source
-                  << ", Destination: " << ship.destination << ", Capacity: " << ship.capacity << std::endl;
+        std::cout << "The Container Ship " << ship.name << "(" << ship.usedCapacity 
+                  << "/" << ship.capacity << ") is carrying : " << std::endl;
+        
+        for (std::vector<Cargo>::const_iterator cargo = ship.loadedCargo.begin();
+             cargo != ship.loadedCargo.end(); ++cargo) {
+            std::cout << "  " << cargo->name << "(" << cargo->weight << ")" << std::endl;
+        }
+        
+        std::cout << "  (" << (ship.slots - ship.loadedCargo.size()) 
+                  << ") slots remain" << std::endl;
     }
 }
