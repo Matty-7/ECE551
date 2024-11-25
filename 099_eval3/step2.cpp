@@ -31,9 +31,7 @@ int main(int argc, char * argv[]) {
             }
         }
 
-        std::sort(eligibleShips.begin(), eligibleShips.end(), [](const Ship* a, const Ship* b) {
-            return a->name < b->name;
-        });
+        std::sort(eligibleShips.begin(), eligibleShips.end(), compareShipsByName);
 
         if (eligibleShips.empty()) {
             std::cout << "There is no ship can carry the " << cargo->name << " from " << cargo->source << " to " << cargo->destination << std::endl;
