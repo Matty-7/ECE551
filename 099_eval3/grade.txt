@@ -1,6 +1,6 @@
-Grading at 11/25/2024:15:29:07.825950
-For commit ID 6e9df13a903e409a63e63978328cbb34371d1ee2
-Grading at Mon Nov 25 10:29:00 AM EST 2024
+Grading at 11/25/2024:15:44:09.558277
+For commit ID 1b65a269838b09598de6cafd8fcf43d0d550c1ae
+Grading at Mon Nov 25 10:44:08 AM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 
 Running your test cases
@@ -15,104 +15,7 @@ I need to compile your code for ships-step1 (make ships-step1)
 Compiling ships-step1
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
-g++ -o ships-step1 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step1.cpp CargoManager.o ShipManager.o
-rm CargoManager.o ShipManager.o
-Running our code...
-Running your code
-We agreed on this testcase and valgrind was clean
- *** This is one of the three test cases for step 1 early start EC **
--------------------------
- This test case will run 
- ships-step1 
- With arguments 
- inputs/ships1.txt 
--------------------------
-Running our code...
-Running your code
-We agreed on this testcase and valgrind was clean
- *** This is one of the three test cases for step 1 early start EC **
--------------------------
- This test case will run 
- ships-step1 
- With arguments 
- inputs/ships2.txt 
--------------------------
-Running our code...
-Running your code
-We agreed on this testcase and valgrind was clean
- *** This is one of the three test cases for step 1 early start EC **
--------------------------
- This test case will run 
- ships-step2 
- With arguments 
- inputs/ships0.txt inputs/cargo0.txt 
--------------------------
-I need to compile your code for ships-step2 (make ships-step2)
-
-Compiling ships-step2
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
-g++ -o ships-step2 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step2.cpp CargoManager.o ShipManager.o
-rm CargoManager.o ShipManager.o
-Running our code...
-Running your code
-We both agreed this was not an error, but your output is different from ours
-Your output on the left, ours on the right
-No ships can carry the toy cars from Mordor to Sarth	      |	3 ships can carry the toy cars from Mordor to Sarth
-No ships can carry the fireworks from Mordor to Sarth	      |	  The Majestic Dreadnought
-No ships can carry the used batteries from Mordor to Luthadel |	  The Shining Turtle
-No ships can carry the radioactive waste from Mordor to Sarth |	  The Swift Shark
-No ships can carry the radioactive waste from Mordor to Sarth |	  **Loading the cargo onto The Majestic Dreadnought**
-No ships can carry the radioactive waste from Mordor to Sarth |	2 ships can carry the fireworks from Mordor to Sarth
-No ships can carry the radioactive waste from Mordor to Lutha |	  The Majestic Dreadnought
-No ships can carry the cloth from Mordor to Luthadel	      |	  The Shining Turtle
-							      >	  **Loading the cargo onto The Majestic Dreadnought**
-							      >	1 ships can carry the used batteries from Mordor to Luthadel
-							      >	  The Majestic Kraken
-							      >	  **Loading the cargo onto The Majestic Kraken**
-							      >	2 ships can carry the radioactive waste from Mordor to Sarth
-							      >	  The Majestic Dreadnought
-							      >	  The Shining Turtle
-							      >	  **Loading the cargo onto The Majestic Dreadnought**
-							      >	2 ships can carry the radioactive waste from Mordor to Sarth
-							      >	  The Majestic Dreadnought
-							      >	  The Shining Turtle
-							      >	  **Loading the cargo onto The Majestic Dreadnought**
-							      >	1 ships can carry the radioactive waste from Mordor to Sarth
-							      >	  The Shining Turtle
-							      >	  **Loading the cargo onto The Shining Turtle**
-							      >	1 ships can carry the radioactive waste from Mordor to Luthad
-							      >	  The Majestic Kraken
-							      >	  **Loading the cargo onto The Majestic Kraken**
-							      >	1 ships can carry the cloth from Mordor to Luthadel
-							      >	  The Night Eagle
-							      >	  **Loading the cargo onto The Night Eagle**
-No ships can carry the rat poison from Mordor to Sarth		No ships can carry the rat poison from Mordor to Sarth
----Done Loading---Here are the ships---				---Done Loading---Here are the ships---
-							      >	The Container Ship The Majestic Dreadnought(320/1550) is carr
-							      >	  toy cars(20)
-							      >	  fireworks(100)
-							      >	  radioactive waste(100)
-							      >	  radioactive waste(100)
-							      >	  (0) slots remain
-							      >	The Container Ship The Majestic Kraken(550/650) is carrying :
-							      >	  used batteries(50)
-							      >	  radioactive waste(500)
-							      >	  (7) slots remain
-							      >	The Container Ship The Misty Dreadnought(0/1550) is carrying 
-							      >	  (3) slots remain
-							      >	The Container Ship The Night Eagle(200/1500) is carrying : 
-							      >	  cloth(200)
-							      >	  (5) slots remain
-							      >	The Container Ship The Swift Shark(0/2500) is carrying : 
-							      >	  (5) slots remain
-							      >	The Container Ship The Shining Turtle(100/500) is carrying : 
-							      >	  radioactive waste(100)
-							      >	  (2) slots remain
-Your file did not match the expected output
-You have already pass the basic tests for step1:
-**step1 basic tests passed for jh730 at 1731869741** : f44860fe43f741f323e57be3ddc51a47cef44abc  -
-You have FAILED one or more of your test cases
-Keep debugging
+rm CargoManager.o
+The code did not compile!
 
 Overall Grade: NO GRADE YET
