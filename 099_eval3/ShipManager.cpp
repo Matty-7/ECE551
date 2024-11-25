@@ -16,7 +16,7 @@ bool ShipManager::loadShipsFromFile(const std::string & filename) {
     return false;
   }
 
-  // Use a set to check for duplicates
+  // I use a set to check for duplicates
   std::set<std::string> shipNames;
   std::string line;
   while (std::getline(infile, line)) {
@@ -68,7 +68,7 @@ bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {
     if (typeSegments.empty())
         return false;
 
-    // Parse slots (second element in type info)
+    // Need to parse slots (second element in type info)
     if (typeSegments.size() > 1) {
         std::istringstream slotsStream(typeSegments[1]);
         unsigned int slots;
@@ -98,7 +98,7 @@ bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {
 }
 
 void ShipManager::printRouteCapacities() const {
-  // Sort the routes by their names
+  // Here we sort the routes by their names
   std::vector<std::pair<std::string, uint64_t> > sortedRoutes(routeCapacities.begin(),
                                                               routeCapacities.end());
   std::sort(sortedRoutes.begin(), sortedRoutes.end());
@@ -117,13 +117,11 @@ void ShipManager::printShipDetails() const {
         std::cout << "The Container Ship " << ship.name << "(" << ship.usedCapacity 
                   << "/" << ship.capacity << ") is carrying : " << std::endl;
         
-        // Print each cargo item
         for (std::vector<Cargo>::const_iterator cargo = ship.loadedCargo.begin();
              cargo != ship.loadedCargo.end(); ++cargo) {
             std::cout << "  " << cargo->name << "(" << cargo->weight << ")" << std::endl;
         }
         
-        // Print remaining slots
         std::cout << "  (" << (ship.slots - ship.loadedCargo.size()) 
                   << ") slots remain" << std::endl;
     }
