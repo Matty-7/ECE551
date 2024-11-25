@@ -1,6 +1,6 @@
-Grading at 11/25/2024:14:46:40.097563
-For commit ID 68445423693036bb6039c0548fe570722ebe6cda
-Grading at Mon Nov 25 09:46:30 AM EST 2024
+Grading at 11/25/2024:15:13:15.695215
+For commit ID 38676e92687f95252595a7a6b740c5c594cf0001
+Grading at Mon Nov 25 10:13:10 AM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 
 Running your test cases
@@ -45,65 +45,10 @@ We agreed on this testcase and valgrind was clean
  This test case will run 
  ship-step2 
  With arguments 
- inputs/ship0.txt 
+ inputs/ship0.txt inputs/cargo0.txt 
 -------------------------
 ship-step2 does not seem to be a valid command for this assignment
 Skipping this testcase
--------------------------
- This test case will run 
- ships-step2 
- With arguments 
- inputs/ships1.txt 
--------------------------
-I need to compile your code for ships-step2 (make ships-step2)
-
-Compiling ships-step2
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
-g++ -o ships-step2 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step2.cpp CargoManager.o ShipManager.o
-rm CargoManager.o ShipManager.o
-Running our code...
-Running your code
-We agreed this was an error, and you printed something to stderr
-And valgrind reported no errors
--------------------------
- This test case will run 
- ships-step2 
- With arguments 
- inputs/ships2.txt 
--------------------------
-Running our code...
-Running your code
-We agreed this was an error, and you printed something to stderr
-And valgrind reported no errors
--------------------------
- This test case will run 
- ship-step2 
- With arguments 
- inputs/cargo0.txt 
--------------------------
-ship-step2 does not seem to be a valid command for this assignment
-Skipping this testcase
--------------------------
- This test case will run 
- ships-step2 
- With arguments 
- inputs/cargo1.txt 
--------------------------
-Running our code...
-Running your code
-We agreed this was an error, and you printed something to stderr
-And valgrind reported no errors
--------------------------
- This test case will run 
- ships-step2 
- With arguments 
- inputs/cargo2.txt 
--------------------------
-Running our code...
-Running your code
-We agreed this was an error, and you printed something to stderr
-And valgrind reported no errors
 You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1731869741** : f44860fe43f741f323e57be3ddc51a47cef44abc  -
 You have PASSED all of your test cases
