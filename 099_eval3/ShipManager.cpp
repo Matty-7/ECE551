@@ -81,3 +81,10 @@ void ShipManager::printRouteCapacities() const {
     std::cout << it->first << " has total capacity " << it->second << std::endl;
   }
 }
+
+void ShipManager::printShipDetails() const {
+    for (const Ship& ship : ships) {
+        std::cout << "Ship Name: " << ship.name << ", Source: " << ship.source
+                  << ", Destination: " << ship.destination << ", Capacity: " << ship.capacity << std::endl;
+    }
+}

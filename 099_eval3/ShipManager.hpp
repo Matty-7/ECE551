@@ -20,6 +20,7 @@ class ShipManager {
   bool loadShipsFromFile(const std::string & filename);
   void printRouteCapacities() const;
   std::vector<Ship>& getShips();
+  void printShipDetails() const;
 
  private:
   std::vector<Ship> ships;

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include "ShipManager.hpp"
 #include "CargoManager.hpp"
+#include "Ship.hpp"
 
 int main(int argc, char * argv[]) {
     if (argc != 3) {
