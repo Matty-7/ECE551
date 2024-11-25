@@ -36,7 +36,7 @@ int main(int argc, char * argv[]) {
         std::sort(eligibleShips.begin(), eligibleShips.end(), compareShipsByName);
 
         if (eligibleShips.empty()) {
-            std::cout << "There is no ship can carry the " << cargo->name << " from " << cargo->source << " to " << cargo->destination << std::endl;
+            std::cout << "No ships can carry the " << cargo->name << " from " << cargo->source << " to " << cargo->destination << std::endl;
         } else {
             std::cout << eligibleShips.size() << " ships can carry the " << cargo->name << " from " << cargo->source << " to " << cargo->destination << std::endl;
             for (std::vector<Ship*>::const_iterator ship = eligibleShips.begin(); ship != eligibleShips.end(); ++ship) {
