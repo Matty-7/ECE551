@@ -41,58 +41,67 @@ std::vector<Ship>& ShipManager::getShips() {
 }
 
 bool ShipManager::parseShipLine(const std::string & line, Ship & ship) {
-  std::istringstream iss(line);
-  std::string segment;
-  std::vector<std::string> segments;
+    std::istringstream iss(line);
+    std::string segment;
+    std::vector<std::string> segments;
 
-  // Split the line into segments using ':' as the delimiter
-  while (std::getline(iss, segment, ':')) {
-    segments.push_back(segment);
-  }
-
-  // Here we check if there are at least 5 fields
-  if (segments.size() < 5)
-    return false;
-
-  ship.name = segments[0];
-
-  // Parse type info and slots from segment[1]
-  std::istringstream typeInfo(segments[1]);
-  std::string typeSegment;
-  std::vector<std::string> typeSegments;
-  
-  // Split type info by ','
-  while (std::getline(typeInfo, typeSegment, ',')) {
-    if (!typeSegment.empty()) {
-      typeSegments.push_back(typeSegment);
+    while (std::getline(iss, segment, ':')) {
+        segments.push_back(segment);
     }
-  }
 
-  if (typeSegments.size() > 1) {
-    std::istringstream slotsStream(typeSegments[1]);
-    unsigned int slots;
-    if (!(slotsStream >> slots)) {
-      return false;
+    if (segments.size() < 5)
+        return false;
+
+    ship.name = segments[0];
+
+    // Parse type info from segment[1]
+    std::istringstream typeInfo(segments[1]);
+    std::string typeSegment;
+    std::vector<std::string> typeSegments;
+    
+    while (std::getline(typeInfo, typeSegment, ',')) {
+        if (!typeSegment.empty()) {
+            typeSegments.push_back(typeSegment);
+        }
     }
-    ship.slots = slots;
-  }
 
-  // Parse hazmat capabilities (remaining elements in type info)
-  for (size_t i = 2; i < typeSegments.size(); ++i) {
-    ship.hazmatCapabilities.push_back(typeSegments[i]);
-  }
+    if (typeSegments.empty())
+        return false;
 
-  ship.source = segments[2];
-  ship.destination = segments[3];
+    // Parse slots (second element in type info)
+    if (typeSegments.size() > 1) {
+        std::istringstream slotsStream(typeSegments[1]);
+        unsigned int slots;
+        if (!(slotsStream >> slots)) {
+            return false;
+        }
+        ship.slots = slots;
+    }
 
-  std::istringstream capacityStream(segments[4]);
-  uint64_t capacity;
-  if (!(capacityStream >> capacity)) {
-    return false;
-  }
-  ship.capacity = capacity;
+    // Parse hazmat capabilities (remaining elements in type info)
+    for (size_t i = 2; i < typeSegments.size(); ++i) {
+        ship.hazmatCapabilities.push_back(typeSegments[i]);
+    }
 
-  return true;
+    ship.source = segments[2];
+    ship.destination = segments[3];
+
+    // Parse capacity
+    std::istringstream capacityStream(segments[4]);
+    uint64_t capacity;
+    if (!(capacityStream >> capacity)) {
+        return false;
+    }
+    ship.capacity = capacity;
+
+    // Add ship to ships vector
+    ships.push_back(ship);
+
+    // Update route capacities
+    std::string route = "(" + ship.source + " -> " + ship.destination + ")";
+    routeCapacities[route] += ship.capacity;
+
+    return true;
 }
 
 void ShipManager::printRouteCapacities() const {
