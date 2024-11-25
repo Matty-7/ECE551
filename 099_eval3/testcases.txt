@@ -2,3 +2,10 @@ ships-step1 inputs/ships0.txt
 ships-step1 inputs/ships1.txt
 ships-step1 inputs/ships2.txt
 
+ship-step2 inputs/ship0.txt
+ships-step2 inputs/ships1.txt
+ships-step2 inputs/ships2.txt
+
+ship-step2 inputs/cargo0.txt
+ships-step2 inputs/cargo1.txt
+ships-step2 inputs/cargo2.txt
