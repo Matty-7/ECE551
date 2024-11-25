@@ -46,7 +46,7 @@ std::vector<Cargo> loadCargoFromFile(const std::string & filename) {
     std::ifstream infile(filename.c_str());
     if (!infile) {
         std::cerr << "There is an error during opening the file: " << filename << std::endl;
-        return {};
+        return std::vector<Cargo>();
     }
 
     std::vector<Cargo> cargoList;
