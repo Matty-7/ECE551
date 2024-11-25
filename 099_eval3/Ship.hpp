@@ -5,14 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <limits>
-
-struct Cargo {
-    std::string name;
-    std::string source;
-    std::string destination;
-    unsigned long weight;
-    std::vector<std::string> properties;
-};
+#include "CargoManager.hpp"
 
 class Ship {
 public:

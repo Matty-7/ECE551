@@ -3,12 +3,13 @@
 
 #include <string>
 #include <vector>
+#include <limits>
 
 struct Cargo {
     std::string name;
     std::string source;
     std::string destination;
-    uint64_t weight;
+    unsigned long weight;
     std::vector<std::string> properties;
 };
 
