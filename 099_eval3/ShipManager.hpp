@@ -11,14 +11,15 @@
 
 class ShipManager {
  public:
+  ~ShipManager();
   bool loadShipsFromFile(const std::string & filename);
   void printRouteCapacities() const;
-  std::vector<Ship>& getShips();
+  std::vector<Ship*>& getShips();
   void printShipDetails() const;
 
  private:
-  std::vector<Ship> ships;
-  bool parseShipLine(const std::string & line, Ship & ship);
+  std::vector<Ship*> ships;
+  bool parseShipLine(const std::string & line, Ship *& ship);
   std::map<std::string, uint64_t> routeCapacities;
 };
 

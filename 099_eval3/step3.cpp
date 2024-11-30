@@ -24,10 +24,11 @@ int main(int argc, char * argv[]) {
         return EXIT_FAILURE;
     }
 
-    for (std::vector<Cargo>::const_iterator cargo = cargoList.begin(); cargo != cargoList.end(); ++cargo) {
+    for (std::vector<Cargo>::const_iterator cargo = cargoList.begin();
+         cargo != cargoList.end(); ++cargo) {
         std::vector<Ship*> eligibleShips;
 
-        std::vector<Ship*>& ships = manager.getShips();
+        std::vector<Ship*> & ships = manager.getShips();
         for (std::vector<Ship*>::iterator ship = ships.begin(); ship != ships.end(); ++ship) {
             if ((*ship)->canLoadCargo(*cargo)) {
                 eligibleShips.push_back(*ship);
@@ -42,7 +43,8 @@ int main(int argc, char * argv[]) {
         } else {
             std::cout << eligibleShips.size() << " ships can carry the " << cargo->name
                       << " from " << cargo->source << " to " << cargo->destination << std::endl;
-            for (std::vector<Ship*>::const_iterator ship = eligibleShips.begin(); ship != eligibleShips.end(); ++ship) {
+            for (std::vector<Ship*>::const_iterator ship = eligibleShips.begin();
+                 ship != eligibleShips.end(); ++ship) {
                 std::cout << "  " << (*ship)->name << std::endl;
             }
 

@@ -5,6 +5,8 @@
 #include <vector>
 #include <string>
 
+class ShipManager; // 前向声明
+
 class TankerShip : public Ship {
 public:
     TankerShip();
@@ -23,7 +25,7 @@ private:
     std::vector<unsigned long> tankCapacities;
     std::vector<std::string> tankCargoTypes;
 
-    friend bool parseShipLine(const std::string & line, Ship *& ship);
+    friend class ShipManager; // 将 ShipManager 声明为友元类
 };
 
 #endif // TANKERSHIP_HPP
