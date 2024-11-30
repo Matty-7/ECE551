@@ -1,6 +1,6 @@
-Grading at 11/30/2024:23:00:18.833548
-For commit ID d7f6652f3832d84a6e56c936e8ae8cc70e55ef70
-Grading at Sat Nov 30 06:00:02 PM EST 2024
+Grading at 11/30/2024:23:04:17.618632
+For commit ID 43d3236cb4e7e5453ee03da743edd5bbb99743f3
+Grading at Sat Nov 30 06:03:59 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 
 Running your test cases
@@ -68,7 +68,7 @@ We agreed on this testcase and valgrind was clean
  This test case will run 
  ships-step3 
  With arguments 
- inputs/ships1.txt inputs/cargo1.txt 
+ inputs/ships0.txt inputs/cargo1.txt 
 -------------------------
 I need to compile your code for ships-step3 (make ships-step3)
 
@@ -83,7 +83,28 @@ rm CargoManager.o TankerShip.o ShipManager.o ContainerShip.o AnimalShip.o
 Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
- *** This is one of the four cases for step 3 early start EC **
+ *** This is one of the four test cases for step 3 early start EC **
+-------------------------
+ This test case will run 
+ ships-step3 
+ With arguments 
+ inputs/ships1.txt inputs/cargo0.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+ *** This is one of the four test cases for step 3 early start EC **
+-------------------------
+ This test case will run 
+ ships-step3 
+ With arguments 
+ inputs/ships1.txt inputs/cargo0.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+ *** This is one of the four test cases for step 3 early start EC **
+You seem to have done this EC test case twice?
 -------------------------
  This test case will run 
  ships-step3 
