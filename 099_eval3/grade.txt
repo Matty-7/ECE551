@@ -1,6 +1,6 @@
-Grading at 11/30/2024:23:04:17.618632
-For commit ID 43d3236cb4e7e5453ee03da743edd5bbb99743f3
-Grading at Sat Nov 30 06:03:59 PM EST 2024
+Grading at 11/30/2024:23:06:46.205806
+For commit ID d91352a34004c7a045e2f42ae5052da2838e670a
+Grading at Sat Nov 30 06:06:27 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 
 Running your test cases
@@ -98,13 +98,12 @@ We agreed on this testcase and valgrind was clean
  This test case will run 
  ships-step3 
  With arguments 
- inputs/ships1.txt inputs/cargo0.txt 
+ inputs/ships1.txt inputs/cargo1.txt 
 -------------------------
 Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
- *** This is one of the four test cases for step 3 early start EC **
-You seem to have done this EC test case twice?
+ *** This is one of the four cases for step 3 early start EC **
 -------------------------
  This test case will run 
  ships-step3 
@@ -119,6 +118,7 @@ You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1733006681** : 2cb431051a5c3fa28ec9bc792909a14b9e8b4b02  -
 You have already pass the basic tests for step2:
 **step2 basic tests passed for jh730 at 1733006681** : c1c976c77f3705313a3ce48f374f73befee0c6e0  -
+**step3 basic tests passed for jh730 at 1733008006** : e1f25cc5c2048e6259cac7536f3f586c03ab6e4a  -
 You have PASSED all of your test cases
 Keep adding test cases until you are satisfied your program is correct
 
