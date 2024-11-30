@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 
-class ShipManager; // 前向声明
+class ShipManager;
 
 class ContainerShip : public Ship {
 public:
@@ -21,7 +21,7 @@ private:
     std::vector<std::string> hazmatCapabilities;
     std::vector<Cargo> loadedCargo;
 
-    friend class ShipManager; // 将 ShipManager 声明为友元类
+    friend class ShipManager;
 };
 
 #endif // CONTAINERSHIP_HPP
