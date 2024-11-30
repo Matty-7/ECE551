@@ -13,7 +13,6 @@
 #include <cstdlib>
 
 ShipManager::~ShipManager() {
-    // 删除所有分配的船只对象，防止内存泄漏
     for (std::vector<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it) {
         delete *it;
     }
@@ -26,7 +25,6 @@ bool ShipManager::loadShipsFromFile(const std::string & filename) {
         return false;
     }
 
-    // 用于检测重复的船名
     std::set<std::string> shipNames;
     std::string line;
     while (std::getline(infile, line)) {
@@ -43,7 +41,6 @@ bool ShipManager::loadShipsFromFile(const std::string & filename) {
         }
         ships.push_back(ship);
 
-        // 更新航线的总容量
         std::string route = "(" + ship->source + " -> " + ship->destination + ")";
         routeCapacities[route] += ship->capacity;
     }
@@ -55,7 +52,6 @@ std::vector<Ship*>& ShipManager::getShips() {
 }
 
 void ShipManager::printRouteCapacities() const {
-    // 按照航线名称排序并打印
     std::vector<std::pair<std::string, uint64_t> > sortedRoutes(routeCapacities.begin(),
                                                                 routeCapacities.end());
     std::sort(sortedRoutes.begin(), sortedRoutes.end());
@@ -78,7 +74,6 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
     std::string segment;
     std::vector<std::string> segments;
 
-    // 使用 ':' 分割行
     while (std::getline(iss, segment, ':')) {
         segments.push_back(segment);
     }
@@ -86,31 +81,27 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
     if (segments.size() < 5) {
         return false;
     }
-
-    // 提取公共属性
+    
     std::string name = segments[0];
     std::string typeInfo = segments[1];
     std::string source = segments[2];
     std::string destination = segments[3];
     std::string capacityStr = segments[4];
 
-    // 解析容量
     uint64_t capacity = 0;
     std::istringstream capacityStream(capacityStr);
     if (!(capacityStream >> capacity)) {
         return false;
     }
 
-    // 解析类型信息
     std::istringstream typeStream(typeInfo);
     std::string type;
     std::getline(typeStream, type, ',');
 
     if (type == "Container") {
-        // 创建 ContainerShip 实例
+        
         ContainerShip * containerShip = new ContainerShip();
 
-        // 解析 slots
         std::string slotsStr;
         if (!std::getline(typeStream, slotsStr, ',')) {
             delete containerShip;
@@ -124,13 +115,11 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
         }
         containerShip->slots = slots;
 
-        // 解析 hazmatCapabilities
         std::string hazmat;
         while (std::getline(typeStream, hazmat, ',')) {
             containerShip->hazmatCapabilities.push_back(hazmat);
         }
 
-        // 设置公共属性
         containerShip->name = name;
         containerShip->source = source;
         containerShip->destination = destination;
@@ -140,10 +129,9 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
         ship = containerShip;
     }
     else if (type == "Tanker") {
-        // 创建 TankerShip 实例
+        
         TankerShip * tankerShip = new TankerShip();
 
-        // 解析 minTemp
         std::string minTempStr;
         if (!std::getline(typeStream, minTempStr, ',')) {
             delete tankerShip;
@@ -157,7 +145,7 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
         }
         tankerShip->minTemp = minTemp;
 
-        // 解析 maxTemp
+        
         std::string maxTempStr;
         if (!std::getline(typeStream, maxTempStr, ',')) {
             delete tankerShip;
@@ -171,7 +159,7 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
         }
         tankerShip->maxTemp = maxTemp;
 
-        // 解析 numTanks
+        
         std::string numTanksStr;
         if (!std::getline(typeStream, numTanksStr, ',')) {
             delete tankerShip;
@@ -185,25 +173,21 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
         }
         tankerShip->numTanks = numTanks;
 
-        // 检查总容量是否是油舱数量的整数倍
+        
         if (capacity % numTanks != 0) {
             std::cerr << "Total capacity is not a multiple of the number of tanks for ship: " << name << std::endl;
             delete tankerShip;
             return false;
         }
 
-        // 初始化油舱容量
-        unsigned long tankCapacity = capacity / numTanks;
         tankerShip->tankCapacities.assign(numTanks, 0);
         tankerShip->tankCargoTypes.assign(numTanks, "");
 
-        // 解析 hazmatCapabilities
         std::string hazmat;
         while (std::getline(typeStream, hazmat, ',')) {
             tankerShip->hazmatCapabilities.push_back(hazmat);
         }
 
-        // 设置公共属性
         tankerShip->name = name;
         tankerShip->source = source;
         tankerShip->destination = destination;
@@ -213,10 +197,9 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
         ship = tankerShip;
     }
     else if (type == "Animals") {
-        // 创建 AnimalShip 实例
+        
         AnimalShip * animalShip = new AnimalShip();
 
-        // 解析 smallEnoughThreshold
         std::string thresholdStr;
         if (!std::getline(typeStream, thresholdStr, ',')) {
             delete animalShip;
@@ -230,7 +213,6 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
         }
         animalShip->smallEnoughThreshold = threshold;
 
-        // 设置公共属性
         animalShip->name = name;
         animalShip->source = source;
         animalShip->destination = destination;
