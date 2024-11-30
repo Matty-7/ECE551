@@ -1,8 +1,8 @@
-Grading at 11/25/2024:16:58:40.445251
-For commit ID 9c650f52420532e29f2d7bddd751766a12488c44
-Grading at Mon Nov 25 11:58:32 AM EST 2024
+Grading at 11/30/2024:22:33:44.544927
+For commit ID 4a28bf37e40a884c4bf782f9ef23b41cf018a47e
+Grading at Sat Nov 30 05:33:42 PM EST 2024
 Doing make clean
-rm -rf *.o *~ ships-step1 ships-step2 
+rm -rf *.o *~ ships-step1 ships-step2 ships-step3 
 Running your test cases
 -------------------------
  This test case will run 
@@ -13,56 +13,11 @@ Running your test cases
 I need to compile your code for ships-step1 (make ships-step1)
 
 Compiling ships-step1
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 AnimalShip.cpp
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ContainerShip.cpp
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
-g++ -o ships-step1 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step1.cpp CargoManager.o ShipManager.o
-rm CargoManager.o ShipManager.o
-Running our code...
-Running your code
-We agreed on this testcase and valgrind was clean
- *** This is one of the three test cases for step 1 early start EC **
--------------------------
- This test case will run 
- ships-step1 
- With arguments 
- inputs/ships1.txt 
--------------------------
-Running our code...
-Running your code
-We agreed on this testcase and valgrind was clean
- *** This is one of the three test cases for step 1 early start EC **
--------------------------
- This test case will run 
- ships-step1 
- With arguments 
- inputs/ships2.txt 
--------------------------
-Running our code...
-Running your code
-We agreed on this testcase and valgrind was clean
- *** This is one of the three test cases for step 1 early start EC **
--------------------------
- This test case will run 
- ships-step2 
- With arguments 
- inputs/ships0.txt inputs/cargo0.txt 
--------------------------
-I need to compile your code for ships-step2 (make ships-step2)
-
-Compiling ships-step2
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
-g++ -o ships-step2 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step2.cpp CargoManager.o ShipManager.o
-rm CargoManager.o ShipManager.o
-Running our code...
-Running your code
-We agreed on this testcase and valgrind was clean
- *** This is the test case for step 2 early start EC **
-You have already pass the basic tests for step1:
-**step1 basic tests passed for jh730 at 1732550405** : a8198f8db34057b0f8344607be531a836b698300  -
-You have already pass the basic tests for step2:
-**step2 basic tests passed for jh730 at 1732553587** : 6962f6bf8e4e45f76fce3dc5f6392b84e8c5a761  -
-You have PASSED all of your test cases
-Keep adding test cases until you are satisfied your program is correct
+rm CargoManager.o ContainerShip.o AnimalShip.o
+The code did not compile!
 
 Overall Grade: NO GRADE YET
