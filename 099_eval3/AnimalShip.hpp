@@ -21,6 +21,7 @@ private:
     bool hasRoamer;
     std::vector<Cargo> loadedCargo;
 
+    // Here I allow the ShipManager to access the private members of AnimalShip
     friend class ShipManager; 
 };
 
