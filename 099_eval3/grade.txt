@@ -1,6 +1,6 @@
-Grading at 12/01/2024:01:31:16.195866
-For commit ID f78cb1d375ea82e94c3eef6b20e377cff952e136
-Grading at Sat Nov 30 08:30:56 PM EST 2024
+Grading at 12/01/2024:01:34:47.585233
+For commit ID 9591fd56c6e8a44d82835b3ae185b4b95e1e585b
+Grading at Sat Nov 30 08:34:16 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 ships-step4
 Running your test cases
@@ -130,6 +130,44 @@ I need to compile your code for ships-step4 (make ships-step4)
 
 Compiling ships-step4
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step4.cpp
-The code did not compile!
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 AnimalShip.cpp
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ContainerShip.cpp
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipSelector.cpp
+g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 TankerShip.cpp
+g++ -o ships-step4 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step4.o AnimalShip.o CargoManager.o ContainerShip.o ShipManager.o ShipSelector.o TankerShip.o 
+rm ShipSelector.o step4.o CargoManager.o TankerShip.o ShipManager.o ContainerShip.o AnimalShip.o
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
+ inputs/ships1.txt inputs/cargo1.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+ *** This is one of the four cases for step 4 early start EC **
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
+ inputs/ships2.txt inputs/cargo2.txt 
+-------------------------
+Running our code...
+Running your code
+You said this was an error (exit status was 137), but we said it was valid
+Note: this may happen if your code timed out too...
+Here is what you printed to stderr:
+------
+------
+**step1 basic tests passed for jh730 at 1733016887** : 4b37fff6817f58e546ff78e798e41b44af5ac6df  -
+**step2 basic tests passed for jh730 at 1733016887** : b8da2943907b5feea6fc79d907c9e8d321e72db2  -
+**step3 basic tests passed for jh730 at 1733016887** : 29be2ef515e90168701a72f64519c3aa6231d607  -
+You have FAILED one or more of your test cases
+Keep debugging
 
 Overall Grade: NO GRADE YET
