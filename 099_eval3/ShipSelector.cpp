@@ -1,5 +1,6 @@
 #include "ShipSelector.hpp"
 #include <vector>
+#include <stdint.h>
 
 ShipSelector::ShipSelector(AVLMultiMap<uint64_t, Ship*> & shipMap) : shipMap(shipMap) {}
 

@@ -1,6 +1,7 @@
 #ifndef SHIPSELECTOR_HPP
 #define SHIPSELECTOR_HPP
 
+#include <stdint.h>
 #include "Ship.hpp"
 #include "CargoManager.hpp"
 #include "avlmultimap03.hpp"
