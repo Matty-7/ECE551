@@ -1,63 +1,36 @@
 #include "ShipSelector.hpp"
 #include <limits>
-#include <set>
 
-ShipSelector::ShipSelector(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare>& shipMap)
-    : shipMap(shipMap) {}
+ShipSelector::ShipSelector(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> & shipMap)
+    : shipMap(shipMap) {
+}
 
-Ship* ShipSelector::findBestShip(const Cargo& cargo) {
-    Ship* bestShip = NULL;
-    uint64_t bestRemainingCapacity = std::numeric_limits<uint64_t>::max();
-
-    AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare>::Node* current =
-        shipMap.findLowerBound(cargo.weight);
-
-    while (current != NULL) {
-        uint64_t currentCapacity = current->key;
-
-        if (currentCapacity < cargo.weight) {
-            current = shipMap.getNext(current);
-            continue;
-        }
-
-        uint64_t remainingAfterLoad = currentCapacity - cargo.weight;
-
-        if (bestShip != NULL && remainingAfterLoad > bestRemainingCapacity) {
-            break;
-        }
-
-        const std::set<Ship*, ShipNameCompare>& ships = current->vals;
-        for (std::set<Ship*, ShipNameCompare>::const_iterator it = ships.begin();
-             it != ships.end(); ++it) {
-            Ship* ship = *it;
-
-            if (ship->canLoadCargo(cargo)) {
-                if (bestShip == NULL ||
-                    remainingAfterLoad < bestRemainingCapacity ||
-                    (remainingAfterLoad == bestRemainingCapacity &&
-                     ship->name.compare(bestShip->name) < 0)) {
-                    bestShip = ship;
-                    bestRemainingCapacity = remainingAfterLoad;
+Ship * ShipSelector::findBestShip(const Cargo & cargo) {
+    // Start with the smallest remaining capacity that could fit the cargo
+    std::vector<std::pair<std::pair<uint64_t, std::set<Ship*, ShipNameCompare> >, int> > nodes = shipMap.preOrderDump();
+    
+    // Find the first ship with sufficient capacity that can carry the cargo
+    for (size_t i = 0; i < nodes.size(); ++i) {
+        if (nodes[i].first.first >= cargo.weight) {  // Check if capacity is sufficient
+            // Check each ship with this capacity
+            const std::set<Ship*, ShipNameCompare> & ships = nodes[i].first.second;
+            for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
+                 shipIt != ships.end(); 
+                 ++shipIt) {
+                if ((*shipIt)->canLoadCargo(cargo)) {
+                    return *shipIt;
                 }
             }
         }
-
-        current = shipMap.getNext(current);
     }
-
-    return bestShip;
+    
+    return NULL;
 }
 
-void ShipSelector::updateShipInMap(Ship* ship, uint64_t oldRemainingCapacity, uint64_t newRemainingCapacity) {
-    if (ship == NULL || oldRemainingCapacity == newRemainingCapacity) {
-        return;
-    }
-
-    if (oldRemainingCapacity > 0) {
-        shipMap.remove(oldRemainingCapacity, ship);
-    }
-
-    if (newRemainingCapacity > 0) {
-        shipMap.add(newRemainingCapacity, ship);
-    }
+void ShipSelector::updateShipInMap(Ship * ship, uint64_t oldRemainingCapacity, uint64_t newRemainingCapacity) {
+    // Remove ship from its old position
+    shipMap.remove(oldRemainingCapacity, ship);
+    
+    // Add ship at its new position
+    shipMap.add(newRemainingCapacity, ship);
 }
