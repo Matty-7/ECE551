@@ -20,7 +20,6 @@ int main(int argc, char * argv[]) {
     if (cargoList.empty()) {
         return EXIT_FAILURE;
     }
-
     
     std::stable_sort(cargoList.begin(), cargoList.end(), compareCargoByWeight);
 
@@ -38,23 +37,11 @@ int main(int argc, char * argv[]) {
         Ship * bestShip = selector.findBestShip(cargo);
 
         if (bestShip != NULL) {
-            
-            uint64_t oldRemainingCapacity = bestShip->capacity - bestShip->usedCapacity;
-
-            
-            bestShip->loadCargo(cargo);
-
-            
-            uint64_t newRemainingCapacity = bestShip->capacity - bestShip->usedCapacity;
-
-            
-            selector.updateShipInMap(bestShip, oldRemainingCapacity, newRemainingCapacity);
-
-            
-            std::cout << "Loading " << cargo.name << " onto " << bestShip->name << " from " << cargo.source << " to " << cargo.destination << std::endl;
-        } else {
-            
-            std::cout << "Could not load " << cargo.name << " from " << cargo.source << " to " << cargo.destination << std::endl;
+        std::cout << "Loading " << cargo.name << " onto " << bestShip->name
+                << " from " << cargo.source << " to " << cargo.destination << std::endl;
+    } else {
+        std::cout << "No ships can carry the " << cargo.name << " from "
+                << cargo.source << " to " << cargo.destination << std::endl;
         }
     }
 

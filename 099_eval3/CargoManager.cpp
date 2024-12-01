@@ -18,25 +18,20 @@ bool parseCargoLine(const std::string & line, Cargo & cargo) {
     std::string segment;
     std::vector<std::string> segments;
 
-    // Here I used ',' as the delimiter to split the line
     while (std::getline(iss, segment, ',')) {
         segments.push_back(segment);
     }
 
-    if (segments.size() < 5)
+    if (segments.size() < 5) {
         return false;
+    }
 
     cargo.name = segments[0];
     cargo.source = segments[1];
     cargo.destination = segments[2];
 
-    // I convert weight from string to uint64_t
-    std::istringstream weightStream(segments[3]);
-    if (!(weightStream >> cargo.weight)) {
-        return false;
-    }
+    cargo.weight = std::stoul(segments[3]);
 
-    // The remaining segments are properties here
     cargo.properties.assign(segments.begin() + 4, segments.end());
 
     return true;
