@@ -22,17 +22,11 @@ Ship* ShipSelector::findBestShip(const Cargo& cargo) {
 
         uint64_t remainingAfterLoad = currentCapacity - cargo.weight;
 
-        if (bestShip != NULL && remainingAfterLoad > bestRemainingCapacity) {
-            break;
-        }
-
         const std::set<Ship*, ShipNameCompare>& ships = current->vals;
         for (std::set<Ship*, ShipNameCompare>::const_iterator it = ships.begin(); it != ships.end(); ++it) {
-            Ship* ship = *it;
+            Ship* ship = const_cast<Ship*>(*it);
 
-            
             if (ship->canLoadCargo(cargo)) {
-                
                 if (bestShip == NULL ||
                     remainingAfterLoad < bestRemainingCapacity ||
                     (remainingAfterLoad == bestRemainingCapacity && ship->name < bestShip->name)) {
@@ -42,7 +36,6 @@ Ship* ShipSelector::findBestShip(const Cargo& cargo) {
             }
         }
 
-        
         current = shipMap.getNext(current);
     }
 
@@ -54,11 +47,9 @@ void ShipSelector::updateShipInMap(Ship* ship, uint64_t oldRemainingCapacity, ui
         return; 
     }
 
-    
     if (oldRemainingCapacity > 0) {
         shipMap.remove(oldRemainingCapacity, ship);
     }
 
-    
     shipMap.add(newRemainingCapacity, ship);
 }
