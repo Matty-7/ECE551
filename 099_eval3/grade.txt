@@ -1,6 +1,6 @@
-Grading at 12/01/2024:18:07:32.663793
-For commit ID 3cdbf1b387a69ca4c439f6dcfc23ca62cd2bd925
-Grading at Sun Dec  1 01:07:00 PM EST 2024
+Grading at 12/01/2024:18:09:49.609132
+For commit ID ae8ac64b71915f4209577b6465e6ebd9416e06c0
+Grading at Sun Dec  1 01:09:12 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 ships-step4
 Running your test cases
@@ -171,13 +171,26 @@ We agreed on this testcase and valgrind was clean
 Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
+ inputs/ships2.txt inputs/cargo2.txt 
+-------------------------
+Running our code...
+Running your code
+You said this was an error (exit status was 137), but we said it was valid
+Note: this may happen if your code timed out too...
+Here is what you printed to stderr:
+------
+------
 You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1733065654** : 0a0219083ded892487daeaa326384f4117925ecf  -
 You have already pass the basic tests for step2:
 **step2 basic tests passed for jh730 at 1733065654** : 3bc627ea28224bdd6c3d21e5e3a14db0367dba1c  -
 You have already pass the basic tests for step3:
 **step3 basic tests passed for jh730 at 1733065654** : 3c6b120e87422ced0111364ddeb7a36070b1d54e  -
-You have PASSED all of your test cases
-Keep adding test cases until you are satisfied your program is correct
+You have FAILED one or more of your test cases
+Keep debugging
 
 Overall Grade: NO GRADE YET
