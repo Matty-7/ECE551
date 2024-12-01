@@ -31,8 +31,8 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
     for (std::vector<NodeInfo>::const_iterator it = lower; 
          it != nodes.end(); 
          ++it) {
-        uint64_t remainingCapacity = it->first.first;
-        uint64_t remainingAfterLoad = remainingCapacity - cargo.weight;
+        const uint64_t currentCapacity = it->first.first;
+        uint64_t remainingAfterLoad = currentCapacity - cargo.weight;
         
         if (bestShip != NULL && remainingAfterLoad > bestRemainingCapacity) {
             break;
@@ -51,10 +51,6 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
                      ship->name < bestShip->name)) {
                     bestShip = ship;
                     bestRemainingCapacity = remainingAfterLoad;
-                }
-                else if (remainingAfterLoad == bestRemainingCapacity && 
-                         ship->name > bestShip->name) {
-                    break;
                 }
             }
         }
