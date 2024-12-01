@@ -1,6 +1,6 @@
-Grading at 12/01/2024:17:40:42.691303
-For commit ID 2a32e296b93347c3be5165ae7fb26db149c803fd
-Grading at Sun Dec  1 12:40:14 PM EST 2024
+Grading at 12/01/2024:17:44:11.626559
+For commit ID 730b3aec1f972a1a49eaa55eec396571aa24a8af
+Grading at Sun Dec  1 12:43:42 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 ships-step4
 Running your test cases
@@ -124,7 +124,7 @@ We agreed on this testcase and valgrind was clean
  This test case will run 
  ships-step4 
  With arguments 
- inputs/ships0.txt inputs/cargo0.txt 
+ inputs/ships0.txt inputs/cargo1.txt 
 -------------------------
 I need to compile your code for ships-step4 (make ships-step4)
 
@@ -138,15 +138,6 @@ g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipSelector.cpp
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 TankerShip.cpp
 g++ -o ships-step4 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step4.o AnimalShip.o CargoManager.o ContainerShip.o ShipManager.o ShipSelector.o TankerShip.o 
 rm ShipSelector.o step4.o CargoManager.o TankerShip.o ShipManager.o ContainerShip.o AnimalShip.o
-Running our code...
-Running your code
-We agreed on this testcase and valgrind was clean
--------------------------
- This test case will run 
- ships-step4 
- With arguments 
- inputs/ships0.txt inputs/cargo1.txt 
--------------------------
 Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
@@ -165,18 +156,30 @@ We agreed on this testcase and valgrind was clean
  This test case will run 
  ships-step4 
  With arguments 
- inputs/ships.txt inputs/cargo.txt 
+ inputs/ships1.txt inputs/cargo1.txt 
 -------------------------
 Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
+ *** This is one of the four cases for step 4 early start EC **
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
+ inputs/ships.txt inputs/cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We said this was an error.  Our error message was
+Cargo to load has to have at least 5 parts, but  has only 0
+However, you exited with EXIT_SUCCESS
 You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1733065654** : 0a0219083ded892487daeaa326384f4117925ecf  -
 You have already pass the basic tests for step2:
 **step2 basic tests passed for jh730 at 1733065654** : 3bc627ea28224bdd6c3d21e5e3a14db0367dba1c  -
 You have already pass the basic tests for step3:
 **step3 basic tests passed for jh730 at 1733065654** : 3c6b120e87422ced0111364ddeb7a36070b1d54e  -
-You have PASSED all of your test cases
-Keep adding test cases until you are satisfied your program is correct
+You have FAILED one or more of your test cases
+Keep debugging
 
 Overall Grade: NO GRADE YET
