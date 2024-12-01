@@ -1,6 +1,6 @@
-Grading at 12/01/2024:01:34:47.585233
-For commit ID 9591fd56c6e8a44d82835b3ae185b4b95e1e585b
-Grading at Sat Nov 30 08:34:16 PM EST 2024
+Grading at 12/01/2024:02:13:17.947144
+For commit ID b1c9b2ead250a6b21b2fd2696179d47e77b90619
+Grading at Sat Nov 30 09:12:47 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 ships-step4
 Running your test cases
@@ -164,8 +164,11 @@ Note: this may happen if your code timed out too...
 Here is what you printed to stderr:
 ------
 ------
+You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1733016887** : 4b37fff6817f58e546ff78e798e41b44af5ac6df  -
+You have already pass the basic tests for step2:
 **step2 basic tests passed for jh730 at 1733016887** : b8da2943907b5feea6fc79d907c9e8d321e72db2  -
+You have already pass the basic tests for step3:
 **step3 basic tests passed for jh730 at 1733016887** : 29be2ef515e90168701a72f64519c3aa6231d607  -
 You have FAILED one or more of your test cases
 Keep debugging
