@@ -498,4 +498,3 @@ cargo496,Midgar,Elantris,255,container
 cargo497,Sarth,Luthadel,230,liquid
 cargo498,Midgar,Elantris,235,container,hazardous-corrosive
 cargo499,Sarth,Elantris,220,container
-
