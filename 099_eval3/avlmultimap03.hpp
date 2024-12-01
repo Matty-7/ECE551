@@ -2,12 +2,11 @@
 #define OUR_AVL_TREE_HPP
 
 #include <algorithm>
-#include <functional>
 #include <set>
 
-template<typename K, typename V, typename CompareK = std::less<K>, typename CompareV = std::less<V>>
+template<typename K, typename V, typename CompareK = std::less<K>, typename CompareV = std::less<V> >
 class AVLMultiMap {
- private:
+ public:  
   class Node {
    public:
     K key;
@@ -27,6 +26,7 @@ class AVLMultiMap {
     }
   };
 
+ private:
   Node* root;
   CompareK cmp;
 
@@ -34,8 +34,9 @@ class AVLMultiMap {
   Node* deleteHelper(Node* curr, const K& key, const V& val);
   Node* findLowerBoundHelper(Node* node, const K& key) const;
   Node* findNextInOrder(Node* node) const;
-  Node* findFirstMatchingNode(Node* node, const std::function<bool(Node*)>& condition) const;
-  Node* rebalance(Node* curr);
+  Node* rebalance(Node* curr); // 修复：声明 rebalance 方法
+  Node* leftRotate(Node* curr);
+  Node* rightRotate(Node* curr);
   void recursiveDelete(Node* curr);
 
  public:
@@ -45,9 +46,7 @@ class AVLMultiMap {
   void add(const K& key, const V& val) { root = insertHelper(root, key, val); }
   void remove(const K& key, const V& val) { root = deleteHelper(root, key, val); }
   Node* findLowerBound(const K& key) const { return findLowerBoundHelper(root, key); }
-  Node* getNext(Node* current, const std::function<bool(Node*)>& condition) const;
-
-  Node* next(Node* node) const { return findNextInOrder(node); }
+  Node* getNext(Node* current) const { return findNextInOrder(current); }
 };
 
 // Implementation of helper functions
@@ -65,7 +64,7 @@ AVLMultiMap<K, V, CompareK, CompareV>::insertHelper(Node* curr, const K& key, co
     curr->vals.insert(val);
     return curr;
   }
-  return rebalance(curr);
+  return rebalance(curr); // 修复：调用 rebalance
 }
 
 template<typename K, typename V, typename CompareK, typename CompareV>
@@ -96,7 +95,7 @@ AVLMultiMap<K, V, CompareK, CompareV>::deleteHelper(Node* curr, const K& key, co
     curr->vals = successor->vals;
     curr->right = deleteHelper(curr->right, successor->key, *successor->vals.begin());
   }
-  return rebalance(curr);
+  return rebalance(curr); // 修复：调用 rebalance
 }
 
 template<typename K, typename V, typename CompareK, typename CompareV>
@@ -141,32 +140,46 @@ AVLMultiMap<K, V, CompareK, CompareV>::findNextInOrder(Node* node) const {
 
 template<typename K, typename V, typename CompareK, typename CompareV>
 typename AVLMultiMap<K, V, CompareK, CompareV>::Node* 
-AVLMultiMap<K, V, CompareK, CompareV>::findFirstMatchingNode(
-    Node* node, const std::function<bool(Node*)>& condition) const {
-  if (node == NULL) {
-    return NULL;
+AVLMultiMap<K, V, CompareK, CompareV>::rebalance(Node* curr) {
+  curr->updateHeight();
+  if (curr->getLeftChildHeight() - curr->getRightChildHeight() > 1) {
+    if (curr->left->getLeftChildHeight() >= curr->left->getRightChildHeight()) {
+      return rightRotate(curr);
+    } else {
+      curr->left = leftRotate(curr->left);
+      return rightRotate(curr);
+    }
+  } else if (curr->getRightChildHeight() - curr->getLeftChildHeight() > 1) {
+    if (curr->right->getRightChildHeight() >= curr->right->getLeftChildHeight()) {
+      return leftRotate(curr);
+    } else {
+      curr->right = rightRotate(curr->right);
+      return leftRotate(curr);
+    }
   }
-  if (condition(node)) {
-    return node;
-  }
-  Node* leftResult = findFirstMatchingNode(node->left, condition);
-  if (leftResult != NULL) {
-    return leftResult;
-  }
-  return findFirstMatchingNode(node->right, condition);
+  return curr;
 }
 
 template<typename K, typename V, typename CompareK, typename CompareV>
 typename AVLMultiMap<K, V, CompareK, CompareV>::Node* 
-AVLMultiMap<K, V, CompareK, CompareV>::getNext(Node* current, const std::function<bool(Node*)>& condition) const {
-  Node* nextNode = findNextInOrder(current);
-  while (nextNode != NULL) {
-    if (condition(nextNode)) {
-      return nextNode;
-    }
-    nextNode = findNextInOrder(nextNode);
-  }
-  return NULL;
+AVLMultiMap<K, V, CompareK, CompareV>::leftRotate(Node* curr) {
+  Node* newRoot = curr->right;
+  curr->right = newRoot->left;
+  newRoot->left = curr;
+  curr->updateHeight();
+  newRoot->updateHeight();
+  return newRoot;
+}
+
+template<typename K, typename V, typename CompareK, typename CompareV>
+typename AVLMultiMap<K, V, CompareK, CompareV>::Node* 
+AVLMultiMap<K, V, CompareK, CompareV>::rightRotate(Node* curr) {
+  Node* newRoot = curr->left;
+  curr->left = newRoot->right;
+  newRoot->right = curr;
+  curr->updateHeight();
+  newRoot->updateHeight();
+  return newRoot;
 }
 
 template<typename K, typename V, typename CompareK, typename CompareV>

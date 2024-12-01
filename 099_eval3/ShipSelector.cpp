@@ -9,27 +9,33 @@ Ship* ShipSelector::findBestShip(const Cargo& cargo) {
     Ship* bestShip = NULL;
     uint64_t bestRemainingCapacity = std::numeric_limits<uint64_t>::max();
 
-    auto* current = shipMap.findLowerBound(cargo.weight);
+    
+    AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare>::Node* current =
+        shipMap.findLowerBound(cargo.weight);
 
     while (current != NULL) {
         uint64_t currentCapacity = current->key;
 
+        
         if (currentCapacity < cargo.weight) {
-            current = shipMap.getNext(current, [](auto* node) { return true; });
+            current = shipMap.getNext(current);
             continue;
         }
 
         uint64_t remainingAfterLoad = currentCapacity - cargo.weight;
 
+        
         if (bestShip != NULL && remainingAfterLoad > bestRemainingCapacity) {
             break;
         }
 
+        
         const std::set<Ship*, ShipNameCompare>& ships = current->vals;
-        for (auto it = ships.begin(); it != ships.end(); ++it) {
+        for (std::set<Ship*, ShipNameCompare>::const_iterator it = ships.begin(); it != ships.end(); ++it) {
             Ship* ship = const_cast<Ship*>(*it);
 
             if (ship->canLoadCargo(cargo)) {
+                
                 if (bestShip == NULL ||
                     remainingAfterLoad < bestRemainingCapacity ||
                     (remainingAfterLoad == bestRemainingCapacity && ship->name < bestShip->name)) {
@@ -39,7 +45,7 @@ Ship* ShipSelector::findBestShip(const Cargo& cargo) {
             }
         }
 
-        current = shipMap.getNext(current, [](auto* node) { return true; });
+        current = shipMap.getNext(current);
     }
 
     return bestShip;
