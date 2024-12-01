@@ -15,3 +15,5 @@ ships-step4 inputs/ships1.txt inputs/cargo1.txt
 
 ships-step4 inputs/ships.txt inputs/cargo.txt
 
+ships-step4 inputs/ships2.txt inputs/cargo2.txt
+
