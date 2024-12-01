@@ -1,6 +1,6 @@
-Grading at 12/01/2024:15:07:34.389130
-For commit ID 7410389a6b948b60a4db36b1b393dfcaf8548477
-Grading at Sun Dec  1 10:07:05 AM EST 2024
+Grading at 12/01/2024:15:51:34.596577
+For commit ID ca7f183788ef1f3815054d814706cc94d6ac3973
+Grading at Sun Dec  1 10:51:05 AM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 ships-step4
 Running your test cases
@@ -145,7 +145,17 @@ We agreed on this testcase and valgrind was clean
  This test case will run 
  ships-step4 
  With arguments 
- inputs/ships1.txt inputs/cargo1.txt 
+ inputs/ships0.txt inputs/cargo1.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+ *** This is one of the four cases for step 4 early start EC **
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
+ inputs/ships1.txt inputs/cargo0.txt 
 -------------------------
 Running our code...
 Running your code
@@ -3538,8 +3548,11 @@ The Container Ship The Wooden Whale(985/2150) is carrying :   |	The Container Sh
 							      >	  cargo289(15)
 							      >	  (58) slots remain
 Your file did not match the expected output
+You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1733065654** : 0a0219083ded892487daeaa326384f4117925ecf  -
+You have already pass the basic tests for step2:
 **step2 basic tests passed for jh730 at 1733065654** : 3bc627ea28224bdd6c3d21e5e3a14db0367dba1c  -
+You have already pass the basic tests for step3:
 **step3 basic tests passed for jh730 at 1733065654** : 3c6b120e87422ced0111364ddeb7a36070b1d54e  -
 You have FAILED one or more of your test cases
 Keep debugging
