@@ -22,6 +22,7 @@ bool parseCargoLine(const std::string & line, Cargo & cargo) {
         segments.push_back(segment);
     }
 
+    // Ensure minimum required 5 fields (name, source, destination, weight, at least one property)
     if (segments.size() < 5) {
         return false;
     }
@@ -35,6 +36,7 @@ bool parseCargoLine(const std::string & line, Cargo & cargo) {
         return false;
     }
 
+    // Assign the remaining segments as properties
     cargo.properties.assign(segments.begin() + 4, segments.end());
 
     return true;
