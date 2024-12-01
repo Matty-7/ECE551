@@ -15,10 +15,12 @@ class AVLMultiMap {
     Node* left;
     Node* right;
 
+    // Constructor initializes node with key and value
     Node(const K& key_, const V& val_)
         : key(key_), vals(), height(0), left(NULL), right(NULL) {
       vals.insert(val_);
     }
+
     int getLeftChildHeight() const { return left == NULL ? -1 : left->height; }
     int getRightChildHeight() const { return right == NULL ? -1 : right->height; }
     void updateHeight() {
@@ -34,7 +36,7 @@ class AVLMultiMap {
   Node* deleteHelper(Node* curr, const K& key, const V& val);
   Node* findLowerBoundHelper(Node* node, const K& key) const;
   Node* findNextInOrder(Node* node) const;
-  Node* rebalance(Node* curr); // 修复：声明 rebalance 方法
+  Node* rebalance(Node* curr);
   Node* leftRotate(Node* curr);
   Node* rightRotate(Node* curr);
   void recursiveDelete(Node* curr);
@@ -49,7 +51,6 @@ class AVLMultiMap {
   Node* getNext(Node* current) const { return findNextInOrder(current); }
 };
 
-// Implementation of helper functions
 template<typename K, typename V, typename CompareK, typename CompareV>
 typename AVLMultiMap<K, V, CompareK, CompareV>::Node* 
 AVLMultiMap<K, V, CompareK, CompareV>::insertHelper(Node* curr, const K& key, const V& val) {
@@ -64,7 +65,7 @@ AVLMultiMap<K, V, CompareK, CompareV>::insertHelper(Node* curr, const K& key, co
     curr->vals.insert(val);
     return curr;
   }
-  return rebalance(curr); // 修复：调用 rebalance
+  return rebalance(curr);
 }
 
 template<typename K, typename V, typename CompareK, typename CompareV>
@@ -95,7 +96,7 @@ AVLMultiMap<K, V, CompareK, CompareV>::deleteHelper(Node* curr, const K& key, co
     curr->vals = successor->vals;
     curr->right = deleteHelper(curr->right, successor->key, *successor->vals.begin());
   }
-  return rebalance(curr); // 修复：调用 rebalance
+  return rebalance(curr);
 }
 
 template<typename K, typename V, typename CompareK, typename CompareV>
