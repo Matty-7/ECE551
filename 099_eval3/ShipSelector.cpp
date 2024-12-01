@@ -6,25 +6,34 @@ ShipSelector::ShipSelector(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, Shi
 }
 
 Ship * ShipSelector::findBestShip(const Cargo & cargo) {
-    // Start with the smallest remaining capacity that could fit the cargo
     std::vector<std::pair<std::pair<uint64_t, std::set<Ship*, ShipNameCompare> >, int> > nodes = shipMap.preOrderDump();
     
-    // Find the first ship with sufficient capacity that can carry the cargo
+    Ship* bestShip = NULL;
+    uint64_t bestExtraCapacity = std::numeric_limits<uint64_t>::max();
+    
+    // Find the ship with minimum extra capacity that can carry the cargo
     for (size_t i = 0; i < nodes.size(); ++i) {
-        if (nodes[i].first.first >= cargo.weight) {  // Check if capacity is sufficient
-            // Check each ship with this capacity
-            const std::set<Ship*, ShipNameCompare> & ships = nodes[i].first.second;
-            for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
-                 shipIt != ships.end(); 
-                 ++shipIt) {
-                if ((*shipIt)->canLoadCargo(cargo)) {
-                    return *shipIt;
+        uint64_t currentCapacity = nodes[i].first.first;
+        if (currentCapacity >= cargo.weight) {  // Check if capacity is sufficient
+            uint64_t extraCapacity = currentCapacity - cargo.weight;
+            
+            // Only check ships with less extra capacity than our current best
+            if (extraCapacity < bestExtraCapacity) {
+                const std::set<Ship*, ShipNameCompare> & ships = nodes[i].first.second;
+                for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
+                     shipIt != ships.end(); 
+                     ++shipIt) {
+                    if ((*shipIt)->canLoadCargo(cargo)) {
+                        bestShip = *shipIt;
+                        bestExtraCapacity = extraCapacity;
+                        break;  // Found a ship at this capacity level
+                    }
                 }
             }
         }
     }
     
-    return NULL;
+    return bestShip;
 }
 
 void ShipSelector::updateShipInMap(Ship * ship, uint64_t oldRemainingCapacity, uint64_t newRemainingCapacity) {
