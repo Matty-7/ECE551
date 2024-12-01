@@ -25,7 +25,7 @@ int main(int argc, char * argv[]) {
     std::stable_sort(cargoList.begin(), cargoList.end(), compareCargoByWeight);
 
     
-    AVLMultiMap<uint64_t, Ship*> shipMap;
+    AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> shipMap;
     manager.loadShipsIntoMap(shipMap);
 
     
@@ -51,7 +51,7 @@ int main(int argc, char * argv[]) {
             selector.updateShipInMap(bestShip, oldRemainingCapacity, newRemainingCapacity);
 
             
-            std::cout << "Loading " << cargo.name << " onto " << bestShip->name << " from " << cargo.source << " to " << cargo.destination << " " << newRemainingCapacity << " capacity remains" << std::endl;
+            std::cout << "Loading " << cargo.name << " onto " << bestShip->name << " from " << cargo.source << " to " << cargo.destination << std::endl;
         } else {
             
             std::cout << "Could not load " << cargo.name << " from " << cargo.source << " to " << cargo.destination << std::endl;

@@ -18,7 +18,7 @@ class ShipManager {
   std::vector<Ship*>& getShips();
   void printShipDetails() const;
 
-  void loadShipsIntoMap(AVLMultiMap<uint64_t, Ship*> & shipMap);
+  void loadShipsIntoMap(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> & shipMap);
 
  private:
   std::vector<Ship*> ships;

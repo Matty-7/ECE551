@@ -8,12 +8,12 @@
 
 class ShipSelector {
 public:
-    ShipSelector(AVLMultiMap<uint64_t, Ship*> & shipMap);
+    ShipSelector(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> & shipMap);
     Ship * findBestShip(const Cargo & cargo);
     void updateShipInMap(Ship * ship, uint64_t oldRemainingCapacity, uint64_t newRemainingCapacity);
 
 private:
-    AVLMultiMap<uint64_t, Ship*> & shipMap;
+    AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> & shipMap;
 };
 
 #endif // SHIPSELECTOR_HPP

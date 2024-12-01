@@ -47,7 +47,7 @@ bool ShipManager::loadShipsFromFile(const std::string & filename) {
     return true;
 }
 
-void ShipManager::loadShipsIntoMap(AVLMultiMap<uint64_t, Ship*> & shipMap) {
+void ShipManager::loadShipsIntoMap(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> & shipMap) {
     for (std::vector<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it) {
         uint64_t remainingCapacity = (*it)->capacity - (*it)->usedCapacity;
         shipMap.add(remainingCapacity, *it);
