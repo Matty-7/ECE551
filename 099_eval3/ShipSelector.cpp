@@ -10,44 +10,21 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
     Ship * bestShip = NULL;
     uint64_t minRemainingCapacity = std::numeric_limits<uint64_t>::max();
     
-    
     std::vector<std::pair<std::pair<uint64_t, std::set<Ship*, ShipNameCompare> >, int> > nodes = 
         shipMap.preOrderDump();
     
-    
-    size_t left = 0;
-    size_t right = nodes.size();
-    while (left < right) {
-        size_t mid = left + (right - left) / 2;
-        if (nodes[mid].first.first >= cargo.weight) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    
-    
-    for (size_t i = left; i < nodes.size(); ++i) {
+    for (size_t i = 0; i < nodes.size(); ++i) {
         uint64_t remainingCapacity = nodes[i].first.first;
-        
-        
         if (remainingCapacity < cargo.weight) {
             continue;
         }
-        
-        
-        uint64_t remainingAfterLoad = remainingCapacity - cargo.weight;
-        if (bestShip != NULL && remainingAfterLoad >= minRemainingCapacity) {
-            break;
-        }
-        
         
         const std::set<Ship*, ShipNameCompare>& ships = nodes[i].first.second;
         for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
              shipIt != ships.end(); ++shipIt) {
             Ship * ship = *shipIt;
             if (ship->canLoadCargo(cargo)) {
-                
+                uint64_t remainingAfterLoad = remainingCapacity - cargo.weight;
                 if (bestShip == NULL || 
                     remainingAfterLoad < minRemainingCapacity || 
                     (remainingAfterLoad == minRemainingCapacity && ship->name < bestShip->name)) {
@@ -55,6 +32,10 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
                     minRemainingCapacity = remainingAfterLoad;
                 }
             }
+        }
+        
+        if (bestShip != NULL && remainingCapacity - cargo.weight > minRemainingCapacity) {
+            break;
         }
     }
     
