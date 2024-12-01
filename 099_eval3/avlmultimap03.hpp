@@ -210,15 +210,15 @@ class AVLMultiMap {
     }
 
     if (!cmp(curr->key, minKey)) { // curr->key >= minKey
+      // Here I search the left subtree since it might have a better ship
       findBestShipHelper(curr->left, minKey, cargo, bestShip, bestExtraCapacity, compV);
 
       K extraCapacity = curr->key - cargo.weight;
       if (extraCapacity > bestExtraCapacity) {
-        
+        // Skip this ship since it has a worse capacity
         return;
       }
 
-      
       typename std::set<V, CompareV>::const_iterator it;
       for (it = curr->vals.begin(); it != curr->vals.end(); ++it) {
         V ship = *it;
@@ -231,6 +231,7 @@ class AVLMultiMap {
         }
       }
 
+      // Here I search the right subtree since it might have a better ship
       findBestShipHelper(curr->right, minKey, cargo, bestShip, bestExtraCapacity, compV);
     } else {
       findBestShipHelper(curr->right, minKey, cargo, bestShip, bestExtraCapacity, compV);
@@ -244,7 +245,6 @@ class AVLMultiMap {
     return ans;
   }
 
-  
   void findBestShip(const K & minKey, const Cargo & cargo, V & bestShip, K & bestExtraCapacity) const {
     bestShip = NULL;
     bestExtraCapacity = std::numeric_limits<K>::max();
