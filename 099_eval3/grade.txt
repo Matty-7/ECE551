@@ -1,6 +1,6 @@
-Grading at 12/01/2024:01:26:55.900940
-For commit ID 377b346d1efae9fc44750d6d717dd913e8c717e0
-Grading at Sat Nov 30 08:26:25 PM EST 2024
+Grading at 12/01/2024:01:31:16.195866
+For commit ID f78cb1d375ea82e94c3eef6b20e377cff952e136
+Grading at Sat Nov 30 08:30:56 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 ships-step4
 Running your test cases
@@ -130,124 +130,6 @@ I need to compile your code for ships-step4 (make ships-step4)
 
 Compiling ships-step4
 g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step4.cpp
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 AnimalShip.cpp
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 CargoManager.cpp
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ContainerShip.cpp
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipManager.cpp
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 ShipSelector.cpp
-g++ -c -Wall -Werror -ggdb3 -pedantic --std=gnu++03 TankerShip.cpp
-g++ -o ships-step4 -Wall -Werror -ggdb3 -pedantic --std=gnu++03 step4.o AnimalShip.o CargoManager.o ContainerShip.o ShipManager.o ShipSelector.o TankerShip.o 
-rm ShipSelector.o step4.o CargoManager.o TankerShip.o ShipManager.o ContainerShip.o AnimalShip.o
-Running our code...
-Running your code
-We both agreed this was not an error, but your output is different from ours
-Your output on the left, ours on the right
-Loading radioactive waste onto The Majestic Kraken from Mordo |	Loading radioactive waste onto The Majestic Kraken from Mordo
-Loading cloth onto The Night Eagle from Mordor to Luthadel    |	Loading cloth onto The Night Eagle from Mordor to Luthadel 13
-Loading fireworks onto The Shining Turtle from Mordor to Sart |	Loading fireworks onto The Shining Turtle from Mordor to Sart
-Loading radioactive waste onto The Shining Turtle from Mordor |	Loading radioactive waste onto The Shining Turtle from Mordor
-Loading radioactive waste onto The Shining Turtle from Mordor |	Loading radioactive waste onto The Shining Turtle from Mordor
-Loading radioactive waste onto The Majestic Dreadnought from  |	Loading radioactive waste onto The Majestic Dreadnought from 
-Loading used batteries onto The Majestic Kraken from Mordor t |	Loading used batteries onto The Majestic Kraken from Mordor t
-Loading toy cars onto The Majestic Dreadnought from Mordor to |	Loading toy cars onto The Majestic Dreadnought from Mordor to
-Loading rat poison onto The Majestic Dreadnought from Mordor  |	Loading rat poison onto The Majestic Dreadnought from Mordor 
----Done Loading---Here are the ships---				---Done Loading---Here are the ships---
-The Container Ship The Majestic Dreadnought(140/1550) is carr	The Container Ship The Majestic Dreadnought(140/1550) is carr
-  radioactive waste(100)					  radioactive waste(100)
-  toy cars(20)							  toy cars(20)
-  rat poison(20)						  rat poison(20)
-  (1) slots remain						  (1) slots remain
-The Container Ship The Majestic Kraken(550/650) is carrying :	The Container Ship The Majestic Kraken(550/650) is carrying :
-  radioactive waste(500)					  radioactive waste(500)
-  used batteries(50)						  used batteries(50)
-  (7) slots remain						  (7) slots remain
-The Container Ship The Misty Dreadnought(0/1550) is carrying 	The Container Ship The Misty Dreadnought(0/1550) is carrying 
-  (3) slots remain						  (3) slots remain
-The Container Ship The Night Eagle(200/1500) is carrying : 	The Container Ship The Night Eagle(200/1500) is carrying : 
-  cloth(200)							  cloth(200)
-  (5) slots remain						  (5) slots remain
-The Container Ship The Swift Shark(0/2500) is carrying : 	The Container Ship The Swift Shark(0/2500) is carrying : 
-  (5) slots remain						  (5) slots remain
-The Container Ship The Shining Turtle(300/500) is carrying : 	The Container Ship The Shining Turtle(300/500) is carrying : 
-  fireworks(100)						  fireworks(100)
-  radioactive waste(100)					  radioactive waste(100)
-  radioactive waste(100)					  radioactive waste(100)
-  (0) slots remain						  (0) slots remain
-Your file did not match the expected output
--------------------------
- This test case will run 
- ships-step4 
- With arguments 
- inputs/ships1.txt inputs/cargo1.txt 
--------------------------
-Running our code...
-Running your code
-We both agreed this was not an error, but your output is different from ours
-Your output on the left, ours on the right
-Loading milk onto The Gleaming Narwhal from Luthadel to Midga |	Loading milk onto The Gleaming Narwhal from Luthadel to Midga
-Loading liquid hydrogen onto The Dawn Dreadnought from Luthad |	Loading liquid hydrogen onto The Dawn Dreadnought from Luthad
-Loading liquid hydrogen onto The Dawn Dreadnought from Luthad |	Loading liquid hydrogen onto The Dawn Dreadnought from Luthad
-Loading birds onto The Gleaming Shark from Luthadel to Midgar |	Loading birds onto The Gleaming Shark from Luthadel to Midgar
-No ships can carry the fireworks from Luthadel to Midgar	No ships can carry the fireworks from Luthadel to Midgar
-No ships can carry the liquid helium from Luthadel to Midgar	No ships can carry the liquid helium from Luthadel to Midgar
-Loading toy planes onto The Dawn Dolphin from Luthadel to Mid |	Loading toy planes onto The Dawn Dolphin from Luthadel to Mid
-Loading lions onto The Dawn Dolphin from Luthadel to Midgar   |	Loading lions onto The Dawn Dolphin from Luthadel to Midgar 1
-Loading caribou onto The Gleaming Eagle from Luthadel to Midg |	Loading caribou onto The Gleaming Eagle from Luthadel to Midg
-Loading toy cars onto The Gleaming Eagle from Luthadel to Mid |	Loading toy cars onto The Gleaming Eagle from Luthadel to Mid
-Loading cats onto The Gleaming Eagle from Luthadel to Midgar  |	Loading cats onto The Gleaming Eagle from Luthadel to Midgar 
-Loading paper onto The Gleaming Eagle from Luthadel to Midgar |	Loading paper onto The Gleaming Eagle from Luthadel to Midgar
-Loading hot stuff onto The Gleaming Narwhal from Luthadel to  |	Loading hot stuff onto The Gleaming Narwhal from Luthadel to 
-Loading propane onto The Gleaming Narwhal from Luthadel to Mi |	Loading propane onto The Gleaming Narwhal from Luthadel to Mi
-Loading milk onto The Gleaming Narwhal from Luthadel to Midga |	Loading milk onto The Gleaming Narwhal from Luthadel to Midga
----Done Loading---Here are the ships---				---Done Loading---Here are the ships---
-The Container Ship The Dawn Clipper(0/1700) is carrying : 	The Container Ship The Dawn Clipper(0/1700) is carrying : 
-  (2) slots remain						  (2) slots remain
-The Animals Ship The Dawn Dolphin(100/110) is carrying : 	The Animals Ship The Dawn Dolphin(100/110) is carrying : 
-  toy planes(50)						  toy planes(50)
-  lions(50)							  lions(50)
-  has a roamer							  has a roamer
-The Tanker Ship The Dawn Dreadnought(400/700) is carrying : 	The Tanker Ship The Dawn Dreadnought(400/700) is carrying : 
-  liquid hydrogen(200)						  liquid hydrogen(200)
-  liquid hydrogen(200)						  liquid hydrogen(200)
-  15 / 25 tanks used						  15 / 25 tanks used
-The Tanker Ship The Gleaming Dreadnought(0/600) is carrying :	The Tanker Ship The Gleaming Dreadnought(0/600) is carrying :
-  0 / 10 tanks used						  0 / 10 tanks used
-The Animals Ship The Gleaming Eagle(140/140) is carrying : 	The Animals Ship The Gleaming Eagle(140/140) is carrying : 
-  caribou(50)							  caribou(50)
-  toy cars(30)							  toy cars(30)
-  cats(30)							  cats(30)
-  paper(30)							  paper(30)
-  has a roamer							  has a roamer
-The Tanker Ship The Gleaming Narwhal(487/500) is carrying : 	The Tanker Ship The Gleaming Narwhal(487/500) is carrying : 
-  milk(472)							  milk(472)
-  hot stuff(10)							  hot stuff(10)
-  propane(4)							  propane(4)
-  milk(1)							  milk(1)
-  50 / 50 tanks used						  50 / 50 tanks used
-The Animals Ship The Gleaming Shark(180/190) is carrying : 	The Animals Ship The Gleaming Shark(180/190) is carrying : 
-  birds(180)							  birds(180)
-  does not have a roamer					  does not have a roamer
-Your file did not match the expected output
--------------------------
- This test case will run 
- ships-step4 
- With arguments 
- inputs/ships2.txt inputs/cargo2.txt 
--------------------------
-Running our code...
-Running your code
-You said this was an error (exit status was 137), but we said it was valid
-Note: this may happen if your code timed out too...
-Here is what you printed to stderr:
-------
-------
-You have already pass the basic tests for step1:
-**step1 basic tests passed for jh730 at 1733016075** : f8172e5841113bc1d40178c1003bcd083447db16  -
-You have already pass the basic tests for step2:
-**step2 basic tests passed for jh730 at 1733016075** : 5a3f89b62802814a321b6e278ae0970324c79579  -
-You have already pass the basic tests for step3:
-**step3 basic tests passed for jh730 at 1733016075** : 750aeb69a530dd436e7c83a2cf9d8b4943a10e31  -
-You have FAILED one or more of your test cases
-Keep debugging
+The code did not compile!
 
 Overall Grade: NO GRADE YET
