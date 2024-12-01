@@ -24,15 +24,9 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
         }
     }
     
-    
     for (size_t i = left; i < nodes.size(); ++i) {
         uint64_t remainingCapacity = nodes[i].first.first;
         uint64_t remainingAfterLoad = remainingCapacity - cargo.weight;
-        
-        
-        if (bestShip != NULL && remainingAfterLoad >= minRemainingCapacity) {
-            break;
-        }
         
         const std::set<Ship*, ShipNameCompare>& ships = nodes[i].first.second;
         for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
