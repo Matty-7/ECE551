@@ -8,6 +8,7 @@
 #include <vector>
 #include <iostream>
 #include "Ship.hpp"
+#include "avlmultimap03.hpp"
 
 class ShipManager {
  public:
@@ -16,6 +17,8 @@ class ShipManager {
   void printRouteCapacities() const;
   std::vector<Ship*>& getShips();
   void printShipDetails() const;
+
+  void loadShipsIntoMap(AVLMultiMap<uint64_t, Ship*> & shipMap);
 
  private:
   std::vector<Ship*> ships;

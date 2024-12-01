@@ -16,4 +16,6 @@ struct Cargo {
 bool parseCargoLine(const std::string & line, Cargo & cargo);
 std::vector<Cargo> loadCargoFromFile(const std::string & filename);
 
+bool compareCargoByWeight(const Cargo & a, const Cargo & b);
+
 #endif // CARGOMANAGER_HPP

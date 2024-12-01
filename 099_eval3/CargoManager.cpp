@@ -61,3 +61,7 @@ std::vector<Cargo> loadCargoFromFile(const std::string & filename) {
     }
     return cargoList;
 }
+
+bool compareCargoByWeight(const Cargo & a, const Cargo & b) {
+    return a.weight > b.weight;
+}

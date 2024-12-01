@@ -20,4 +20,11 @@ public:
     unsigned long usedCapacity;
 };
 
+class ShipNameCompare {
+public:
+    bool operator()(const Ship * a, const Ship * b) const {
+        return a->name < b->name;
+    }
+};
+
 #endif // SHIP_HPP
