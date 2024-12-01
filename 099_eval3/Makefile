@@ -6,9 +6,8 @@ CXXFLAGS=-Wall -Werror -ggdb3 -pedantic --std=gnu++03
 all: $(BINARIES)
 	@echo "made all"
 
-# Ensure ShipManager.o is included only once
-ships-step%: step%.cpp $(COMMON_OBJ)
-	g++ -o $@ $(CXXFLAGS) $< $(COMMON_OBJ)
+ships-step%: step%.o $(COMMON_OBJ)
+	g++ -o $@ $(CXXFLAGS) $^ 
 
 %.o: %.cpp *.hpp
 	g++ -c $(CXXFLAGS) $<
