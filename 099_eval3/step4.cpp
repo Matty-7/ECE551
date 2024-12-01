@@ -23,25 +23,27 @@ int main(int argc, char * argv[]) {
     
     std::stable_sort(cargoList.begin(), cargoList.end(), compareCargoByWeight);
 
-    
     AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> shipMap;
     manager.loadShipsIntoMap(shipMap);
 
-    
     ShipSelector selector(shipMap);
 
-    
     for (std::vector<Cargo>::iterator cargoIt = cargoList.begin(); cargoIt != cargoList.end(); ++cargoIt) {
         Cargo & cargo = *cargoIt;
 
         Ship * bestShip = selector.findBestShip(cargo);
 
         if (bestShip != NULL) {
-        std::cout << "Loading " << cargo.name << " onto " << bestShip->name
-                << " from " << cargo.source << " to " << cargo.destination << std::endl;
-    } else {
-        std::cout << "No ships can carry the " << cargo.name << " from "
-                << cargo.source << " to " << cargo.destination << std::endl;
+            uint64_t oldRemainingCapacity = bestShip->capacity - bestShip->usedCapacity;
+            bestShip->loadCargo(cargo);
+            uint64_t newRemainingCapacity = bestShip->capacity - bestShip->usedCapacity;
+            selector.updateShipInMap(bestShip, oldRemainingCapacity, newRemainingCapacity);
+
+            std::cout << "Loading " << cargo.name << " onto " << bestShip->name
+                      << " from " << cargo.source << " to " << cargo.destination << std::endl;
+        } else {
+            std::cout << "No ships can carry the " << cargo.name << " from "
+                      << cargo.source << " to " << cargo.destination << std::endl;
         }
     }
 
