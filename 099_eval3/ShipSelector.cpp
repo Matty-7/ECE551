@@ -14,7 +14,7 @@ Ship* ShipSelector::findBestShip(const Cargo& cargo) {
 
     while (current != NULL) {
         uint64_t currentCapacity = current->key;
-
+        
         if (currentCapacity < cargo.weight) {
             current = shipMap.getNext(current);
             continue;
@@ -27,7 +27,8 @@ Ship* ShipSelector::findBestShip(const Cargo& cargo) {
         }
 
         const std::set<Ship*, ShipNameCompare>& ships = current->vals;
-        for (std::set<Ship*, ShipNameCompare>::const_iterator it = ships.begin(); it != ships.end(); ++it) {
+        for (std::set<Ship*, ShipNameCompare>::const_iterator it = ships.begin(); 
+             it != ships.end(); ++it) {
             Ship* ship = const_cast<Ship*>(*it);
 
             if (ship->canLoadCargo(cargo)) {
@@ -41,7 +42,7 @@ Ship* ShipSelector::findBestShip(const Cargo& cargo) {
             }
         }
 
-        if (bestShip != NULL && remainingAfterLoad == bestRemainingCapacity) {
+        if (bestShip != NULL && remainingAfterLoad > bestRemainingCapacity) {
             break;
         }
 
