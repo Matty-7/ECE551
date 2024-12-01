@@ -41,6 +41,10 @@ Ship* ShipSelector::findBestShip(const Cargo& cargo) {
             }
         }
 
+        if (bestShip != NULL && remainingAfterLoad == bestRemainingCapacity) {
+            break;
+        }
+
         current = shipMap.getNext(current);
     }
 
