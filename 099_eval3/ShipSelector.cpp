@@ -25,20 +25,18 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
     typedef std::pair<std::pair<uint64_t, std::set<Ship*, ShipNameCompare> >, int> NodeInfo;
     std::vector<NodeInfo> nodes = shipMap.preOrderDump();
     
-    
     std::vector<NodeInfo>::const_iterator lower = 
         std::lower_bound(nodes.begin(), nodes.end(), cargo.weight, CompareNodeByCapacity());
-        
     
-    for (std::vector<NodeInfo>::const_iterator it = lower; it != nodes.end(); ++it) {
-        const uint64_t capacity = it->first.first;
+    for (std::vector<NodeInfo>::const_iterator it = lower; 
+         it != nodes.end(); 
+         ++it) {
+        const uint64_t currentCapacity = it->first.first;
+        uint64_t remainingAfterLoad = currentCapacity - cargo.weight;
         
-        
-        if (bestShip != NULL && 
-            (capacity - cargo.weight) > bestRemainingCapacity) {
+        if (bestShip != NULL && remainingAfterLoad > bestRemainingCapacity) {
             break;
         }
-        
         
         const std::set<Ship*, ShipNameCompare>& ships = it->first.second;
         for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
@@ -46,11 +44,7 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
              ++shipIt) {
             Ship * ship = *shipIt;
             
-            
             if (ship->canLoadCargo(cargo)) {
-                uint64_t remainingAfterLoad = capacity - cargo.weight;
-                
-                
                 if (bestShip == NULL || 
                     remainingAfterLoad < bestRemainingCapacity || 
                     (remainingAfterLoad == bestRemainingCapacity && 
