@@ -7,49 +7,31 @@ ShipSelector::ShipSelector(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, Shi
     : shipMap(shipMap) {}
 
 Ship * ShipSelector::findBestShip(const Cargo & cargo) {
+    uint64_t cargoWeight = cargo.weight;
+    AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare>::Node * curr = shipMap.root;
     Ship * bestShip = NULL;
     uint64_t minRemainingCapacity = std::numeric_limits<uint64_t>::max();
-    
-    std::vector<std::pair<std::pair<uint64_t, std::set<Ship*, ShipNameCompare> >, int> > nodes = 
-        shipMap.preOrderDump();
-    
-    // Binary search to find first node with sufficient capacity
-    size_t left = 0;
-    size_t right = nodes.size();
-    while (left < right) {
-        size_t mid = left + (right - left) / 2;
-        if (nodes[mid].first.first >= cargo.weight) {
-            right = mid;
+
+    while (curr != NULL) {
+        if (curr->key < cargoWeight) {
+            curr = curr->right;
         } else {
-            left = mid + 1;
-        }
-    }
-    
-    // Check only nodes with sufficient and not excessive capacity
-    for (size_t i = left; i < nodes.size(); ++i) {
-        uint64_t remainingCapacity = nodes[i].first.first;
-        uint64_t remainingAfterLoad = remainingCapacity - cargo.weight;
-        
-        // Early exit if remaining capacity would be worse than current best
-        if (bestShip != NULL && remainingAfterLoad >= minRemainingCapacity) {
-            break;
-        }
-        
-        const std::set<Ship*, ShipNameCompare>& ships = nodes[i].first.second;
-        for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
-             shipIt != ships.end(); ++shipIt) {
-            Ship * ship = *shipIt;
-            if (ship->canLoadCargo(cargo)) {
-                if (bestShip == NULL || 
-                    remainingAfterLoad < minRemainingCapacity || 
-                    (remainingAfterLoad == minRemainingCapacity && ship->name < bestShip->name)) {
-                    bestShip = ship;
-                    minRemainingCapacity = remainingAfterLoad;
+            // Current node's capacity is sufficient, check ships in this node
+            for (std::set<Ship*, ShipNameCompare>::const_iterator it = curr->vals.begin(); it != curr->vals.end(); ++it) {
+                Ship * ship = const_cast<Ship*>(*it);
+                if (ship->canLoadCargo(cargo)) {
+                    uint64_t remainingCapacity = ship->capacity - ship->usedCapacity - cargoWeight;
+                    if (remainingCapacity < minRemainingCapacity || 
+                        (remainingCapacity == minRemainingCapacity && ship->name < bestShip->name)) {
+                        bestShip = ship;
+                        minRemainingCapacity = remainingCapacity;
+                    }
                 }
             }
+            // Continue to left subtree to find a ship with smaller capacity
+            curr = curr->left;
         }
     }
-    
     return bestShip;
 }
 

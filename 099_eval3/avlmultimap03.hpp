@@ -8,12 +8,13 @@
 #include <iostream>
 #include <set>
 #include <vector>
+
 template<typename K,
          typename V,
          typename CompareK = std::less<K>,
          typename CompareV = std::less<V> >
 class AVLMultiMap {
- private:
+ public:  // Changed to public
   class Node {
    public:
     K key;
@@ -44,42 +45,9 @@ class AVLMultiMap {
     bool isLeftSideDeeper() const { return getBalanceDiff() >= 0; }
     bool isRightSideDeeper() const { return getBalanceDiff() <= 0; }
   };
-  Node * root;
+  Node * root;  // Now public
   CompareK cmp;
 
-  Node * leftRotate(Node * curr) {
-    Node * node = curr->right;
-    curr->right = node->left;
-    node->left = curr;
-    curr->updateHeight();
-    node->updateHeight();
-    return node;
-  }
-  Node * rightRotate(Node * curr) {
-    Node * node = curr->left;
-    curr->left = node->right;
-    node->right = curr;
-    curr->updateHeight();
-    node->updateHeight();
-    return node;
-  }
-  Node * leftRightRotate(Node * curr) {
-    curr->left = leftRotate(curr->left);
-    return rightRotate(curr);
-  }
-  Node * rightLeftRotate(Node * curr) {
-    curr->right = rightRotate(curr->right);
-    return leftRotate(curr);
-  }
-  Node * copyHelper(const Node * curr) const {
-    if (curr == NULL) {
-      return NULL;
-    }
-    return new Node(
-        curr->key, curr->vals, copyHelper(curr->left), copyHelper(curr->right));
-  }
-
- public:
   AVLMultiMap() : root(NULL), cmp() {}
   AVLMultiMap(const AVLMultiMap & rhs) : root(copyHelper(rhs.root)), cmp(rhs.cmp) {}
   void add(const K & key, const V & val) { root = insertHelper(root, key, val); }
@@ -190,6 +158,37 @@ class AVLMultiMap {
     recursiveDelete(curr->right);
     delete curr;
   }
+  Node * leftRotate(Node * curr) {
+    Node * node = curr->right;
+    curr->right = node->left;
+    node->left = curr;
+    curr->updateHeight();
+    node->updateHeight();
+    return node;
+  }
+  Node * rightRotate(Node * curr) {
+    Node * node = curr->left;
+    curr->left = node->right;
+    node->right = curr;
+    curr->updateHeight();
+    node->updateHeight();
+    return node;
+  }
+  Node * leftRightRotate(Node * curr) {
+    curr->left = leftRotate(curr->left);
+    return rightRotate(curr);
+  }
+  Node * rightLeftRotate(Node * curr) {
+    curr->right = rightRotate(curr->right);
+    return leftRotate(curr);
+  }
+  Node * copyHelper(const Node * curr) const {
+    if (curr == NULL) {
+      return NULL;
+    }
+    return new Node(
+        curr->key, curr->vals, copyHelper(curr->left), copyHelper(curr->right));
+  }
   void preOrderDumpHelper(
       std::vector<std::pair<std::pair<K, std::set<V, CompareV> >, int> > & ans,
       const Node * curr) const {
@@ -202,8 +201,7 @@ class AVLMultiMap {
   }
 
  public:
-  std::vector<std::pair<std::pair<K, std::set<V, CompareV> >, int> > preOrderDump()
-      const {
+  std::vector<std::pair<std::pair<K, std::set<V, CompareV> >, int> > preOrderDump() const {
     std::vector<std::pair<std::pair<K, std::set<V, CompareV> >, int> > ans;
     preOrderDumpHelper(ans, root);
     return ans;
