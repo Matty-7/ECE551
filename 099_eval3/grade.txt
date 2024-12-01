@@ -1,6 +1,6 @@
-Grading at 12/01/2024:19:15:22.643484
-For commit ID 370c6ec3484c24be7b9c8e29dbf0a322cf7a758b
-Grading at Sun Dec  1 02:14:47 PM EST 2024
+Grading at 12/01/2024:19:42:53.664539
+For commit ID aa1e293a014add9e504e4b32b55d3217267cac95
+Grading at Sun Dec  1 02:42:23 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 ships-step4
 Running your test cases
@@ -179,18 +179,16 @@ We agreed on this testcase and valgrind was clean
 -------------------------
 Running our code...
 Running your code
-You said this was an error (exit status was 137), but we said it was valid
-Note: this may happen if your code timed out too...
-Here is what you printed to stderr:
-------
-------
+We agreed on this testcase and valgrind was clean
+ *** This is one of the four cases for step 4 early start EC **
 You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1733065654** : 0a0219083ded892487daeaa326384f4117925ecf  -
 You have already pass the basic tests for step2:
 **step2 basic tests passed for jh730 at 1733065654** : 3bc627ea28224bdd6c3d21e5e3a14db0367dba1c  -
 You have already pass the basic tests for step3:
 **step3 basic tests passed for jh730 at 1733065654** : 3c6b120e87422ced0111364ddeb7a36070b1d54e  -
-You have FAILED one or more of your test cases
-Keep debugging
+**step4 basic tests passed for jh730 at 1733082173** : a016b3befe516cbfadcdc684013722a2f5d47c2f  -
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
