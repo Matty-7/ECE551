@@ -30,7 +30,10 @@ bool parseCargoLine(const std::string & line, Cargo & cargo) {
     cargo.source = segments[1];
     cargo.destination = segments[2];
 
-    cargo.weight = std::stoul(segments[3]);
+    std::istringstream weightStream(segments[3]);
+    if (!(weightStream >> cargo.weight)) {
+        return false;
+    }
 
     cargo.properties.assign(segments.begin() + 4, segments.end());
 
