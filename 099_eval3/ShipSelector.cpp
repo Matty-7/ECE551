@@ -3,7 +3,8 @@
 #include <limits>
 #include <stdint.h>
 
-ShipSelector::ShipSelector(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> & shipMap) : shipMap(shipMap) {}
+ShipSelector::ShipSelector(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> & shipMap) 
+    : shipMap(shipMap) {}
 
 Ship * ShipSelector::findBestShip(const Cargo & cargo) {
     Ship * bestShip = NULL;
@@ -11,27 +12,25 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
     
     std::vector<std::pair<std::pair<uint64_t, std::set<Ship*, ShipNameCompare> >, int> > nodes = 
         shipMap.preOrderDump();
-        
-    for (size_t i = 0; i < nodes.size() && minRemainingCapacity != 0; ++i) {
+    
+    // Binary search to find first node with sufficient capacity
+    size_t left = 0;
+    size_t right = nodes.size();
+    while (left < right) {
+        size_t mid = left + (right - left) / 2;
+        if (nodes[mid].first.first >= cargo.weight) {
+            right = mid;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    // Check only nodes with sufficient and not excessive capacity
+    for (size_t i = left; i < nodes.size(); ++i) {
         uint64_t remainingCapacity = nodes[i].first.first;
-        
-        if (remainingCapacity < cargo.weight) {
-            continue;
-        }
-        
-        if (remainingCapacity == cargo.weight) {
-            const std::set<Ship*, ShipNameCompare>& ships = nodes[i].first.second;
-            for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
-                 shipIt != ships.end(); ++shipIt) {
-                Ship * ship = *shipIt;
-                if (ship->canLoadCargo(cargo)) {
-                    return ship;
-                }
-            }
-            continue;
-        }
-        
         uint64_t remainingAfterLoad = remainingCapacity - cargo.weight;
+        
+        // Early exit if remaining capacity would be worse than current best
         if (bestShip != NULL && remainingAfterLoad >= minRemainingCapacity) {
             break;
         }
