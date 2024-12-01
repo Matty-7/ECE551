@@ -40,12 +40,12 @@ int main(int argc, char * argv[]) {
             selector.updateShipInMap(bestShip, oldRemainingCapacity, newRemainingCapacity);
 
             std::cout << "Loading " << cargo.name << " onto " << bestShip->name
-                      << " from " << cargo.source << " to " << cargo.destination << std::endl;
+                    << " from " << cargo.source << " to " << cargo.destination << " "
+                    << newRemainingCapacity << " capacity remains" << std::endl;
         } else {
             std::cout << "No ships can carry the " << cargo.name << " from "
-                      << cargo.source << " to " << cargo.destination << std::endl;
+                    << cargo.source << " to " << cargo.destination << std::endl;
         }
-    }
 
     std::cout << "---Done Loading---Here are the ships---" << std::endl;
     manager.printShipDetails();
