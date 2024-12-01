@@ -6,7 +6,7 @@
 ShipSelector::ShipSelector(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> & shipMap) 
     : shipMap(shipMap) {}
 
-struct CompareByCapacity {
+struct CompareNodeByCapacity {
     bool operator()(const std::pair<std::pair<uint64_t, std::set<Ship*, ShipNameCompare> >, int>& node, 
                    const uint64_t& weight) const {
         return node.first.first < weight;
@@ -26,20 +26,19 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
     std::vector<NodeInfo> nodes = shipMap.preOrderDump();
     
     
-    std::vector<NodeInfo>::const_iterator it = 
-        std::lower_bound(nodes.begin(), 
-                        nodes.end(), 
-                        cargo.weight,
-                        CompareByCapacity());
+    std::vector<NodeInfo>::const_iterator lower = 
+        std::lower_bound(nodes.begin(), nodes.end(), cargo.weight, CompareNodeByCapacity());
+        
     
-    
-    for (; it != nodes.end(); ++it) {
-        uint64_t remainingCapacity = it->first.first;
+    for (std::vector<NodeInfo>::const_iterator it = lower; it != nodes.end(); ++it) {
+        const uint64_t capacity = it->first.first;
         
         
-        if (bestShip != NULL && remainingCapacity - cargo.weight >= bestRemainingCapacity) {
+        if (bestShip != NULL && 
+            (capacity - cargo.weight) > bestRemainingCapacity) {
             break;
         }
+        
         
         const std::set<Ship*, ShipNameCompare>& ships = it->first.second;
         for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
@@ -49,12 +48,13 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
             
             
             if (ship->canLoadCargo(cargo)) {
-                uint64_t remainingAfterLoad = remainingCapacity - cargo.weight;
+                uint64_t remainingAfterLoad = capacity - cargo.weight;
                 
                 
                 if (bestShip == NULL || 
                     remainingAfterLoad < bestRemainingCapacity || 
-                    (remainingAfterLoad == bestRemainingCapacity && ship->name < bestShip->name)) {
+                    (remainingAfterLoad == bestRemainingCapacity && 
+                     ship->name < bestShip->name)) {
                     bestShip = ship;
                     bestRemainingCapacity = remainingAfterLoad;
                 }
@@ -69,10 +69,6 @@ void ShipSelector::updateShipInMap(Ship * ship, uint64_t oldRemainingCapacity, u
     if (ship == NULL) {
         return;
     }
-    
-    
     shipMap.remove(oldRemainingCapacity, ship);
-    
-    
     shipMap.add(newRemainingCapacity, ship);
 }
