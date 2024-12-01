@@ -8,6 +8,9 @@
 #include <iostream>
 #include <set>
 #include <vector>
+#include <limits>
+#include "CargoManager.hpp"
+
 template<typename K,
          typename V,
          typename CompareK = std::less<K>,
@@ -110,7 +113,7 @@ class AVLMultiMap {
     }
     else {
       curr->vals.insert(val);
-      return curr;  //no rebalance needed
+      return curr;  // no rebalance needed
     }
     return rebalance(curr);
   }
@@ -129,19 +132,19 @@ class AVLMultiMap {
     if (curr == NULL) {
       return NULL;
     }
-    if (cmp(key, curr->key)) {  //key < curr->key
+    if (cmp(key, curr->key)) {  // key < curr->key
       curr->left = deleteHelper(curr->left, key, val);
     }
-    else if (cmp(curr->key, key)) {  //curr->key < key
+    else if (cmp(curr->key, key)) {  // curr->key < key
       curr->right = deleteHelper(curr->right, key, val);
     }
     else {
-      //remove val from set.
+      // remove val from set.
       curr->vals.erase(val);
       if (!curr->vals.empty()) {
-        return curr;  //no change in structure of tree
+        return curr;  // no change in structure of tree
       }
-      //if empty, update structure of tree
+      // if empty, update structure of tree
       if (curr->left != NULL && curr->right != NULL) {
         curr->right = twoChildDelHelper(curr->right, curr);
       }
@@ -201,12 +204,52 @@ class AVLMultiMap {
     preOrderDumpHelper(ans, curr->right);
   }
 
+  void findBestShipHelper(Node * curr, const K & minKey, const Cargo & cargo, V & bestShip, K & bestExtraCapacity, const CompareV & compV) const {
+    if (curr == NULL) {
+      return;
+    }
+
+    if (!cmp(curr->key, minKey)) { // curr->key >= minKey
+      findBestShipHelper(curr->left, minKey, cargo, bestShip, bestExtraCapacity, compV);
+
+      K extraCapacity = curr->key - cargo.weight;
+      if (extraCapacity > bestExtraCapacity) {
+        
+        return;
+      }
+
+      
+      typename std::set<V, CompareV>::const_iterator it;
+      for (it = curr->vals.begin(); it != curr->vals.end(); ++it) {
+        V ship = *it;
+        if (ship->canLoadCargo(cargo)) {
+          if (bestShip == NULL || extraCapacity < bestExtraCapacity ||
+              (extraCapacity == bestExtraCapacity && compV(ship, bestShip))) {
+            bestShip = ship;
+            bestExtraCapacity = extraCapacity;
+          }
+        }
+      }
+
+      findBestShipHelper(curr->right, minKey, cargo, bestShip, bestExtraCapacity, compV);
+    } else {
+      findBestShipHelper(curr->right, minKey, cargo, bestShip, bestExtraCapacity, compV);
+    }
+  }
+
  public:
-  std::vector<std::pair<std::pair<K, std::set<V, CompareV> >, int> > preOrderDump()
-      const {
+  std::vector<std::pair<std::pair<K, std::set<V, CompareV> >, int> > preOrderDump() const {
     std::vector<std::pair<std::pair<K, std::set<V, CompareV> >, int> > ans;
     preOrderDumpHelper(ans, root);
     return ans;
   }
+
+  
+  void findBestShip(const K & minKey, const Cargo & cargo, V & bestShip, K & bestExtraCapacity) const {
+    bestShip = NULL;
+    bestExtraCapacity = std::numeric_limits<K>::max();
+    findBestShipHelper(root, minKey, cargo, bestShip, bestExtraCapacity, CompareV());
+  }
 };
+
 #endif
