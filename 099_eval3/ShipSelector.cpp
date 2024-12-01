@@ -11,27 +11,36 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
     
     std::vector<std::pair<std::pair<uint64_t, std::set<Ship*, ShipNameCompare> >, int> > nodes = 
         shipMap.preOrderDump();
-    
-    for (size_t i = 0; i < nodes.size(); i++) {
+        
+    for (size_t i = 0; i < nodes.size() && minRemainingCapacity != 0; ++i) {
         uint64_t remainingCapacity = nodes[i].first.first;
         
         if (remainingCapacity < cargo.weight) {
             continue;
         }
         
-        if (remainingCapacity - cargo.weight > minRemainingCapacity) {
+        if (remainingCapacity == cargo.weight) {
+            const std::set<Ship*, ShipNameCompare>& ships = nodes[i].first.second;
+            for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
+                 shipIt != ships.end(); ++shipIt) {
+                Ship * ship = *shipIt;
+                if (ship->canLoadCargo(cargo)) {
+                    return ship;
+                }
+            }
             continue;
         }
         
-        const std::set<Ship*, ShipNameCompare>& ships = nodes[i].first.second;
+        uint64_t remainingAfterLoad = remainingCapacity - cargo.weight;
+        if (bestShip != NULL && remainingAfterLoad >= minRemainingCapacity) {
+            break;
+        }
         
+        const std::set<Ship*, ShipNameCompare>& ships = nodes[i].first.second;
         for (std::set<Ship*, ShipNameCompare>::const_iterator shipIt = ships.begin(); 
              shipIt != ships.end(); ++shipIt) {
             Ship * ship = *shipIt;
-            
             if (ship->canLoadCargo(cargo)) {
-                uint64_t remainingAfterLoad = remainingCapacity - cargo.weight;
-                
                 if (bestShip == NULL || 
                     remainingAfterLoad < minRemainingCapacity || 
                     (remainingAfterLoad == minRemainingCapacity && ship->name < bestShip->name)) {
