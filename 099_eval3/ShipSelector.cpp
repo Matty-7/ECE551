@@ -21,7 +21,7 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
         }
         
         const uint64_t extraCapacity = currentCapacity - cargo.weight;
-        if (extraCapacity >= bestExtraCapacity) {
+        if (extraCapacity > bestExtraCapacity) {
             continue;
         }
         
@@ -31,14 +31,15 @@ Ship * ShipSelector::findBestShip(const Cargo & cargo) {
              shipIt != ships.end();
              ++shipIt) {
             if ((*shipIt)->canLoadCargo(cargo)) {
-                bestShip = *shipIt;
-                bestExtraCapacity = extraCapacity;
-                break;
+                if (extraCapacity < bestExtraCapacity || bestShip == NULL) {
+                    bestShip = *shipIt;
+                    bestExtraCapacity = extraCapacity;
+                }
+                else if (extraCapacity == bestExtraCapacity && 
+                         ShipNameCompare()(*shipIt, bestShip)) {
+                    bestShip = *shipIt;
+                }
             }
-        }
-        
-        if (bestExtraCapacity == 0) {
-            break;
         }
     }
     
