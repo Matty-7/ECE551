@@ -26,6 +26,7 @@ bool ContainerShip::canLoadCargo(const Cargo & cargo) const {
         return false;
     }
 
+    // Check if the ship can carry the hazardous cargo
     for (it = cargo.properties.begin(); it != cargo.properties.end(); ++it) {
         if (it->compare(0, 10, "hazardous-") == 0) {
             std::string hazmat = it->substr(10);
