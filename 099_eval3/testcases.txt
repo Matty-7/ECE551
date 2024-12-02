@@ -11,13 +11,18 @@ ships-step2 inputs/ships0.txt inputs/cargo0.txt
 ships-step2 inputs/ships0.txt inputs/empty_cargo.txt
 ships-step2 inputs/ships0.txt inputs/no_eligible_cargo.txt
 ships-step2 inputs/ships0.txt inputs/missing_container_property.txt
-ships-step2 inputs/limited_slots_ships.txt inputs/large_cargo_list.txt
+ships-step2 inputs/ships0.txt inputs/large_cargo_list.txt
 ships-step2 inputs/ships0.txt inputs/unsupported_hazmat_cargo.txt
 
 ships-step3 inputs/ships0.txt inputs/cargo1.txt
 ships-step3 inputs/ships1.txt inputs/cargo0.txt
 ships-step3 inputs/ships1.txt inputs/cargo1.txt
 ships-step3 inputs/ships2.txt inputs/cargo2.txt
+ships-step3 inputs/invalid_temp_ship.txt inputs/temp_sensitive_cargo.txt
+ships-step3 inputs/ships1.txt inputs/impossible_temp_cargo.txt
+ships-step3 inputs/animal_ships.txt inputs/animal_cargo.txt
+ships-step3 inputs/animal_ships.txt inputs/large_non_animal_cargo.txt
+ships-step3 inputs/animal_ships.txt inputs/hazardous_cargo.txt
 
 ships-step4 inputs/ships0.txt inputs/cargo1.txt
 ships-step4 inputs/ships1.txt inputs/cargo0.txt
