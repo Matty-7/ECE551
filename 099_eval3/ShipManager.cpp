@@ -25,6 +25,7 @@ bool ShipManager::loadShipsFromFile(const std::string & filename) {
         return false;
     }
 
+    // Here I use a set to store the ship names to check for duplicates
     std::set<std::string> shipNames;
     std::string line;
     while (std::getline(infile, line)) {
@@ -41,12 +42,14 @@ bool ShipManager::loadShipsFromFile(const std::string & filename) {
         }
         ships.push_back(ship);
 
+        // Here I calculate the total capacity for each route
         std::string route = "(" + ship->source + " -> " + ship->destination + ")";
         routeCapacities[route] += ship->capacity;
     }
     return true;
 }
 
+// Here I load the ships into the AVLMultiMap and sort them by remaining capacity
 void ShipManager::loadShipsIntoMap(AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> & shipMap) {
     for (std::vector<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it) {
         uint64_t remainingCapacity = (*it)->capacity - (*it)->usedCapacity;
@@ -108,7 +111,7 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
     std::getline(typeStream, type, ',');
 
     if (type == "Container") {
-        
+        // Container ships need: slots count and hazmat capabilities
         ContainerShip * containerShip = new ContainerShip();
 
         std::string slotsStr;
@@ -138,7 +141,7 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
         ship = containerShip;
     }
     else if (type == "Tanker") {
-        
+        // Tanker ships need: temperature range, number of tanks, and hazmat capabilities
         TankerShip * tankerShip = new TankerShip();
 
         std::string minTempStr;
@@ -206,7 +209,7 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
         ship = tankerShip;
     }
     else if (type == "Animals") {
-        
+        // Animal ships need: size threshold for small animals
         AnimalShip * animalShip = new AnimalShip();
 
         std::string thresholdStr;
