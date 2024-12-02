@@ -28,7 +28,7 @@ bool TankerShip::canLoadCargo(const Cargo & cargo) const {
         return false;
     }
 
-    
+    // Extract and verify temperature requirements
     int cargoMinTemp = std::numeric_limits<int>::min();
     int cargoMaxTemp = std::numeric_limits<int>::max();
     for (std::vector<std::string>::const_iterator it = cargo.properties.begin(); it != cargo.properties.end(); ++it) {
@@ -55,7 +55,7 @@ bool TankerShip::canLoadCargo(const Cargo & cargo) const {
     unsigned long perTankCapacity = capacity / numTanks;
     unsigned long remainingWeight = cargo.weight;
 
-
+    // Try to load the cargo across the available tanks
     std::vector<unsigned long> tempTankCapacities = tankCapacities;
 
     for (unsigned int i = 0; i < numTanks && remainingWeight > 0; ++i) {
@@ -104,6 +104,7 @@ void TankerShip::printShipDetails() const {
         std::cout << "  " << it->name << "(" << it->weight << ")" << std::endl;
     }
 
+    // Count the number of tanks used
     unsigned int tanksUsed = 0;
     for (unsigned int i = 0; i < numTanks; ++i) {
         if (tankCapacities[i] > 0) {
