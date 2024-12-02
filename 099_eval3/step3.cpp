@@ -28,6 +28,7 @@ int main(int argc, char * argv[]) {
          cargo != cargoList.end(); ++cargo) {
         std::vector<Ship*> eligibleShips;
 
+        // Check each ship's capability to carry the cargo
         std::vector<Ship*> & ships = manager.getShips();
         for (std::vector<Ship*>::iterator ship = ships.begin(); ship != ships.end(); ++ship) {
             if ((*ship)->canLoadCargo(*cargo)) {

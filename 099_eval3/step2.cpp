@@ -17,6 +17,7 @@ int main(int argc, char * argv[]) {
         return EXIT_FAILURE;
     }
 
+    // Initialize and load ships from file
     ShipManager manager;
     if (!manager.loadShipsFromFile(argv[1])) {
         return EXIT_FAILURE;
@@ -79,6 +80,7 @@ bool compareShipsByName(const Ship* a, const Ship* b) {
     return a->name < b->name;
 }
 
+// Look at the first character of the file to check if it's empty
 bool isCargoFileEmpty(const std::string & filename) {
     std::ifstream infile(filename.c_str());
     return infile.peek() == std::ifstream::traits_type::eof();

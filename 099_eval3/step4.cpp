@@ -28,9 +28,11 @@ int main(int argc, char * argv[]) {
         }
     }
 
+    // Sort the cargo list by weight
     std::stable_sort(cargoList.begin(), cargoList.end(),
                      compareCargoByWeight);
 
+    // Here I create AVL tree map indexed by ship capacity with name-based tiebreaker
     AVLMultiMap<uint64_t, Ship*, std::less<uint64_t>, ShipNameCompare> shipMap;
     manager.loadShipsIntoMap(shipMap);
 
@@ -65,6 +67,7 @@ int main(int argc, char * argv[]) {
     return EXIT_SUCCESS;
 }
 
+// Look at the first character of the file to check if it's empty
 bool isCargoFileEmpty(const std::string & filename) {
     std::ifstream infile(filename.c_str());
     return infile.peek() == std::ifstream::traits_type::eof();
