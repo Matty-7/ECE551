@@ -1,6 +1,6 @@
-Grading at 12/01/2024:19:42:53.664539
-For commit ID aa1e293a014add9e504e4b32b55d3217267cac95
-Grading at Sun Dec  1 02:42:23 PM EST 2024
+Grading at 12/02/2024:00:58:26.838984
+For commit ID c2580cbe96d8fc8d5e60e4c8a0007e2bb92b448f
+Grading at Sun Dec  1 07:57:35 PM EST 2024
 Doing make clean
 rm -rf *.o *~ ships-step1 ships-step2 ships-step3 ships-step4
 Running your test cases
@@ -48,6 +48,52 @@ We agreed on this testcase and valgrind was clean
  *** This is one of the three test cases for step 1 early start EC **
 -------------------------
  This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/empty_ships.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/duplicate_ships.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+-------------------------
+ This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/negative_capacity.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/missing_fields.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
+ ships-step1 
+ With arguments 
+ inputs/large_capacity.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
  ships-step2 
  With arguments 
  inputs/ships0.txt inputs/cargo0.txt 
@@ -68,6 +114,56 @@ Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
  *** This is the test case for step 2 early start EC **
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/ships0.txt inputs/empty_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+You said this was an error (exit status was 1), but we said it was valid
+Note: this may happen if your code timed out too...
+Here is what you printed to stderr:
+------
+------
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/ships0.txt inputs/no_eligible_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/ships0.txt inputs/missing_container_property.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/ships0.txt inputs/large_cargo_list.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
+ ships-step2 
+ With arguments 
+ inputs/ships0.txt inputs/unsupported_hazmat_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
 -------------------------
  This test case will run 
  ships-step3 
@@ -122,6 +218,55 @@ We agreed on this testcase and valgrind was clean
  *** This is one of the four cases for step 3 early start EC **
 -------------------------
  This test case will run 
+ ships-step3 
+ With arguments 
+ inputs/invalid_temp_ship.txt inputs/temp_sensitive_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+-------------------------
+ This test case will run 
+ ships-step3 
+ With arguments 
+ inputs/ships1.txt inputs/impossible_temp_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+-------------------------
+ This test case will run 
+ ships-step3 
+ With arguments 
+ inputs/animal_ships.txt inputs/animal_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We said this was an error.  Our error message was
+Giraffe,Mordor:Sarth,400,animal,roamer Expected a number for capacity, but found animal
+However, you exited with EXIT_SUCCESS
+-------------------------
+ This test case will run 
+ ships-step3 
+ With arguments 
+ inputs/animal_ships.txt inputs/large_non_animal_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
+ ships-step3 
+ With arguments 
+ inputs/animal_ships.txt inputs/hazardous_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+-------------------------
+ This test case will run 
  ships-step4 
  With arguments 
  inputs/ships0.txt inputs/cargo1.txt 
@@ -166,6 +311,16 @@ We agreed on this testcase and valgrind was clean
  This test case will run 
  ships-step4 
  With arguments 
+ inputs/ships2.txt inputs/cargo2.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed on this testcase and valgrind was clean
+ *** This is one of the four cases for step 4 early start EC **
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
  inputs/ships.txt inputs/cargo.txt 
 -------------------------
 Running our code...
@@ -175,20 +330,61 @@ We agreed on this testcase and valgrind was clean
  This test case will run 
  ships-step4 
  With arguments 
- inputs/ships2.txt inputs/cargo2.txt 
+ inputs/ships1.txt inputs/oversized_cargo.txt 
 -------------------------
 Running our code...
 Running your code
 We agreed on this testcase and valgrind was clean
- *** This is one of the four cases for step 4 early start EC **
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
+ inputs/identical_ships.txt inputs/identical_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
+ inputs/ships1.txt inputs/reverse_sorted_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
+ inputs/small_ships.txt inputs/abundant_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We said this was an error.  Our error message was
+Cargo to load has to have at least 5 parts, but Item2,Mordor:Sarth,20,container has only 4
+However, you exited with EXIT_SUCCESS
+-------------------------
+ This test case will run 
+ ships-step4 
+ With arguments 
+ inputs/diverse_ships.txt inputs/complex_hazardous_cargo.txt 
+-------------------------
+Running our code...
+Running your code
+We agreed this was an error, and you printed something to stderr
+And valgrind reported no errors
 You have already pass the basic tests for step1:
 **step1 basic tests passed for jh730 at 1733065654** : 0a0219083ded892487daeaa326384f4117925ecf  -
 You have already pass the basic tests for step2:
 **step2 basic tests passed for jh730 at 1733065654** : 3bc627ea28224bdd6c3d21e5e3a14db0367dba1c  -
 You have already pass the basic tests for step3:
 **step3 basic tests passed for jh730 at 1733065654** : 3c6b120e87422ced0111364ddeb7a36070b1d54e  -
+You have already pass the basic tests for step4:
 **step4 basic tests passed for jh730 at 1733082173** : a016b3befe516cbfadcdc684013722a2f5d47c2f  -
-You have PASSED all of your test cases
-Keep adding test cases until you are satisfied your program is correct
+You have FAILED one or more of your test cases
+Keep debugging
 
 Overall Grade: NO GRADE YET
