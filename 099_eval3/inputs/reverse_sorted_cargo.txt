@@ -1,0 +1,3 @@
+Small Parcel,Mordor:Sarth,10,container
+Medium Box,Mordor:Sarth,100,container
+Large Crate,Mordor:Sarth,500,container

@@ -1,0 +1,1 @@
+Hazardous Materials,Mordor:Sarth,500,container,hazardous-radioactive,hazardous-explosive,hazardous-toxic,hazardous-corrosive,hazardous-flammable

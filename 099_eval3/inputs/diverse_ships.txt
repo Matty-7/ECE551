@@ -1,0 +1,2 @@
+The Hazard Carrier:Container,5,radioactive,explosive,toxic,corrosive,flammable:Mordor:Sarth:1000
+The Limited Carrier:Container,5,radioactive,explosive:Mordor:Sarth:1000

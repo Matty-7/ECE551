@@ -1,0 +1,1 @@
+Equipment,Mordor,Sarth,500,container

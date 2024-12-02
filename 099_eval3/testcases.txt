@@ -29,6 +29,11 @@ ships-step4 inputs/ships1.txt inputs/cargo0.txt
 ships-step4 inputs/ships1.txt inputs/cargo1.txt
 ships-step4 inputs/ships2.txt inputs/cargo2.txt
 ships-step4 inputs/ships.txt inputs/cargo.txt
+ships-step4 inputs/ships1.txt inputs/oversized_cargo.txt
+ships-step4 inputs/identical_ships.txt inputs/identical_cargo.txt
+ships-step4 inputs/ships1.txt inputs/reverse_sorted_cargo.txt
+ships-step4 inputs/small_ships.txt inputs/abundant_cargo.txt
+ships-step4 inputs/diverse_ships.txt inputs/complex_hazardous_cargo.txt
 
 
 
