@@ -24,6 +24,8 @@ bool parseCargoLine(const std::string & line, Cargo & cargo) {
 
     // Ensure minimum required 5 fields (name, source, destination, weight, at least one property)
     if (segments.size() < 5) {
+        std::cerr << "Cargo to load has to have at least 5 parts, but "
+                  << line << " has only " << segments.size() << std::endl;
         return false;
     }
 
@@ -33,6 +35,8 @@ bool parseCargoLine(const std::string & line, Cargo & cargo) {
 
     std::istringstream weightStream(segments[3]);
     if (!(weightStream >> cargo.weight)) {
+        std::cerr << "Expected a number for weight, but found "
+                  << segments[3] << std::endl;
         return false;
     }
 
@@ -52,10 +56,15 @@ std::vector<Cargo> loadCargoFromFile(const std::string & filename) {
     std::vector<Cargo> cargoList;
     std::string line;
     while (std::getline(infile, line)) {
+        
+        if (line.empty()) {
+            continue;
+        }
+
         Cargo cargo;
         if (!parseCargoLine(line, cargo)) {
-            std::cerr << "There is an error during parsing the line: " << line << std::endl;
-            continue;
+            
+            return std::vector<Cargo>();
         }
         cargoList.push_back(cargo);
     }

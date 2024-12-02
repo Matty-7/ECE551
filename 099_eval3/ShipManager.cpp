@@ -86,9 +86,11 @@ bool ShipManager::parseShipLine(const std::string & line, Ship *& ship) {
     }
 
     if (segments.size() < 5) {
+        std::cerr << "Ship line must have at least 5 parts, but "
+                  << line << " has only " << segments.size() << std::endl;
         return false;
     }
-    
+
     std::string name = segments[0];
     std::string typeInfo = segments[1];
     std::string source = segments[2];

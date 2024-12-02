@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <algorithm>
 #include "ShipManager.hpp"
@@ -7,10 +8,12 @@
 #include "Ship.hpp"
 
 bool compareShipsByName(const Ship* a, const Ship* b);
+bool isCargoFileEmpty(const std::string & filename);
 
 int main(int argc, char * argv[]) {
     if (argc != 3) {
-        std::cerr << "Here we use: " << argv[0] << " <ships_file> <cargo_file>" << std::endl;
+        std::cerr << "Usage: " << argv[0]
+                  << " <ships_file> <cargo_file>" << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -19,36 +22,50 @@ int main(int argc, char * argv[]) {
         return EXIT_FAILURE;
     }
 
+    
     std::vector<Cargo> cargoList = loadCargoFromFile(argv[2]);
     if (cargoList.empty()) {
-        return EXIT_FAILURE;
+        
+        if (!isCargoFileEmpty(argv[2])) {
+           
+            return EXIT_FAILURE;
+        }
+        
     }
 
-    for (std::vector<Cargo>::const_iterator cargo = cargoList.begin(); cargo != cargoList.end(); ++cargo) {
+    
+    for (std::vector<Cargo>::const_iterator cargo = cargoList.begin();
+         cargo != cargoList.end(); ++cargo) {
         std::vector<Ship*> eligibleShips;
 
         std::vector<Ship*>& ships = manager.getShips();
-        for (std::vector<Ship*>::iterator ship = ships.begin(); ship != ships.end(); ++ship) {
+        for (std::vector<Ship*>::iterator ship = ships.begin();
+             ship != ships.end(); ++ship) {
             if ((*ship)->canLoadCargo(*cargo)) {
                 eligibleShips.push_back(*ship);
             }
         }
 
-        std::sort(eligibleShips.begin(), eligibleShips.end(), compareShipsByName);
+        std::sort(eligibleShips.begin(), eligibleShips.end(),
+                  compareShipsByName);
 
         if (eligibleShips.empty()) {
-            std::cout << "No ships can carry the " << cargo->name << " from "
-                      << cargo->source << " to " << cargo->destination << std::endl;
+            std::cout << "No ships can carry the " << cargo->name
+                      << " from " << cargo->source << " to "
+                      << cargo->destination << std::endl;
         } else {
-            std::cout << eligibleShips.size() << " ships can carry the " << cargo->name
-                      << " from " << cargo->source << " to " << cargo->destination << std::endl;
-            for (std::vector<Ship*>::const_iterator ship = eligibleShips.begin(); ship != eligibleShips.end(); ++ship) {
+            std::cout << eligibleShips.size() << " ships can carry the "
+                      << cargo->name << " from " << cargo->source
+                      << " to " << cargo->destination << std::endl;
+            for (std::vector<Ship*>::const_iterator ship = eligibleShips.begin();
+                 ship != eligibleShips.end(); ++ship) {
                 std::cout << "  " << (*ship)->name << std::endl;
             }
 
             Ship* bestShip = eligibleShips.front();
             bestShip->loadCargo(*cargo);
-            std::cout << "  **Loading the cargo onto " << bestShip->name << "**" << std::endl;
+            std::cout << "  **Loading the cargo onto " << bestShip->name
+                      << "**" << std::endl;
         }
     }
 
@@ -60,4 +77,9 @@ int main(int argc, char * argv[]) {
 
 bool compareShipsByName(const Ship* a, const Ship* b) {
     return a->name < b->name;
+}
+
+bool isCargoFileEmpty(const std::string & filename) {
+    std::ifstream infile(filename.c_str());
+    return infile.peek() == std::ifstream::traits_type::eof();
 }
