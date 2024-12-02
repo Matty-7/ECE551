@@ -1,0 +1,2 @@
+The Swift Eagle:Container,4:Mordor:The Shire:1000
+The Swift Eagle:Tanker,-20,40,10:Mordor:Luthadel:1500

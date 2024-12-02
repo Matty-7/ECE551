@@ -1,6 +1,11 @@
 ships-step1 inputs/ships0.txt
 ships-step1 inputs/ships1.txt
 ships-step1 inputs/ships2.txt
+ships-step1 inputs/empty_ships.txt
+ships-step1 inputs/duplicate_ships.txt
+ships-step1 inputs/negative_capacity.txt
+ships-step1 inputs/missing_fields.txt
+ships-step1 inputs/large_capacity.txt
 
 ships-step2 inputs/ships0.txt inputs/cargo0.txt
 
